@@ -11,8 +11,8 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
+
 #import "Texture2D.h"
-#import "Regions.h"
 
 /*
 This class wraps the CAEAGLLayer from CoreAnimation into a convenient UIView subclass.
@@ -36,16 +36,14 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
     
     NSTimer *animationTimer;
     NSTimeInterval animationInterval;
-	
-	Texture2D *font;
-	Texture2D *map;
-	
-	Regions   *regions;
-	
+		
+	bool      texturesLoaded;
+
 }
 
 @property NSTimeInterval animationInterval;
 
+- (void)loadInitialTextures;
 - (void)startAnimation;
 - (void)stopAnimation;
 - (void)drawView;

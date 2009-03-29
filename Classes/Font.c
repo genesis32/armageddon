@@ -110,29 +110,9 @@ void DrawFontString(GLshort xpos, GLshort ypos, char *msg, ...){
 
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
-
-  // the string is now contained in buf
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-
-  GLint vPort[4];
-  glGetIntegerv(GL_VIEWPORT, vPort);
-  glOrthof(-160.0f, 160.0f, -240.0f, 240.0f, -1.0f, 1.0f);
-  glRotatef(90, 0.0, 0.0, 1.0);
-
-	
    // use texture 
   glColor4f(font_color[0], font_color[1], font_color[2], 1.0);	
   RenderString(xpos, ypos, buf);
-
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();   
-  glMatrixMode(GL_MODELVIEW);
-  glPopMatrix();
 
   glDisable(GL_BLEND);
   glDisable(GL_TEXTURE_2D);

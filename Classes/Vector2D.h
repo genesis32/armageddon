@@ -13,7 +13,7 @@
 class Point2D
 	{
 	public:
-		Point2D() { }
+		Point2D() { m_pos[0] = m_pos[1] = 0.0f; }
 		Point2D(float x, float y);
 		
 		void Set(float x, float y);

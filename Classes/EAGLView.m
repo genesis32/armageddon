@@ -14,6 +14,7 @@
 #import "EAGLView.h"
 #import "Texture2D.h"
 #import "Font.h"
+#import "game.h"
 
 #define USE_DEPTH_BUFFER 0
 
@@ -59,74 +60,38 @@
             [self release];
             return nil;
         }
-        
+        texturesLoaded = false;
+		
         animationInterval = 1.0 / 60.0;
     }
     return self;
 }
 
-
 - (void)drawView {
-    
-    // Replace the implementation of this method to do your own custom drawing
-    
-    const GLfloat squareVertices[] = {
-        -180.0f, -90.0f, -0.5,
-        180.0f,  -90.0f, -0.5,
-        -180.0f,  90.0f, -0.5,
-        180.0f,   90.0f, -0.5
-    };
-	
-    const GLfloat squareTexCoords[] = {
-		0.0, 0.0,
-		0.0, 0.625,
-		0.9375, 0.0,
-		0.9375, 0.625
-    };
-    
+			
     [EAGLContext setCurrentContext:context];
     	
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+		
     glViewport(0, 0, backingWidth, backingHeight);
 	
 	glEnable(GL_TEXTURE_2D);
-	if(font == nil)
+	
+	if(!texturesLoaded)
 	{
-		font = [[Texture2D alloc] initWithImage: [UIImage imageNamed:@"font-8bit.png"]];
+		NSMutableArray  *textures = [[NSMutableArray alloc] init];
+		[textures addObject: @"font-8bit.png"];
+		[textures addObject: @"map.png"];
+		for(int i=0; i < [textures count]; i++)
+		{
+			Texture2D *text = [[Texture2D alloc] initWithImage: [UIImage imageNamed:[textures objectAtIndex: i]]];
+			[text retain];
+			AddTexture(i, [text name]);
+		}
+		texturesLoaded = true;		
 	}
 	
-	if(map == nil)
-	{
-		map = [[Texture2D alloc] initWithImage: [UIImage imageNamed:@"map.png"]];
-	}
-
-	glBindTexture(GL_TEXTURE_2D, [font name]);
-	
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrthof(-180.0f, 180.0f, -90.0, 90.0f, -1.0f, 1.0f);
-    glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();	
-    
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	glEnable(GL_TEXTURE_2D);
-	glColor4f(1.0, 1.0, 1.0, 1.0);
-
-	glBindTexture(GL_TEXTURE_2D, [map name]);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-	
-    glVertexPointer(3, GL_FLOAT, 0, squareVertices);
-    glEnableClientState(GL_VERTEX_ARRAY);
-
-	glTexCoordPointer(2, GL_FLOAT, 0, squareTexCoords);
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-	glBindTexture(GL_TEXTURE_2D, [font name]);
-	DrawFontString(-240, 120, "Armageddon");
+	GameTick();
 	
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];

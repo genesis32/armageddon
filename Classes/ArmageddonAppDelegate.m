@@ -16,6 +16,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 
+	[UIApplication sharedApplication].statusBarHidden = YES;
 	glView.animationInterval = 1.0 / 60.0;
 	[glView startAnimation];
 }
@@ -35,13 +36,6 @@
 	[window release];
 	[glView release];
 	[super dealloc];
-}
-
--(BOOL)shouldAutorotateToInterfaceOrientation:
-(UIInterfaceOrientation)interfaceOrientation
-{
-	return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-			interfaceOrientation ==	UIInterfaceOrientationLandscapeRight);
 }
 
 

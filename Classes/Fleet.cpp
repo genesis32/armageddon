@@ -1,5 +1,5 @@
 /*
- *  npc.cpp
+ *  Fleet.cpp
  *  Armageddon
  *
  *  Created by ddm on 3/28/09.
@@ -8,10 +8,10 @@
  */
 
 #include "npc.h"
+#include "Fleet.h"
 
-NPC::NPC()
+Fleet::Fleet(int numEntities)
 {
-	
+	m_npcs = new NPC[numEntities];
 }
-
 

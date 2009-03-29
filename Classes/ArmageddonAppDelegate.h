@@ -13,6 +13,7 @@
 @interface ArmageddonAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     EAGLView *glView;
+	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

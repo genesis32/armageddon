@@ -17,9 +17,11 @@ class NPC
 public:
 	NPC();
 	
+	
+	
 private:
-	Point2D m_pos;
-		
+	Point2D  m_pos;
+	Vector2D m_currentDirection;	
 };
 
 #endif

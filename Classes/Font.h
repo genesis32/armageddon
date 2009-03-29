@@ -3,6 +3,10 @@
 
 #include <OpenGLES/ES1/gl.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Load the texture you want for the font. This font should be 8-bit
 void LoadFontMap();
 
@@ -15,4 +19,9 @@ void SetFontColor(float, float, float);
 // Draw a string (similiar to printf)
 void DrawFontString(GLshort xpos, GLshort ypos, char *msg, ...);
 
+#ifdef __cplusplus
+}
+#endif
+		
+	
 #endif

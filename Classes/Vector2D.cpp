@@ -10,6 +10,11 @@
 #include <math.h>
 #include "Vector2D.h"
 
+Vector2D::Vector2D()
+{
+	
+}
+
 Point2D::Point2D(float x, float y)
 {
 	m_pos[0] = x;
