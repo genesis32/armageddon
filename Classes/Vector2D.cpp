@@ -10,11 +10,6 @@
 #include <math.h>
 #include "Vector2D.h"
 
-Vector2D::Vector2D()
-{
-	
-}
-
 Point2D::Point2D(float x, float y)
 {
 	m_pos[0] = x;
@@ -47,4 +42,13 @@ float Point2D::Distance(const Point2D &otherPoint)
 	return distance;	
 }
 
+void Vector2D::SetXMagnitude(float x)
+{
+	m_vec[0] = x;
+}
+
+void Vector2D::SetYMagnitude(float y)
+{
+	m_vec[1] = y;
+}
 

@@ -21,8 +21,8 @@ class Point2D
 		void SetX(float x);
 		void SetY(float y);
 		
-		float GetX() { return m_pos[0]; }
-		float GetY() { return m_pos[1]; }
+		float GetX() const { return m_pos[0]; }
+		float GetY() const { return m_pos[1]; }
 		
 		float Distance(const Point2D &otherPoint);
 		
@@ -33,11 +33,16 @@ class Point2D
 class Vector2D 
 	{
 	public:
-		Vector2D();
+		Vector2D() { m_vec[0] = m_vec[1] = 0.0f; }
+		
+		void SetXMagnitude(float x);
+		void SetYMagnitude(float y); 
+		
+		float GetXMagnitude() const { return m_vec[0]; }
+		float GetYMagnitude() const { return m_vec[1]; }
 		
 	private:
-		Point2D pt1;
-		Point2D pt2;
+		float m_vec[2];
 	};
 
 #endif

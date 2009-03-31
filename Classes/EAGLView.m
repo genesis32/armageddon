@@ -85,7 +85,6 @@
 		for(int i=0; i < [textures count]; i++)
 		{
 			Texture2D *text = [[Texture2D alloc] initWithImage: [UIImage imageNamed:[textures objectAtIndex: i]]];
-			[text retain];
 			AddTexture(i, [text name]);
 		}
 		texturesLoaded = true;		
@@ -132,6 +131,7 @@
     }
 	
 	LoadFontMap();
+	Init();
     
     return YES;
 }
