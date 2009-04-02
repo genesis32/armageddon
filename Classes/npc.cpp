@@ -41,7 +41,7 @@ void NPC::SetSpeed(float speed)
 
 void NPC::SetStatus(uint32_t status)
 {
-	m_status = status;
+	m_status |= status;
 }
 
 void NPC::SetPosition(const Point2D &pos)

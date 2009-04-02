@@ -9,7 +9,7 @@
 
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
-
+#include <float.h>
 #include "font.h"
 #include "npc.h"
 #include "game.h"
@@ -17,8 +17,9 @@
 #define MAX_CHARACTERS_PER_FLEET 6
 #define MAX_TEXTURES 16
 
+static int frameCount = 0;
+float  selectedLat, selectedLon;
 NPC    enemyFleet[MAX_CHARACTERS_PER_FLEET];
-
 GLuint textures[MAX_TEXTURES];
 
 void Init()
@@ -30,20 +31,20 @@ void Init()
 	
 	Point2D  initialPoint;
 	Vector2D initialDirection;
+	
+	float startLon = -165.0; // evenly space for testing...
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
-		initialPoint.SetX(0.0);
+		initialPoint.SetX(startLon);
 		initialPoint.SetY(0.0);
-		
-		initialDirection.SetXMagnitude(-1.0);
-		initialDirection.SetYMagnitude(-1.0);
-		
+		startLon += 360.0 / 6.0;
+
 		enemyFleet[i].SetStatus(NPC_ALIVE);
 		enemyFleet[i].SetDirection(initialDirection);
-		enemyFleet[i].SetSpeed(1.0);
+
 		enemyFleet[i].SetPosition(initialPoint);
 	}
-	
+	selectedLat = selectedLon = FLT_MIN;
 }
 
 void AddTexture(int textureId, GLuint glId)
@@ -51,10 +52,25 @@ void AddTexture(int textureId, GLuint glId)
 	textures[textureId] = glId;
 }
 
+void SetEntitySelection(float lat, float lon)
+{
+	selectedLat = lat;
+	selectedLon = lon;
+}
+
+static void ProcessEntitySelection()
+{
+	if(selectedLat != FLT_MIN && selectedLon != FLT_MIN)
+	{
+		// we have a valid lat lon from a selection, see if we're over an entity and tag him as selected
+		enemyFleet[0].SetStatus(NPC_SELECTED);
+		selectedLat = selectedLon = FLT_MIN;
+	}
+}
+
 static void RenderCharacters()
 {
 	Point2D ptToRender;
-	static float offset = 0.0f;
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		if(enemyFleet[i].GetStatus() & NPC_ALIVE)
@@ -70,12 +86,24 @@ static void RenderCharacters()
 				x+10.0, y+10.0, -0.5
 			};
 			
+			if(enemyFleet[i].GetStatus() & NPC_SELECTED)
+			{
+				if(frameCount < 30)
+					glColor4f(0.0, 1.0, 1.0, 0.0);
+				else
+					glColor4f(1.0, 0.0, 0.0, 0.0);					
+			}
+			else
+			{
+				glColor4f(0.0, 1.0, 0.0, 0.0);
+			}
+				
+
 			glVertexPointer(3, GL_FLOAT, 0, verts);
 			glEnableClientState(GL_VERTEX_ARRAY);
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		}
 	}
-	offset += 0.5;
 }
 
 static void RenderWorld()
@@ -133,6 +161,9 @@ static void RenderWorld()
 
 void GameTick()
 {
+	frameCount = frameCount > 60 ? 0 : frameCount + 1;
+	
+	ProcessEntitySelection();
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		enemyFleet[i].Tick();

@@ -15,6 +15,7 @@
 #import "Texture2D.h"
 #import "Font.h"
 #import "game.h"
+#import "transforms.h"
 
 #define USE_DEPTH_BUFFER 0
 
@@ -176,11 +177,51 @@
     }
 }
 
-// Handles the end of a touch event when the touch is a tap.
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void) handleTouches:(NSSet*)touches withEvent:(UIEvent*)event 
 {
-	[self drawView];
+	NSSet *t = [event allTouches];
+	for(UITouch *touch in t)
+	{
+		// TODO: support flip
+		CGPoint touchLocation = [touch locationInView:nil];
+		float latY = 320.0 - touchLocation.x;
+		float lonX = 480.0 - touchLocation.y;
+		NSLog(@"2. %f - %f", ScreenToLon(lonX), ScreenToLat(latY));
+	}
 }
+
+- (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event 
+{
+	NSSet *t = [event allTouches];
+	for(UITouch *touch in t)
+	{
+		// TODO: support flip
+		CGPoint touchLocation = [touch locationInView:nil];
+		float latY = 320.0 - touchLocation.x;
+		float lonX = 480.0 - touchLocation.y;
+		float lat = ScreenToLat(latY);
+		float lon = ScreenToLon(lonX);
+		NSLog(@"2. %f - %f", lon, lat);
+		SetEntitySelection(lat, lon);
+	}
+}
+
+- (void) touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event 
+{
+	[self handleTouches:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event 
+{
+	[self handleTouches:touches withEvent:event];
+}
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
+{
+	[self handleTouches:touches withEvent:event];
+}
+
 
 - (void)dealloc {
     

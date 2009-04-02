@@ -12,8 +12,9 @@
 
 #include "Vector2D.h"
 
-#define NPC_ALIVE 1
-#define NPC_DAMAGED 2
+#define NPC_ALIVE    1
+#define NPC_DAMAGED  2
+#define NPC_SELECTED 4
 
 class NPC
 {

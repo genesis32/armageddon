@@ -20,6 +20,7 @@ extern "C" {
 void AddTexture(int textureId, GLuint glId);
 void Init();
 void GameTick();
+void SetEntitySelection(float lat, float lon);
 	
 #ifdef __cplusplus
 }
