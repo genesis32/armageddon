@@ -17,11 +17,15 @@
 
 #define MAX_CHARACTERS_PER_FLEET 6
 #define MAX_TEXTURES 16
+#define NUM_INPUT_WAYPOINTS 128
+
 
 static int frameCount = 0;
-float  selectedLat, selectedLon;
-NPC    enemyFleet[MAX_CHARACTERS_PER_FLEET];
-GLuint textures[MAX_TEXTURES];
+float   selectedLat, selectedLon;
+Point2D inputWaypoints[NUM_INPUT_WAYPOINTS];
+int     numInputWaypoints = 0;
+NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
+GLuint  textures[MAX_TEXTURES];
 
 void Init()
 {
@@ -55,6 +59,24 @@ void SetEntitySelection(float lat, float lon)
 {
 	selectedLat = lat;
 	selectedLon = lon;
+}
+
+void SetInputWayPoint(float lat, float lon)
+{
+	if(numInputWaypoints >= NUM_INPUT_WAYPOINTS)
+		return;
+
+	inputWaypoints[numInputWaypoints].Set(lon, lat);
+	numInputWaypoints++;
+}
+
+static void ProcessInputWaypoints()
+{
+	for(int i=0; i < numInputWaypoints; i++)
+	{
+		enemyFleet[0].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
+	}
+	numInputWaypoints = 0;
 }
 
 static void ProcessEntitySelection()
@@ -96,7 +118,6 @@ static void RenderCharacters()
 			{
 				glColor4f(0.0, 1.0, 0.0, 0.0);
 			}
-				
 
 			glEnableClientState(GL_VERTEX_ARRAY);
 			glVertexPointer(3, GL_FLOAT, 0, verts);
@@ -107,21 +128,20 @@ static void RenderCharacters()
 			enemyFleet[i].GetWaypoints(waypoints);
 			if(!waypoints.empty())
 			{
-				GLfloat *arrToRender = new GLfloat[waypoints.size() * 3];
+				GLfloat *arrToRender = new GLfloat[waypoints.size() * 2];
 				int curr = 0;
 				std::list<Point2D>::iterator itr = waypoints.begin();
 				while(itr != waypoints.end())
 				{
 					arrToRender[2 * curr + 0] = itr->GetX();
 					arrToRender[2 * curr + 1] = itr->GetY();
-					arrToRender[2 * curr + 2] = -0.3;
 					curr++;
 					itr++;
 				}
 				glColor4f(0.0, 0.0, 1.0, 0.0);
 				glPointSize(10.0);
-				glVertexPointer(3, GL_FLOAT, 0, arrToRender);
-				glDrawArrays(GL_POINTS, 0, curr);
+				glVertexPointer(2, GL_FLOAT, 0, arrToRender);
+				glDrawArrays(GL_LINE_STRIP, 0, curr);
 			}
 		}
 	}
@@ -185,6 +205,8 @@ void GameTick()
 	frameCount = frameCount > 60 ? 0 : frameCount + 1;
 	
 	ProcessEntitySelection();
+	ProcessInputWaypoints();
+
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		enemyFleet[i].Tick();

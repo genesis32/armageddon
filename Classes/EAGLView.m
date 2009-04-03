@@ -197,7 +197,7 @@
 		}
 		else if(touch.phase == UITouchPhaseMoved)
 		{
-			
+			SetInputWayPoint(lat, lon);
 		}
 		else if(touch.phase == UITouchPhaseEnded)
 		{

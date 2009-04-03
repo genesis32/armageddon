@@ -13,7 +13,6 @@
 
 NPC::NPC()
 {
-	AddWayPoint(30, 0);
 	m_currWaypoint.SetX(FLT_MIN);
 	m_currWaypoint.SetY(FLT_MIN);
 }
@@ -30,7 +29,7 @@ void NPC::Tick()
 	{
 		float offset = 0.0;
 		
-		if(m_waypoints.size() > 0 && !m_currWaypoint.Equals(m_waypoints.front()))
+		if(!m_waypoints.empty() && !m_currWaypoint.Equals(m_waypoints.front()))
 		{
 			m_currWaypoint = m_waypoints.front();
 			Vector2D newDirVector;
