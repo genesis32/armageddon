@@ -187,23 +187,28 @@
 		float latY = 320.0 - touchLocation.x;
 		float lonX = 480.0 - touchLocation.y;
 		NSLog(@"2. %f - %f", ScreenToLon(lonX), ScreenToLat(latY));
+		
+		float lon = ScreenToLon(lonX);
+		float lat = ScreenToLat(latY);
+		
+		if(touch.phase == UITouchPhaseBegan)
+		{
+			SetEntitySelection(lat, lon);
+		}
+		else if(touch.phase == UITouchPhaseMoved)
+		{
+			
+		}
+		else if(touch.phase == UITouchPhaseEnded)
+		{
+			
+		}
 	}
 }
 
 - (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event 
 {
-	NSSet *t = [event allTouches];
-	for(UITouch *touch in t)
-	{
-		// TODO: support flip
-		CGPoint touchLocation = [touch locationInView:nil];
-		float latY = 320.0 - touchLocation.x;
-		float lonX = 480.0 - touchLocation.y;
-		float lat = ScreenToLat(latY);
-		float lon = ScreenToLon(lonX);
-		NSLog(@"2. %f - %f", lon, lat);
-		SetEntitySelection(lat, lon);
-	}
+	[self handleTouches:touches withEvent:event];
 }
 
 - (void) touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event 

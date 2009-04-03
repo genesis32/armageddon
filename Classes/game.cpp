@@ -30,7 +30,6 @@ void Init()
 	}
 	
 	Point2D  initialPoint;
-	Vector2D initialDirection;
 	
 	float startLon = -165.0; // evenly space for testing...
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
@@ -40,8 +39,7 @@ void Init()
 		startLon += 360.0 / 6.0;
 
 		enemyFleet[i].SetStatus(NPC_ALIVE);
-		enemyFleet[i].SetDirection(initialDirection);
-
+		enemyFleet[i].SetSpeed(0.25);
 		enemyFleet[i].SetPosition(initialPoint);
 	}
 	selectedLat = selectedLon = FLT_MIN;

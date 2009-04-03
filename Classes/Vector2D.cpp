@@ -42,6 +42,13 @@ float Point2D::Distance(const Point2D &otherPoint)
 	return distance;	
 }
 
+void Vector2D::Normalize()
+{
+	float len = sqrt(m_vec[0] * m_vec[0] + m_vec[1] * m_vec[1]);
+	m_vec[0] /= len;
+	m_vec[1] /= len;
+}
+
 void Vector2D::SetXMagnitude(float x)
 {
 	m_vec[0] = x;

@@ -41,6 +41,8 @@ class Vector2D
 		float GetXMagnitude() const { return m_vec[0]; }
 		float GetYMagnitude() const { return m_vec[1]; }
 		
+		void  Normalize();
+		
 	private:
 		float m_vec[2];
 	};

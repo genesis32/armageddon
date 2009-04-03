@@ -16,6 +16,8 @@
 #define NPC_DAMAGED  2
 #define NPC_SELECTED 4
 
+#define MAX_NUM_WAYPOINTS 128
+
 class NPC
 {
 public:
@@ -34,11 +36,17 @@ public:
 	void SetPosition(const Point2D &pos);
 	void GetPosition(Point2D &pos);
 	
+	void AddWayPoint(float lat, float lon);
+	
 private:
 	uint32_t  m_status;
 	Point2D   m_pos;
 	Vector2D  m_currentDirection;
 	float     m_speed;
+	Point2D   m_waypoint[MAX_NUM_WAYPOINTS];
+	int       m_lastWayPoint;
+	int       m_currWayPoint;
+    int       m_numWayPoints;
 };
 
 #endif
