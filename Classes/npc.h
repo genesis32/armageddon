@@ -39,7 +39,7 @@ public:
 	void AddWayPoint(float lat, float lon);
 	
 	void GetWaypoints(std::list<Point2D> &outPts) {  outPts = m_waypoints; }
-	
+	void ClearWaypoints();
 private:
 	uint32_t  m_status;
 	Point2D   m_pos;

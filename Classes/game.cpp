@@ -24,6 +24,7 @@ static int frameCount = 0;
 float   selectedLat, selectedLon;
 Point2D inputWaypoints[NUM_INPUT_WAYPOINTS];
 int     numInputWaypoints = 0;
+int     selectedEntityIndex = -1;
 NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
 GLuint  textures[MAX_TEXTURES];
 
@@ -72,19 +73,37 @@ void SetInputWayPoint(float lat, float lon)
 
 static void ProcessInputWaypoints()
 {
+	if(selectedEntityIndex != -1)
+	{
 	for(int i=0; i < numInputWaypoints; i++)
 	{
-		enemyFleet[0].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
+		enemyFleet[selectedEntityIndex].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
 	}
 	numInputWaypoints = 0;
+	}
 }
 
 static void ProcessEntitySelection()
 {
 	if(selectedLat != FLT_MIN && selectedLon != FLT_MIN)
 	{
+		Point2D loc;
+		for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+		{
+			enemyFleet[i].GetPosition(loc);
+			if(loc.GetX() <= selectedLon+10.0 &&
+			   loc.GetX() >= selectedLon-10.0 &&
+			   loc.GetY() <= selectedLat+10.0 &&
+			   loc.GetY() >= selectedLat-10.0)
+			{
+				enemyFleet[i].ClearWaypoints();
+				enemyFleet[i].SetStatus(NPC_SELECTED);
+				selectedEntityIndex = i;
+				break;	
+			}
+			
+		}
 		// we have a valid lat lon from a selection, see if we're over an entity and tag him as selected
-		enemyFleet[0].SetStatus(NPC_SELECTED);
 		selectedLat = selectedLon = FLT_MIN;
 	}
 }
@@ -142,6 +161,7 @@ static void RenderCharacters()
 				glPointSize(10.0);
 				glVertexPointer(2, GL_FLOAT, 0, arrToRender);
 				glDrawArrays(GL_LINE_STRIP, 0, curr);
+				delete[] arrToRender;
 			}
 		}
 	}

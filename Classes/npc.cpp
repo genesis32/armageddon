@@ -17,6 +17,13 @@ NPC::NPC()
 	m_currWaypoint.SetY(FLT_MIN);
 }
 
+void NPC::ClearWaypoints()
+{
+	m_waypoints.clear();
+	m_currWaypoint.SetX(FLT_MIN);
+	m_currWaypoint.SetY(FLT_MIN);	
+}
+
 void NPC::SetDirection(const Vector2D &direction)
 {
 	m_currentDirection.SetXMagnitude(direction.GetXMagnitude());
