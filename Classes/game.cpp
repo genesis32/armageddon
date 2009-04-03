@@ -9,6 +9,7 @@
 
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
+#include <list>
 #include <float.h>
 #include "font.h"
 #include "npc.h"
@@ -97,9 +98,31 @@ static void RenderCharacters()
 			}
 				
 
-			glVertexPointer(3, GL_FLOAT, 0, verts);
 			glEnableClientState(GL_VERTEX_ARRAY);
+			glVertexPointer(3, GL_FLOAT, 0, verts);
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+			
+			// now render his waypoints...
+			std::list<Point2D> waypoints;
+			enemyFleet[i].GetWaypoints(waypoints);
+			if(!waypoints.empty())
+			{
+				GLfloat *arrToRender = new GLfloat[waypoints.size() * 3];
+				int curr = 0;
+				std::list<Point2D>::iterator itr = waypoints.begin();
+				while(itr != waypoints.end())
+				{
+					arrToRender[2 * curr + 0] = itr->GetX();
+					arrToRender[2 * curr + 1] = itr->GetY();
+					arrToRender[2 * curr + 2] = -0.3;
+					curr++;
+					itr++;
+				}
+				glColor4f(0.0, 0.0, 1.0, 0.0);
+				glPointSize(10.0);
+				glVertexPointer(3, GL_FLOAT, 0, arrToRender);
+				glDrawArrays(GL_POINTS, 0, curr);
+			}
 		}
 	}
 }

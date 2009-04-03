@@ -279,13 +279,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
+									<integer>16</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {185, 728}}</string>
+							<string>{{0, 3}, {185, 728}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -320,7 +320,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>53F54B340F1950AC007116D3</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>npc.cpp</string>
+								<string>game.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +328,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>53F54B350F1950AC007116D3</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>npc.cpp</string>
+										<string>game.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>531893D10F85D1110023F89A</string>
+										<string>531894BD0F867F590023F89A</string>
 										<key>history</key>
 										<array>
 											<string>53C7081E0F22EAE500B61DA7</string>
@@ -345,20 +345,20 @@
 											<string>5339D44C0F7F39BF00169F6F</string>
 											<string>5339D4C60F7F3CB800169F6F</string>
 											<string>531890280F81CED70023F89A</string>
-											<string>531891170F81DA790023F89A</string>
 											<string>531891950F846B1A0023F89A</string>
 											<string>531892050F846E970023F89A</string>
 											<string>531892370F8471D00023F89A</string>
 											<string>531892640F8476450023F89A</string>
-											<string>531893300F85BA250023F89A</string>
 											<string>531893750F85C4E30023F89A</string>
 											<string>531893760F85C4E30023F89A</string>
-											<string>5318939C0F85C6140023F89A</string>
-											<string>531893B40F85CD850023F89A</string>
-											<string>531893B50F85CD850023F89A</string>
-											<string>531893B60F85CD850023F89A</string>
-											<string>531893C50F85CE3F0023F89A</string>
-											<string>531893C60F85CE3F0023F89A</string>
+											<string>5318943C0F8678790023F89A</string>
+											<string>5318946B0F867C5B0023F89A</string>
+											<string>5318946C0F867C5B0023F89A</string>
+											<string>531894A60F867EB10023F89A</string>
+											<string>531894B00F867F150023F89A</string>
+											<string>531894B10F867F150023F89A</string>
+											<string>531894B20F867F150023F89A</string>
+											<string>531894B30F867F150023F89A</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -461,6 +461,45 @@
 											<string>531893BF0F85CD850023F89A</string>
 											<string>531893C70F85CE3F0023F89A</string>
 											<string>531893C80F85CE3F0023F89A</string>
+											<string>5318941F0F8677180023F89A</string>
+											<string>531894200F8677180023F89A</string>
+											<string>531894210F8677180023F89A</string>
+											<string>531894220F8677180023F89A</string>
+											<string>531894230F8677180023F89A</string>
+											<string>531894240F8677180023F89A</string>
+											<string>531894250F8677180023F89A</string>
+											<string>531894260F8677180023F89A</string>
+											<string>531894270F8677180023F89A</string>
+											<string>5318942D0F8677AE0023F89A</string>
+											<string>5318942E0F8677AE0023F89A</string>
+											<string>5318942F0F8677AE0023F89A</string>
+											<string>531894300F8677AE0023F89A</string>
+											<string>531894310F8677AE0023F89A</string>
+											<string>531894320F8677AE0023F89A</string>
+											<string>531894330F8677AE0023F89A</string>
+											<string>5318943E0F8678790023F89A</string>
+											<string>5318943F0F8678790023F89A</string>
+											<string>531894400F8678790023F89A</string>
+											<string>531894410F8678790023F89A</string>
+											<string>531894420F8678790023F89A</string>
+											<string>531894480F86789A0023F89A</string>
+											<string>531894630F867A9F0023F89A</string>
+											<string>531894640F867A9F0023F89A</string>
+											<string>531894650F867A9F0023F89A</string>
+											<string>531894660F867A9F0023F89A</string>
+											<string>531894670F867A9F0023F89A</string>
+											<string>5318946E0F867C5B0023F89A</string>
+											<string>5318946F0F867C5B0023F89A</string>
+											<string>531894700F867C5B0023F89A</string>
+											<string>531894890F867D590023F89A</string>
+											<string>5318948A0F867D590023F89A</string>
+											<string>5318949D0F867DEF0023F89A</string>
+											<string>5318949E0F867DEF0023F89A</string>
+											<string>531894A80F867EB10023F89A</string>
+											<string>531894A90F867EB10023F89A</string>
+											<string>531894B40F867F150023F89A</string>
+											<string>531894B50F867F150023F89A</string>
+											<string>531894B60F867F150023F89A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -474,18 +513,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {930, 519}}</string>
+								<string>{{0, 0}, {930, 618}}</string>
 								<key>RubberWindowFrame</key>
 								<string>76 81 1137 787 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>519pt</string>
+							<string>618pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>222pt</string>
+							<string>123pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -553,7 +592,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {930, 195}}</string>
+										<string>{{10, 27}, {930, 96}}</string>
 										<key>RubberWindowFrame</key>
 										<string>76 81 1137 787 0 0 1440 878 </string>
 									</dict>

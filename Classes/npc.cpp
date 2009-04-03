@@ -8,12 +8,14 @@
  */
 
 #include <math.h>
+#include <float.h>
 #include "npc.h"
 
 NPC::NPC()
 {
-	m_lastWayPoint = -1;
-	m_currWayPoint =  0;
+	AddWayPoint(30, 0);
+	m_currWaypoint.SetX(FLT_MIN);
+	m_currWaypoint.SetY(FLT_MIN);
 }
 
 void NPC::SetDirection(const Vector2D &direction)
@@ -28,18 +30,15 @@ void NPC::Tick()
 	{
 		float offset = 0.0;
 		
-		if(m_currWayPoint >= m_numWayPoints)
-			m_numWayPoints = 0;
-		else if(m_lastWayPoint != m_currWayPoint)
+		if(m_waypoints.size() > 0 && !m_currWaypoint.Equals(m_waypoints.front()))
 		{
+			m_currWaypoint = m_waypoints.front();
 			Vector2D newDirVector;
-			newDirVector.SetXMagnitude(m_waypoint[m_currWayPoint].GetX() - m_pos.GetX());
-			newDirVector.SetYMagnitude(m_waypoint[m_currWayPoint].GetY() - m_pos.GetY());
+			newDirVector.SetXMagnitude(m_currWaypoint.GetX() - m_pos.GetX());
+			newDirVector.SetYMagnitude(m_currWaypoint.GetY() - m_pos.GetY());
 			newDirVector.Normalize();
 			
-			m_currentDirection.SetXMagnitude(newDirVector.GetXMagnitude());	
-			m_currentDirection.SetYMagnitude(newDirVector.GetYMagnitude());
-			m_lastWayPoint = m_currWayPoint;
+			SetDirection(newDirVector);
 		}
 			
 		offset = m_currentDirection.GetXMagnitude() * m_speed;
@@ -48,15 +47,13 @@ void NPC::Tick()
 		offset = m_currentDirection.GetYMagnitude() * m_speed;
 		m_pos.SetY(m_pos.GetY() + offset);
 		
-		if(m_waypoint[m_currWayPoint].GetX() <= m_pos.GetX()+1.0 &&
-		   m_waypoint[m_currWayPoint].GetX() >= m_pos.GetX()-1.0 &&
-		   m_waypoint[m_currWayPoint].GetY() <= m_pos.GetY()+1.0 &&
-		   m_waypoint[m_currWayPoint].GetY() >= m_pos.GetY()-1.0)
+		if(m_currWaypoint.GetX() <= m_pos.GetX()+1.0 &&
+		   m_currWaypoint.GetX() >= m_pos.GetX()-1.0 &&
+		   m_currWaypoint.GetY() <= m_pos.GetY()+1.0 &&
+		   m_currWaypoint.GetY() >= m_pos.GetY()-1.0)
 		{
-			m_currWayPoint++;
+			m_waypoints.erase(m_waypoints.begin());
 		}	
-			
-		
 	}
 }
 
@@ -84,12 +81,12 @@ void NPC::GetPosition(Point2D &pos)
 
 void NPC::AddWayPoint(float lat, float lon)
 {
-	if(m_numWayPoints >= MAX_NUM_WAYPOINTS)
-		return;
+	Point2D newWaypoint;
 	
-	m_waypoint[m_numWayPoints].SetX(lon);
-	m_waypoint[m_numWayPoints].SetY(lat);
-	m_numWayPoints++;
+	newWaypoint.SetX(lon);
+	newWaypoint.SetY(lat);
+
+	m_waypoints.push_back(newWaypoint);
 }
 
 

@@ -14,6 +14,7 @@ class Point2D
 	{
 	public:
 		Point2D() { m_pos[0] = m_pos[1] = 0.0f; }
+		Point2D(const Point2D &other);
 		Point2D(float x, float y);
 		
 		void Set(float x, float y);
@@ -25,6 +26,8 @@ class Point2D
 		float GetY() const { return m_pos[1]; }
 		
 		float Distance(const Point2D &otherPoint);
+		
+		bool  Equals(const Point2D &other);
 		
 	private:
 		float m_pos[2];

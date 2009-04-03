@@ -10,13 +10,13 @@
 #ifndef NPC_H
 #define NPC_H
 
+
 #include "Vector2D.h"
+#include <list>
 
 #define NPC_ALIVE    1
 #define NPC_DAMAGED  2
 #define NPC_SELECTED 4
-
-#define MAX_NUM_WAYPOINTS 128
 
 class NPC
 {
@@ -38,15 +38,15 @@ public:
 	
 	void AddWayPoint(float lat, float lon);
 	
+	void GetWaypoints(std::list<Point2D> &outPts) {  outPts = m_waypoints; }
+	
 private:
 	uint32_t  m_status;
 	Point2D   m_pos;
 	Vector2D  m_currentDirection;
 	float     m_speed;
-	Point2D   m_waypoint[MAX_NUM_WAYPOINTS];
-	int       m_lastWayPoint;
-	int       m_currWayPoint;
-    int       m_numWayPoints;
+	std::list<Point2D> m_waypoints;
+	Point2D   m_currWaypoint;
 };
 
 #endif

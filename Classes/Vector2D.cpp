@@ -10,6 +10,17 @@
 #include <math.h>
 #include "Vector2D.h"
 
+Point2D::Point2D(const Point2D &other)
+{
+	m_pos[0] = other.m_pos[0];
+	m_pos[1] = other.m_pos[1];
+}
+
+bool Point2D::Equals(const Point2D &other)
+{
+	return other.m_pos[0] == m_pos[0] && other.m_pos[1] == m_pos[1];
+}
+
 Point2D::Point2D(float x, float y)
 {
 	m_pos[0] = x;
