@@ -1,4 +1,4 @@
-/*
+ /*
  *  game.cpp
  *  Armageddon
  *
@@ -12,6 +12,7 @@
 #include <list>
 #include <float.h>
 #include "font.h"
+#include "region.h"
 #include "npc.h"
 #include "game.h"
 
@@ -19,17 +20,23 @@
 #define MAX_TEXTURES 16
 #define NUM_INPUT_WAYPOINTS 128
 
-
 static int frameCount = 0;
 float   selectedLat, selectedLon;
+
+// regions will be ROW major...
+Region  region[NUM_REGION_ROWS * NUM_REGION_COLS];
+
+
 Point2D inputWaypoints[NUM_INPUT_WAYPOINTS];
 int     numInputWaypoints = 0;
 int     selectedEntityIndex = -1;
+bool    clearSelectedEntity = false;
 NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
 GLuint  textures[MAX_TEXTURES];
 
 void Init()
 {
+	srand(time(NULL));
 	for(int i=0; i < MAX_TEXTURES; i++)
 	{
 		textures[i] = -1;
@@ -48,6 +55,26 @@ void Init()
 		enemyFleet[i].SetSpeed(0.25);
 		enemyFleet[i].SetPosition(initialPoint);
 	}
+	
+	Point2D calcUrPoint, calcLlPoint;
+	float width  = 360.0 / (float)NUM_REGION_COLS;
+	float height = 180.0 / (float)NUM_REGION_ROWS;
+	
+	for(int i=0; i < NUM_REGION_ROWS; i++)
+	{
+		for(int j=0; j < NUM_REGION_COLS; j++)
+ 		{
+			calcLlPoint.SetX((j * width) - 180.0);
+			calcLlPoint.SetY((i * height) - 90.0);
+			
+			calcUrPoint.SetX((j * width - 180.0) + width);
+			calcUrPoint.SetY((i * height - 90.0) + height);
+			
+			region[i * NUM_REGION_ROWS + j].SetExtents(calcLlPoint, calcUrPoint);
+			region[i * NUM_REGION_ROWS + j].Initialize();
+		}
+	}
+	
 	selectedLat = selectedLon = FLT_MIN;
 }
 
@@ -60,6 +87,22 @@ void SetEntitySelection(float lat, float lon)
 {
 	selectedLat = lat;
 	selectedLon = lon;
+}
+
+void SetClearSelectedEntity()
+{
+	clearSelectedEntity = true;
+
+}
+
+static void ProcessClearSelectedEntity()
+{
+	if(clearSelectedEntity)
+	{
+		selectedEntityIndex = -1;
+		clearSelectedEntity = false;
+		numInputWaypoints = 0; // reset the number of pending waypoints
+	}
 }
 
 void SetInputWayPoint(float lat, float lon)
@@ -91,10 +134,10 @@ static void ProcessEntitySelection()
 		for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 		{
 			enemyFleet[i].GetPosition(loc);
-			if(loc.GetX() <= selectedLon+10.0 &&
-			   loc.GetX() >= selectedLon-10.0 &&
-			   loc.GetY() <= selectedLat+10.0 &&
-			   loc.GetY() >= selectedLat-10.0)
+			if(loc.GetX() <= selectedLon+ENTITY_SIZE &&
+			   loc.GetX() >= selectedLon-ENTITY_SIZE &&
+			   loc.GetY() <= selectedLat+ENTITY_SIZE &&
+			   loc.GetY() >= selectedLat-ENTITY_SIZE)
 			{
 				enemyFleet[i].ClearWaypoints();
 				enemyFleet[i].SetStatus(NPC_SELECTED);
@@ -106,6 +149,35 @@ static void ProcessEntitySelection()
 		// we have a valid lat lon from a selection, see if we're over an entity and tag him as selected
 		selectedLat = selectedLon = FLT_MIN;
 	}
+}
+
+static void RenderRegions()
+{
+	Point2D ll, ur;
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	for(int i=0; i < NUM_REGION_ROWS * NUM_REGION_COLS; i++)
+	{
+		GLfloat regionTriPts[2 * 4];
+		region[i].GetExtents(ll, ur);
+		regionTriPts[0] = ll.GetX();
+		regionTriPts[1] = ll.GetY();
+		regionTriPts[2] = ur.GetX();
+		regionTriPts[3] = ll.GetY();
+		regionTriPts[4] = ll.GetX();
+		regionTriPts[5] = ur.GetY();
+		regionTriPts[6] = ur.GetX();
+		regionTriPts[7] = ur.GetY();
+
+		if(region[i].GetStatus() & REGION_AFFILIATION_FRIENDLY)
+			glColor4f(0.0, 0.0, 1.0, 0.3);
+		else if(region[i].GetStatus() & REGION_AFFILIATION_FOE)
+			glColor4f(1.0, 0.0, 0.0, 0.3);
+			
+		glVertexPointer(2, GL_FLOAT, 0, regionTriPts);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	}
+	glDisable(GL_BLEND);
 }
 
 static void RenderCharacters()
@@ -121,9 +193,9 @@ static void RenderCharacters()
 			float y = ptToRender.GetY();
 			GLfloat verts[] = {
 				x, y,   -0.5,
-				x+10.0, y,  -0.5,
-				x, y+10.0,  -0.5,
-				x+10.0, y+10.0, -0.5
+				x+ENTITY_SIZE, y,  -0.5,
+				x, y+ENTITY_SIZE,  -0.5,
+				x+ENTITY_SIZE, y+ENTITY_SIZE, -0.5
 			};
 			
 			if(enemyFleet[i].GetStatus() & NPC_SELECTED)
@@ -158,7 +230,6 @@ static void RenderCharacters()
 					itr++;
 				}
 				glColor4f(0.0, 0.0, 1.0, 0.0);
-				glPointSize(10.0);
 				glVertexPointer(2, GL_FLOAT, 0, arrToRender);
 				glDrawArrays(GL_LINE_STRIP, 0, curr);
 				delete[] arrToRender;
@@ -218,15 +289,14 @@ static void RenderWorld()
 	DrawFontString(-180, 78, "Armageddon");	
 }
 
-
-
 void GameTick()
 {
 	frameCount = frameCount > 60 ? 0 : frameCount + 1;
 	
 	ProcessEntitySelection();
 	ProcessInputWaypoints();
-
+	ProcessClearSelectedEntity();
+	
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		enemyFleet[i].Tick();
@@ -234,4 +304,5 @@ void GameTick()
 	
 	RenderWorld();
 	RenderCharacters();
+	RenderRegions();
 }

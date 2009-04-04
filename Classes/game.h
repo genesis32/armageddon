@@ -22,6 +22,7 @@ void Init();
 void GameTick();
 void SetEntitySelection(float lat, float lon);
 void SetInputWayPoint(float lat, float lon);
+void SetClearSelectedEntity();
 
 	
 #ifdef __cplusplus

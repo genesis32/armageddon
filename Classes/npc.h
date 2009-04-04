@@ -14,6 +14,8 @@
 #include "Vector2D.h"
 #include <list>
 
+#define ENTITY_SIZE 12.0
+
 #define NPC_ALIVE    1
 #define NPC_DAMAGED  2
 #define NPC_SELECTED 4

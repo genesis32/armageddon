@@ -201,7 +201,7 @@
 		}
 		else if(touch.phase == UITouchPhaseEnded)
 		{
-			
+			SetClearSelectedEntity();
 		}
 	}
 }

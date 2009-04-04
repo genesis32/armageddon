@@ -18,6 +18,7 @@
 		531891A10F846B540023F89A /* transforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 531891A00F846B540023F89A /* transforms.cpp */; };
 		5339D3C80F7F334D00169F6F /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5339D3C70F7F334D00169F6F /* Fleet.cpp */; };
 		5339D4320F7F368300169F6F /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5339D4310F7F368300169F6F /* game.cpp */; };
+		534D25860F8707CA00F0F2F5 /* region.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 534D25850F8707CA00F0F2F5 /* region.cpp */; };
 		53C163E80F23DE0A00519B4A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C163E70F23DE0A00519B4A /* map.png */; };
 		53C705B60F21B3AB00B61DA7 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C705B50F21B3AB00B61DA7 /* Texture2D.m */; };
 		53C706090F21B4C300B61DA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C706080F21B4C300B61DA7 /* CoreGraphics.framework */; };
@@ -46,6 +47,8 @@
 		5339D3C70F7F334D00169F6F /* Fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fleet.cpp; sourceTree = "<group>"; };
 		5339D4300F7F368300169F6F /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		5339D4310F7F368300169F6F /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		534D25840F8707CA00F0F2F5 /* region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = region.h; sourceTree = "<group>"; };
+		534D25850F8707CA00F0F2F5 /* region.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = region.cpp; sourceTree = "<group>"; };
 		53C163E70F23DE0A00519B4A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		53C705B40F21B3AB00B61DA7 /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
 		53C705B50F21B3AB00B61DA7 /* Texture2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture2D.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				5339D4300F7F368300169F6F /* game.h */,
 				5318919F0F846B540023F89A /* transforms.h */,
 				531891A00F846B540023F89A /* transforms.cpp */,
+				534D25840F8707CA00F0F2F5 /* region.h */,
+				534D25850F8707CA00F0F2F5 /* region.cpp */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				5339D3C80F7F334D00169F6F /* Fleet.cpp in Sources */,
 				5339D4320F7F368300169F6F /* game.cpp in Sources */,
 				531891A10F846B540023F89A /* transforms.cpp in Sources */,
+				534D25860F8707CA00F0F2F5 /* region.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

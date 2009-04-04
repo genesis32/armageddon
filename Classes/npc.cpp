@@ -53,6 +53,16 @@ void NPC::Tick()
 		offset = m_currentDirection.GetYMagnitude() * m_speed;
 		m_pos.SetY(m_pos.GetY() + offset);
 		
+		if(m_pos.GetX() > 180.0)
+			m_pos.SetX(-180.0);
+		else if(m_pos.GetX() < -180.0)
+			m_pos.SetX(180.0);
+		
+		if(m_pos.GetY() > 90.0)
+			m_pos.SetY(-90.0);
+		else if(m_pos.GetY() < -90.0)
+			m_pos.SetY(90.0);
+		
 		if(m_currWaypoint.GetX() <= m_pos.GetX()+1.0 &&
 		   m_currWaypoint.GetX() >= m_pos.GetX()-1.0 &&
 		   m_currWaypoint.GetY() <= m_pos.GetY()+1.0 &&
