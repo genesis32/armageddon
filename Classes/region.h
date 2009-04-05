@@ -27,8 +27,12 @@ public:
 	
 	void SetExtents(Point2D upperRight, Point2D lowerLeft);
 	void GetExtents(Point2D &upperRight, Point2D &lowerLeft);
+	
+	Point2D GetMainBaseLocation() { return m_mainBase; }
+	
 private:
 	uint32_t m_status;
+	Point2D  m_mainBase;
 	Point2D  m_upperRight;
 	Point2D  m_lowerLeft;
 };

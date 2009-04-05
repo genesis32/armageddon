@@ -15,6 +15,8 @@ NPC::NPC()
 {
 	m_currWaypoint.SetX(FLT_MIN);
 	m_currWaypoint.SetY(FLT_MIN);
+	
+	SetSpeed(0.25); // default to fighter speed..
 }
 
 void NPC::ClearWaypoints()
@@ -78,9 +80,18 @@ void NPC::SetSpeed(float speed)
 	m_speed = speed;
 }
 
+void NPC::UnsetStatus(uint32_t status)
+{
+	m_status &= ~status;
+}
+
 void NPC::SetStatus(uint32_t status)
 {
 	m_status |= status;
+	if(m_status & NPC_BOMBER)
+	{
+		SetSpeed(0.125);
+	}
 }
 
 void NPC::SetPosition(const Point2D &pos)

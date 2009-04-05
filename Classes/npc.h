@@ -14,11 +14,13 @@
 #include "Vector2D.h"
 #include <list>
 
-#define ENTITY_SIZE 12.0
+#define ENTITY_WIDTH  21.0
+#define ENTITY_HEIGHT 18.0
 
 #define NPC_ALIVE    1
 #define NPC_DAMAGED  2
 #define NPC_SELECTED 4
+#define NPC_BOMBER   8 // on for bomber, off for fighter
 
 class NPC
 {
@@ -32,6 +34,7 @@ public:
 	void     SetSpeed(float speed);
 	float    GetSpeed() const { return m_speed; }
 	
+	void     UnsetStatus(uint32_t status);
 	void     SetStatus(uint32_t status);
 	uint32_t GetStatus() const { return m_status; }
 

@@ -21,6 +21,16 @@ void Region::Initialize()
 		SetStatus(REGION_AFFILIATION_FRIENDLY);
 	else
 		SetStatus(REGION_AFFILIATION_FOE);	
+	
+	int range = (int)m_upperRight.GetX() - (int)m_lowerLeft.GetX();
+	int offset = rand() % range;
+	
+	m_mainBase.SetX(m_lowerLeft.GetX() + offset);
+	
+	range = (int)m_upperRight.GetY() - (int)m_lowerLeft.GetY();
+	offset = rand() % range;
+	
+	m_mainBase.SetY(m_lowerLeft.GetY() + offset);
 }
 
 void Region::SetStatus(uint32_t status)

@@ -37,6 +37,7 @@ class Vector2D
 	{
 	public:
 		Vector2D() { m_vec[0] = m_vec[1] = 0.0f; }
+		Vector2D(double x, double y);
 		
 		void SetXMagnitude(float x);
 		void SetYMagnitude(float y); 

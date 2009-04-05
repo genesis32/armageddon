@@ -24,10 +24,10 @@ float ScreenToLat(float y)
 
 float LonToScreen(float x)
 {
-	
+	return ((x + 180.0f) / 360.0f) * 480.0f;
 }
 
 float LatToScreen(float y)
 {
-	
+	return ((y + 90.0f) / 180.0f) * 320.0f;
 }

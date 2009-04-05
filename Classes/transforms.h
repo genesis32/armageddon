@@ -14,11 +14,15 @@
 extern "C" {
 #endif 
 
+	
 float ScreenToLon(float x);
 float ScreenToLat(float y);
 
 float LonToScreen(float x);
 float LatToScreen(float y);	
+	
+	
+	
 	
 #ifdef __cplusplus
 }
