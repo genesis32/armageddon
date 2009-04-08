@@ -8,6 +8,7 @@
  */
 #include <stdlib.h>
 #include "region.h"
+#include "npc.h"
 
 Region::Region()
 {
@@ -31,6 +32,35 @@ void Region::Initialize()
 	offset = rand() % range;
 	
 	m_mainBase.SetY(m_lowerLeft.GetY() + offset);
+}
+
+void Region::CalculateStrike(NPC &npc)
+{
+	Point2D npcPos;
+	npc.GetPosition(npcPos);
+	
+	if(npc.GetStatus() & NPC_AFFILIATION_FOE && m_status & REGION_AFFILIATION_FOE)
+		return;
+	
+	if(npc.GetStatus() & NPC_AFFILIATION_FRIENDLY && m_status & REGION_AFFILIATION_FRIENDLY)
+		return;
+	
+	if(m_mainBase.GetX() >= npcPos.GetX()-ENTITY_WIDTH_RADIUS  &&
+	   m_mainBase.GetX() <= npcPos.GetX()+ENTITY_WIDTH_RADIUS  &&
+	   m_mainBase.GetY() >= npcPos.GetY()-ENTITY_HEIGHT_RADIUS &&
+	   m_mainBase.GetY() <= npcPos.GetY()+ENTITY_HEIGHT_RADIUS)
+	{
+		SetStatus(REGION_BASE_DESTROYED);
+	}
+	else
+	{
+		SetStatus(REGION_WARNING_INCOMING);
+	}
+}
+
+void Region::UnsetStatus(uint32_t status)
+{
+	m_status &= ~status;
 }
 
 void Region::SetStatus(uint32_t status)

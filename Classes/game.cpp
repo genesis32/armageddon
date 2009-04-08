@@ -9,7 +9,9 @@
 
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
+
 #include <list>
+#include <math.h>
 #include <float.h>
 #include "font.h"
 #include "region.h"
@@ -35,21 +37,34 @@ NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
 
 GLuint  textures[MAX_TEXTURES];
 
+int GetRegionForPosition(const Point2D &pos)
+{
+	int row = (int)floor(((pos.GetY() + 90.0) / 180.0) * (float)NUM_REGION_ROWS);
+	int col = (int)floor(((pos.GetX() + 180.0) / 360.0) * (float)NUM_REGION_COLS);
+	
+	int regionIdx = row * NUM_REGION_COLS + col;
+	
+	return regionIdx;
+}
+
 void InitFleets()
 {
 
 	NPC *inputFleet[2] = { friendlyFleet, enemyFleet }; 
-		
+
+	uint32_t affiliationCode = 0;
 	for(int i=0; i < 2; i++)
 	{
 		float initialLon;
 		if(inputFleet[i] == enemyFleet)
 		{
 			initialLon = 155.0;
+			affiliationCode = NPC_AFFILIATION_FOE;
 		}
 		else
 		{
 			initialLon = -175.0;
+			affiliationCode = NPC_AFFILIATION_FRIENDLY;
 		}
 		
 		float startLat = -80.0; // evenly space for testing...
@@ -61,7 +76,7 @@ void InitFleets()
 			
 			initialPoint.SetX(initialLon);
 			initialPoint.SetY(startLat);
-			startLat += (180.0 / 6.0);
+			startLat += (180.0 / (float)MAX_CHARACTERS_PER_FLEET);
 			
 			// temp code here to init enemy movement....
 			if(inputFleet[i] == enemyFleet)
@@ -71,7 +86,7 @@ void InitFleets()
 			}
 			
 			
-			inputFleet[i][j].SetStatus(NPC_ALIVE);
+			inputFleet[i][j].SetStatus(NPC_ALIVE | affiliationCode);
 			inputFleet[i][j].SetPosition(initialPoint);
 		}
 	}
@@ -168,10 +183,10 @@ static void ProcessEntitySelection()
 		{
 			friendlyFleet[i].GetPosition(loc);
 
-			if(selectedLon <= loc.GetX()+ENTITY_WIDTH &&
-			   selectedLon >= loc.GetX() &&
-			   selectedLat <= loc.GetY()+ENTITY_HEIGHT &&
-			   selectedLat >= loc.GetY()) 
+			if(selectedLon <= loc.GetX()+ENTITY_WIDTH_RADIUS &&
+			   selectedLon >= loc.GetX()-ENTITY_WIDTH_RADIUS &&
+			   selectedLat <= loc.GetY()+ENTITY_HEIGHT_RADIUS &&
+			   selectedLat >= loc.GetY()-ENTITY_HEIGHT_RADIUS) 
 			{
 				friendlyFleet[i].ClearWaypoints();
 				friendlyFleet[i].SetStatus(NPC_SELECTED);
@@ -204,10 +219,19 @@ static void RenderRegions()
 		regionTriPts[6] = ur.GetX();
 		regionTriPts[7] = ur.GetY();
 
-		if(region[i].GetStatus() & REGION_AFFILIATION_FRIENDLY)
-			glColor4f(0.0, 0.0, 1.0, 0.3);
-		else if(region[i].GetStatus() & REGION_AFFILIATION_FOE)
-			glColor4f(1.0, 0.0, 0.0, 0.3);
+		if(region[i].GetStatus() & REGION_BASE_DESTROYED)	
+		{
+			glColor4f(1.0, 0.5, 0.0, 0.8);
+		}
+		else
+		{
+			if(region[i].GetStatus() & REGION_WARNING_INCOMING && frameCount < 30)
+				glColor4f(1.0, 0.0, 0.0, 0.8);
+			else if(region[i].GetStatus() & REGION_AFFILIATION_FRIENDLY)
+				glColor4f(0.0, 0.0, 1.0, 0.3);
+			else if(region[i].GetStatus() & REGION_AFFILIATION_FOE)
+				glColor4f(1.0, 0.0, 0.0, 0.3);
+		}
 			
 		glVertexPointer(2, GL_FLOAT, 0, regionTriPts);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -239,10 +263,10 @@ static void RenderEnemyCharacters()
 			float x = ptToRender.GetX();
 			float y = ptToRender.GetY();
 			GLfloat verts[] = {
-				x, y,   -0.5,
-				x+ENTITY_WIDTH, y,  -0.5,
-				x, y+ENTITY_HEIGHT,  -0.5,
-				x+ENTITY_WIDTH, y+ENTITY_HEIGHT, -0.5
+				x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
+				x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
+				x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,   -0.5,
+				x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,   -0.5
 			};
 			
 			if(friendlyFleet[i].GetStatus() & NPC_BOMBER)
@@ -265,14 +289,38 @@ static void RenderFriendlyCharacters()
 		if(friendlyFleet[i].GetStatus() & NPC_ALIVE)
 		{
 			friendlyFleet[i].GetPosition(ptToRender);
-
+			
 			float x = ptToRender.GetX();
 			float y = ptToRender.GetY();
+			
+			// render his waypoints...
+			std::list<Point2D> waypoints;
+			friendlyFleet[i].GetWaypoints(waypoints);
+			if(!waypoints.empty())
+			{
+				GLfloat *arrToRender = new GLfloat[(waypoints.size() + 1) * 2];
+				int curr = 1;
+				std::list<Point2D>::iterator itr = waypoints.begin();
+				arrToRender[0] = x;
+				arrToRender[1] = y;
+				while(itr != waypoints.end())
+				{
+					arrToRender[2 * curr + 0] = itr->GetX();
+					arrToRender[2 * curr + 1] = itr->GetY();
+					curr++;
+					itr++;
+				}
+				glColor4f(0.0, 0.0, 1.0, 0.0);
+				glVertexPointer(2, GL_FLOAT, 0, arrToRender);
+				glDrawArrays(GL_LINE_STRIP, 0, curr);
+				delete[] arrToRender;
+			}
+			
 			GLfloat verts[] = {
-				x, y,   -0.5,
-				x+ENTITY_WIDTH, y,  -0.5,
-				x, y+ENTITY_HEIGHT,  -0.5,
-				x+ENTITY_WIDTH, y+ENTITY_HEIGHT, -0.5
+				x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
+				x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,  -0.5,
+				x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,  -0.5,
+				x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS, -0.5
 			};
 			
 			if(friendlyFleet[i].GetStatus() & NPC_SELECTED)
@@ -294,26 +342,32 @@ static void RenderFriendlyCharacters()
 			glVertexPointer(3, GL_FLOAT, 0, verts);
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 			
-			// now render his waypoints...
-			std::list<Point2D> waypoints;
-			friendlyFleet[i].GetWaypoints(waypoints);
-			if(!waypoints.empty())
+		}
+	}
+}
+
+static void ProcessRegionStatus(NPC *fleet)
+{
+	Point2D currShipPoint;	
+	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+	{
+		fleet[i].GetPosition(currShipPoint);
+		int regionIndex = GetRegionForPosition(currShipPoint);
+		if(fleet[i].GetStatus() & NPC_BOMBER)
+		{
+			int lastIndex = fleet[i].GetCurrentRegionIndex();
+			
+			if(lastIndex > -1)
 			{
-				GLfloat *arrToRender = new GLfloat[waypoints.size() * 2];
-				int curr = 0;
-				std::list<Point2D>::iterator itr = waypoints.begin();
-				while(itr != waypoints.end())
-				{
-					arrToRender[2 * curr + 0] = itr->GetX();
-					arrToRender[2 * curr + 1] = itr->GetY();
-					curr++;
-					itr++;
-				}
-				glColor4f(0.0, 0.0, 1.0, 0.0);
-				glVertexPointer(2, GL_FLOAT, 0, arrToRender);
-				glDrawArrays(GL_LINE_STRIP, 0, curr);
-				delete[] arrToRender;
+				region[lastIndex].UnsetStatus(REGION_WARNING_INCOMING);
 			}
+			
+			if(lastIndex != regionIndex)
+			{
+				fleet[i].SetCurrentRegionIndex(regionIndex);
+			}
+			
+			region[regionIndex].CalculateStrike(fleet[i]);
 		}
 	}
 }
@@ -376,6 +430,9 @@ void GameTick()
 	ProcessEntitySelection();
 	ProcessInputWaypoints();
 	ProcessClearSelectedEntity();
+	ProcessRegionStatus(friendlyFleet);
+	ProcessRegionStatus(enemyFleet);
+
 	
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{

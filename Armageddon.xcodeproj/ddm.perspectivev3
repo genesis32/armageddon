@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>53D5E0F20F885A6C00C3CAE4</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>game.cpp</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>53D5E0F30F885A6C00C3CAE4</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>game.cpp</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>53D5E1140F885C4C00C3CAE4</string>
-						<key>history</key>
-						<array>
-							<string>53D5E0E10F885A1D00C3CAE4</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {1085, 691}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>91 120 1085 732 0 0 1440 878 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>1137</integer>
@@ -321,7 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
+									<integer>11</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -355,12 +314,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>53F54B340F1950AC007116D3</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>game.cpp</string>
+								<string>npc.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -368,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>53F54B350F1950AC007116D3</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>game.cpp</string>
+										<string>npc.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>53D5E1130F885C4C00C3CAE4</string>
+										<string>53D5E2A20F8C62F200C3CAE4</string>
 										<key>history</key>
 										<array>
 											<string>53C7081E0F22EAE500B61DA7</string>
@@ -388,17 +349,18 @@
 											<string>531891950F846B1A0023F89A</string>
 											<string>531892640F8476450023F89A</string>
 											<string>531893750F85C4E30023F89A</string>
-											<string>534D257B0F8706E300F0F2F5</string>
-											<string>53D5E0260F881CA700C3CAE4</string>
 											<string>53D5E0270F881CA700C3CAE4</string>
-											<string>53D5E05C0F88203D00C3CAE4</string>
-											<string>53D5E05E0F88203D00C3CAE4</string>
 											<string>53D5E06D0F8827B800C3CAE4</string>
-											<string>53D5E07C0F88527600C3CAE4</string>
-											<string>53D5E09C0F88540B00C3CAE4</string>
-											<string>53D5E0E90F885A6C00C3CAE4</string>
-											<string>53D5E0EA0F885A6C00C3CAE4</string>
-											<string>53D5E0EC0F885A6C00C3CAE4</string>
+											<string>53D5E1C80F8C57CF00C3CAE4</string>
+											<string>53D5E21A0F8C5C5200C3CAE4</string>
+											<string>53D5E2290F8C5D2E00C3CAE4</string>
+											<string>53D5E2460F8C5DEF00C3CAE4</string>
+											<string>53D5E24F0F8C5E3D00C3CAE4</string>
+											<string>53D5E2830F8C621800C3CAE4</string>
+											<string>53D5E2850F8C621800C3CAE4</string>
+											<string>53D5E2860F8C621800C3CAE4</string>
+											<string>53D5E29B0F8C629700C3CAE4</string>
+											<string>53D5E29C0F8C629700C3CAE4</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -473,6 +435,94 @@
 											<string>53D5E0ED0F885A6C00C3CAE4</string>
 											<string>53D5E0EE0F885A6C00C3CAE4</string>
 											<string>53D5E0EF0F885A6C00C3CAE4</string>
+											<string>53D5E1360F8932D800C3CAE4</string>
+											<string>53D5E1370F8932D800C3CAE4</string>
+											<string>53D5E1380F8932D800C3CAE4</string>
+											<string>53D5E1390F8932D800C3CAE4</string>
+											<string>53D5E13A0F8932D800C3CAE4</string>
+											<string>53D5E13B0F8932D800C3CAE4</string>
+											<string>53D5E13C0F8932D800C3CAE4</string>
+											<string>53D5E13D0F8932D800C3CAE4</string>
+											<string>53D5E13E0F8932D800C3CAE4</string>
+											<string>53D5E13F0F8932D800C3CAE4</string>
+											<string>53D5E1630F8935E800C3CAE4</string>
+											<string>53D5E1640F8935E800C3CAE4</string>
+											<string>53D5E1650F8935E800C3CAE4</string>
+											<string>53D5E1660F8935E800C3CAE4</string>
+											<string>53D5E1670F8935E800C3CAE4</string>
+											<string>53D5E1680F8935E800C3CAE4</string>
+											<string>53D5E1A60F8C51C300C3CAE4</string>
+											<string>53D5E1A70F8C51C300C3CAE4</string>
+											<string>53D5E1A80F8C51C300C3CAE4</string>
+											<string>53D5E1A90F8C51C300C3CAE4</string>
+											<string>53D5E1AA0F8C51C300C3CAE4</string>
+											<string>53D5E1AB0F8C51C300C3CAE4</string>
+											<string>53D5E1AC0F8C51C300C3CAE4</string>
+											<string>53D5E1B90F8C576C00C3CAE4</string>
+											<string>53D5E1BA0F8C576C00C3CAE4</string>
+											<string>53D5E1BB0F8C576C00C3CAE4</string>
+											<string>53D5E1BC0F8C576C00C3CAE4</string>
+											<string>53D5E1C30F8C579D00C3CAE4</string>
+											<string>53D5E1CA0F8C57CF00C3CAE4</string>
+											<string>53D5E1CB0F8C57CF00C3CAE4</string>
+											<string>53D5E1F20F8C5AD000C3CAE4</string>
+											<string>53D5E1F30F8C5AD000C3CAE4</string>
+											<string>53D5E1F40F8C5AD000C3CAE4</string>
+											<string>53D5E1F50F8C5AD000C3CAE4</string>
+											<string>53D5E1F60F8C5AD000C3CAE4</string>
+											<string>53D5E1F70F8C5AD000C3CAE4</string>
+											<string>53D5E1F80F8C5AD000C3CAE4</string>
+											<string>53D5E1F90F8C5AD000C3CAE4</string>
+											<string>53D5E1FA0F8C5AD000C3CAE4</string>
+											<string>53D5E1FB0F8C5AD000C3CAE4</string>
+											<string>53D5E1FC0F8C5AD000C3CAE4</string>
+											<string>53D5E1FD0F8C5AD000C3CAE4</string>
+											<string>53D5E1FE0F8C5AD000C3CAE4</string>
+											<string>53D5E1FF0F8C5AD000C3CAE4</string>
+											<string>53D5E2000F8C5AD000C3CAE4</string>
+											<string>53D5E2010F8C5AD000C3CAE4</string>
+											<string>53D5E20A0F8C5B9C00C3CAE4</string>
+											<string>53D5E20B0F8C5B9C00C3CAE4</string>
+											<string>53D5E20C0F8C5B9C00C3CAE4</string>
+											<string>53D5E2110F8C5BBD00C3CAE4</string>
+											<string>53D5E21C0F8C5C5200C3CAE4</string>
+											<string>53D5E21D0F8C5C5200C3CAE4</string>
+											<string>53D5E21E0F8C5C5200C3CAE4</string>
+											<string>53D5E21F0F8C5C5200C3CAE4</string>
+											<string>53D5E2200F8C5C5200C3CAE4</string>
+											<string>53D5E22D0F8C5D2E00C3CAE4</string>
+											<string>53D5E22E0F8C5D2E00C3CAE4</string>
+											<string>53D5E22F0F8C5D2E00C3CAE4</string>
+											<string>53D5E2300F8C5D2E00C3CAE4</string>
+											<string>53D5E2310F8C5D2E00C3CAE4</string>
+											<string>53D5E2320F8C5D2E00C3CAE4</string>
+											<string>53D5E2330F8C5D2E00C3CAE4</string>
+											<string>53D5E2340F8C5D2E00C3CAE4</string>
+											<string>53D5E23D0F8C5D8F00C3CAE4</string>
+											<string>53D5E23E0F8C5D8F00C3CAE4</string>
+											<string>53D5E23F0F8C5D8F00C3CAE4</string>
+											<string>53D5E2400F8C5D8F00C3CAE4</string>
+											<string>53D5E2480F8C5DEF00C3CAE4</string>
+											<string>53D5E2490F8C5DEF00C3CAE4</string>
+											<string>53D5E24A0F8C5DEF00C3CAE4</string>
+											<string>53D5E24B0F8C5DEF00C3CAE4</string>
+											<string>53D5E2520F8C5E3D00C3CAE4</string>
+											<string>53D5E2530F8C5E3D00C3CAE4</string>
+											<string>53D5E2540F8C5E3D00C3CAE4</string>
+											<string>53D5E25A0F8C5E6E00C3CAE4</string>
+											<string>53D5E2630F8C5F3B00C3CAE4</string>
+											<string>53D5E2640F8C5F3B00C3CAE4</string>
+											<string>53D5E2650F8C5F3B00C3CAE4</string>
+											<string>53D5E2660F8C5F3B00C3CAE4</string>
+											<string>53D5E26B0F8C5F6600C3CAE4</string>
+											<string>53D5E2700F8C5FC100C3CAE4</string>
+											<string>53D5E2880F8C621800C3CAE4</string>
+											<string>53D5E2890F8C621800C3CAE4</string>
+											<string>53D5E28A0F8C621800C3CAE4</string>
+											<string>53D5E28B0F8C621800C3CAE4</string>
+											<string>53D5E28C0F8C621800C3CAE4</string>
+											<string>53D5E28D0F8C621800C3CAE4</string>
+											<string>53D5E29D0F8C629700C3CAE4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -551,8 +601,6 @@
 									<string>PBXCVSModule</string>
 								</dict>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
@@ -786,7 +834,6 @@
 		<string>53D5DFDD0F87D84B00C3CAE4</string>
 		<string>53D5DFBF0F87D50A00C3CAE4</string>
 		<string>/Users/ddm/Desktop/Iphone/ArmageddonIphone/Armageddon.xcodeproj</string>
-		<string>53D5E0F20F885A6C00C3CAE4</string>
 	</array>
 	<key>WindowString</key>
 	<string>202 85 1137 787 0 0 1440 878 </string>

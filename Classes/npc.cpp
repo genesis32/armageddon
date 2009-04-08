@@ -15,6 +15,7 @@ NPC::NPC()
 {
 	m_currWaypoint.SetX(FLT_MIN);
 	m_currWaypoint.SetY(FLT_MIN);
+	m_currRegionIndex = -1;
 	
 	SetSpeed(0.25); // default to fighter speed..
 }
@@ -90,7 +91,7 @@ void NPC::SetStatus(uint32_t status)
 	m_status |= status;
 	if(m_status & NPC_BOMBER)
 	{
-		SetSpeed(0.125);
+		SetSpeed(0.50);
 	}
 }
 

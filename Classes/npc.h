@@ -16,11 +16,15 @@
 
 #define ENTITY_WIDTH  21.0
 #define ENTITY_HEIGHT 18.0
+#define ENTITY_WIDTH_RADIUS  (ENTITY_WIDTH/2.0)
+#define ENTITY_HEIGHT_RADIUS (ENTITY_HEIGHT/2.0)
 
-#define NPC_ALIVE    1
-#define NPC_DAMAGED  2
-#define NPC_SELECTED 4
-#define NPC_BOMBER   8 // on for bomber, off for fighter
+#define NPC_AFFILIATION_FRIENDLY 1
+#define NPC_AFFILIATION_FOE      2
+#define NPC_ALIVE    4
+#define NPC_DAMAGED  8
+#define NPC_SELECTED 16
+#define NPC_BOMBER   32 // on for bomber, off for fighter
 
 class NPC
 {
@@ -45,6 +49,10 @@ public:
 	
 	void GetWaypoints(std::list<Point2D> &outPts) {  outPts = m_waypoints; }
 	void ClearWaypoints();
+	
+	int  GetCurrentRegionIndex() { return m_currRegionIndex; }
+	void SetCurrentRegionIndex(int regionIndex) { m_currRegionIndex = regionIndex; }
+	
 private:
 	uint32_t  m_status;
 	Point2D   m_pos;
@@ -52,6 +60,7 @@ private:
 	float     m_speed;
 	std::list<Point2D> m_waypoints;
 	Point2D   m_currWaypoint;
+	int       m_currRegionIndex;
 };
 
 #endif
