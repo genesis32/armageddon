@@ -59,7 +59,7 @@ private:
 	Vector2D  m_currentDirection;
 	float     m_speed;
 	std::list<Point2D> m_waypoints;
-	Point2D   m_currWaypoint;
+	Point2D   *m_currWaypoint;
 	int       m_currRegionIndex;
 };
 
