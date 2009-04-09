@@ -219,19 +219,13 @@ static void RenderRegions()
 		regionTriPts[6] = ur.GetX();
 		regionTriPts[7] = ur.GetY();
 
-		if(region[i].GetStatus() & REGION_BASE_DESTROYED)	
-		{
-			glColor4f(1.0, 0.5, 0.0, 0.8);
-		}
-		else
-		{
-			if(region[i].GetStatus() & REGION_WARNING_INCOMING && frameCount < 30)
-				glColor4f(1.0, 0.0, 0.0, 0.8);
-			else if(region[i].GetStatus() & REGION_AFFILIATION_FRIENDLY)
-				glColor4f(0.0, 0.0, 1.0, 0.3);
-			else if(region[i].GetStatus() & REGION_AFFILIATION_FOE)
-				glColor4f(1.0, 0.0, 0.0, 0.3);
-		}
+		if(region[i].GetStatus() & REGION_WARNING_INCOMING && frameCount < 30)
+			glColor4f(1.0, 0.0, 0.0, 0.8);
+		else if(region[i].GetStatus() & REGION_AFFILIATION_FRIENDLY)
+			glColor4f(0.0, 0.0, 1.0, 0.3);
+		else if(region[i].GetStatus() & REGION_AFFILIATION_FOE)
+			glColor4f(1.0, 0.0, 0.0, 0.3);
+		
 			
 		glVertexPointer(2, GL_FLOAT, 0, regionTriPts);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -430,6 +424,7 @@ void GameTick()
 	ProcessEntitySelection();
 	ProcessInputWaypoints();
 	ProcessClearSelectedEntity();
+	   
 	ProcessRegionStatus(friendlyFleet);
 	ProcessRegionStatus(enemyFleet);
 
@@ -441,7 +436,8 @@ void GameTick()
 	}
 	
 	RenderWorld();
+	RenderRegions();
+
 	RenderFriendlyCharacters();
 	RenderEnemyCharacters();
-	RenderRegions();
 }

@@ -50,13 +50,19 @@ void Region::CalculateStrike(NPC &npc)
 	   m_mainBase.GetY() >= npcPos.GetY()-ENTITY_HEIGHT_RADIUS &&
 	   m_mainBase.GetY() <= npcPos.GetY()+ENTITY_HEIGHT_RADIUS)
 	{
-		SetStatus(REGION_BASE_DESTROYED);
+		ToggleStatus(REGION_AFFILIATION_FRIENDLY | REGION_AFFILIATION_FOE);
 	}
 	else
 	{
 		SetStatus(REGION_WARNING_INCOMING);
 	}
 }
+
+void Region::ToggleStatus(uint32_t status)
+{
+	m_status ^= status;
+}
+
 
 void Region::UnsetStatus(uint32_t status)
 {

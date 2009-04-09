@@ -14,8 +14,8 @@
 #include "Vector2D.h"
 #include <list>
 
-#define ENTITY_WIDTH  21.0
-#define ENTITY_HEIGHT 18.0
+#define ENTITY_WIDTH  24.0
+#define ENTITY_HEIGHT 20.0
 #define ENTITY_WIDTH_RADIUS  (ENTITY_WIDTH/2.0)
 #define ENTITY_HEIGHT_RADIUS (ENTITY_HEIGHT/2.0)
 
@@ -41,6 +41,7 @@ public:
 	void     UnsetStatus(uint32_t status);
 	void     SetStatus(uint32_t status);
 	uint32_t GetStatus() const { return m_status; }
+	void     ToggleStatus(uint32_t status);
 
 	void SetPosition(const Point2D &pos);
 	void GetPosition(Point2D &pos);

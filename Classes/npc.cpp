@@ -16,7 +16,7 @@ NPC::NPC()
 	m_currWaypoint = NULL;
 	m_currRegionIndex = -1;
 	
-	SetSpeed(0.25); // default to fighter speed..
+	SetSpeed(0.45); // default to fighter speed..
 }
 
 void NPC::ClearWaypoints()
@@ -85,6 +85,11 @@ void NPC::SetSpeed(float speed)
 void NPC::UnsetStatus(uint32_t status)
 {
 	m_status &= ~status;
+}
+
+void NPC::ToggleStatus(uint32_t status)
+{
+	m_status ^= status;
 }
 
 void NPC::SetStatus(uint32_t status)

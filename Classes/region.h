@@ -15,7 +15,6 @@
 #define REGION_AFFILIATION_FRIENDLY 1
 #define REGION_AFFILIATION_FOE      2
 #define REGION_WARNING_INCOMING     4
-#define REGION_BASE_DESTROYED       8
 
 class NPC;
 
@@ -28,6 +27,7 @@ public:
 	
 	void UnsetStatus(uint32_t status);
 	void SetStatus(uint32_t status);
+	void ToggleStatus(uint32_t status);
 	uint32_t GetStatus() { return m_status; }
 	
 	void SetExtents(Point2D upperRight, Point2D lowerLeft);
