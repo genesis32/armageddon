@@ -280,7 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
+									<integer>16</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -321,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>53F54B340F1950AC007116D3</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>npc.cpp</string>
+								<string>game.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>53F54B350F1950AC007116D3</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>npc.cpp</string>
+										<string>game.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>533DF93B0F8DAB9B00B24321</string>
+										<string>533DFAB00F8F01FE00B24321</string>
 										<key>history</key>
 										<array>
 											<string>53C7081E0F22EAE500B61DA7</string>
@@ -342,28 +342,28 @@
 											<string>53FBDD810F7EE29400D7C135</string>
 											<string>53FBDDEF0F7F1C3100D7C135</string>
 											<string>5339D31A0F7F2BD300169F6F</string>
-											<string>5339D3860F7F305200169F6F</string>
 											<string>5339D44C0F7F39BF00169F6F</string>
 											<string>5339D4C60F7F3CB800169F6F</string>
 											<string>531890280F81CED70023F89A</string>
 											<string>531891950F846B1A0023F89A</string>
-											<string>531892640F8476450023F89A</string>
 											<string>531893750F85C4E30023F89A</string>
-											<string>53D5E1C80F8C57CF00C3CAE4</string>
-											<string>53D5E21A0F8C5C5200C3CAE4</string>
 											<string>53D5E2A70F8C64B000C3CAE4</string>
 											<string>53D5E2A90F8C64B000C3CAE4</string>
-											<string>533DF90E0F8DA94C00B24321</string>
 											<string>533DF90F0F8DA94C00B24321</string>
 											<string>533DF9200F8DAA7E00B24321</string>
-											<string>533DF9210F8DAA7E00B24321</string>
 											<string>533DF9220F8DAA7E00B24321</string>
 											<string>533DF9230F8DAA7E00B24321</string>
-											<string>533DF9240F8DAA7E00B24321</string>
 											<string>533DF9250F8DAA7E00B24321</string>
 											<string>533DF9320F8DAB2E00B24321</string>
-											<string>533DF9370F8DAB4B00B24321</string>
-											<string>533DF9380F8DAB4B00B24321</string>
+											<string>533DF9540F8EF3C100B24321</string>
+											<string>533DF9550F8EF3C100B24321</string>
+											<string>533DF9560F8EF3C100B24321</string>
+											<string>533DF96F0F8EF49D00B24321</string>
+											<string>533DFA6C0F8EFE9C00B24321</string>
+											<string>533DFA6F0F8EFE9C00B24321</string>
+											<string>533DFA7A0F8EFF0E00B24321</string>
+											<string>533DFA810F8EFF2700B24321</string>
+											<string>533DFA820F8EFF2700B24321</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -419,6 +419,29 @@
 											<string>533DF92F0F8DAA7E00B24321</string>
 											<string>533DF9340F8DAB2E00B24321</string>
 											<string>533DF9390F8DAB4B00B24321</string>
+											<string>533DF9580F8EF3C100B24321</string>
+											<string>533DF9590F8EF3C100B24321</string>
+											<string>533DF95A0F8EF3C100B24321</string>
+											<string>533DF95B0F8EF3C100B24321</string>
+											<string>533DF95C0F8EF3C100B24321</string>
+											<string>533DF95D0F8EF3C100B24321</string>
+											<string>533DF95E0F8EF3C100B24321</string>
+											<string>533DF95F0F8EF3C100B24321</string>
+											<string>533DF9600F8EF3C100B24321</string>
+											<string>533DF9610F8EF3C100B24321</string>
+											<string>533DF9620F8EF3C100B24321</string>
+											<string>533DF9630F8EF3C100B24321</string>
+											<string>533DF9710F8EF49D00B24321</string>
+											<string>533DF9720F8EF49D00B24321</string>
+											<string>533DFA710F8EFE9C00B24321</string>
+											<string>533DFA720F8EFE9C00B24321</string>
+											<string>533DFA730F8EFE9C00B24321</string>
+											<string>533DFA740F8EFE9C00B24321</string>
+											<string>533DFA7C0F8EFF0E00B24321</string>
+											<string>533DFA7D0F8EFF0E00B24321</string>
+											<string>533DFA7E0F8EFF0E00B24321</string>
+											<string>533DFA830F8EFF2700B24321</string>
+											<string>533DFA840F8EFF2700B24321</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -727,6 +750,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>533DF9410F8EF04300B24321</string>
+		<string>533DF9420F8EF04300B24321</string>
 		<string>/Users/ddm/Desktop/Iphone/ArmageddonIphone/Armageddon.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

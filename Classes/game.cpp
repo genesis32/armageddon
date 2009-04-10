@@ -37,6 +37,8 @@ NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
 
 GLuint  textures[MAX_TEXTURES];
 
+static void RenderEntity(NPC &entity);
+
 int GetRegionForPosition(const Point2D &pos)
 {
 	int row = (int)floor(((pos.GetY() + 90.0) / 180.0) * (float)NUM_REGION_ROWS);
@@ -226,7 +228,6 @@ static void RenderRegions()
 		else if(region[i].GetStatus() & REGION_AFFILIATION_FOE)
 			glColor4f(1.0, 0.0, 0.0, 0.3);
 		
-			
 		glVertexPointer(2, GL_FLOAT, 0, regionTriPts);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		glDisable(GL_BLEND);
@@ -250,29 +251,68 @@ static void RenderEnemyCharacters()
 	Point2D ptToRender;
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
-		if(friendlyFleet[i].GetStatus() & NPC_ALIVE)
+		if(enemyFleet[i].GetStatus() & NPC_ALIVE)
 		{
-			enemyFleet[i].GetPosition(ptToRender);
-			
-			float x = ptToRender.GetX();
-			float y = ptToRender.GetY();
-			GLfloat verts[] = {
-				x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
-				x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
-				x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,   -0.5,
-				x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,   -0.5
-			};
-			
-			if(friendlyFleet[i].GetStatus() & NPC_BOMBER)
-				glColor4f(0.9, 0.9, 0.0, 0.0);
-			else
-				glColor4f(1.0, 0.0, 0.0, 0.0);
-			
-			glEnableClientState(GL_VERTEX_ARRAY);
-			glVertexPointer(3, GL_FLOAT, 0, verts);
-			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+			RenderEntity(enemyFleet[i]);
 		}			
 	}
+}
+
+static void RenderEntity(NPC &entity)
+{
+	Point2D ptToRender;
+	entity.GetPosition(ptToRender);
+	
+	float x = ptToRender.GetX();
+	float y = ptToRender.GetY();
+	
+	GLfloat verts[] = {
+		x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
+		x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,  -0.5,
+		x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,  -0.5,
+		x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS, -0.5
+	};
+	
+	GLfloat min, max;
+	if(entity.GetStatus() & NPC_BOMBER)
+	{
+		min = 0;
+		max = 64.0/256*2.0;
+	}
+	else
+	{
+		min = 0.0;
+		max = (64.0/256.0);
+	}
+	
+
+	GLfloat textcoords[] = {
+		min, max,
+		max, max,
+		min, min,
+		max, min
+	};
+	
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	glBindTexture(GL_TEXTURE_2D, textures[SPRITES_TEXTURE_ID]);
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, verts);
+	
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glTexCoordPointer(2, GL_FLOAT, 0, textcoords);
+	
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);	
+	
+	glDisable(GL_BLEND);
+	glDisable(GL_TEXTURE_2D);
+	
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	
 }
 
 static void RenderFriendlyCharacters()
@@ -304,38 +344,14 @@ static void RenderFriendlyCharacters()
 					curr++;
 					itr++;
 				}
-				glColor4f(0.0, 0.0, 1.0, 0.0);
+				glColor4f(1.0, 1.0, 0.0, 0.0);
 				glVertexPointer(2, GL_FLOAT, 0, arrToRender);
 				glDrawArrays(GL_LINE_STRIP, 0, curr);
 				delete[] arrToRender;
 			}
 			
-			GLfloat verts[] = {
-				x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
-				x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,  -0.5,
-				x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,  -0.5,
-				x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS, -0.5
-			};
-			
-			if(friendlyFleet[i].GetStatus() & NPC_SELECTED)
-			{
-				if(frameCount < 30)
-					glColor4f(0.0, 1.0, 1.0, 0.0);
-				else
-					glColor4f(1.0, 0.0, 0.0, 0.0);					
-			}
-			else
-			{
-				if(friendlyFleet[i].GetStatus() & NPC_BOMBER)
-					glColor4f(0.0, 0.9, 0.9, 0.0);
-				else
-					glColor4f(0.0, 0.0, 1.0, 0.0);
-			}
-
-			glEnableClientState(GL_VERTEX_ARRAY);
-			glVertexPointer(3, GL_FLOAT, 0, verts);
-			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-			
+			RenderEntity(friendlyFleet[i]);
+					
 		}
 	}
 }

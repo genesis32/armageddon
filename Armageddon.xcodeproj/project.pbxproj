@@ -18,6 +18,7 @@
 		531891A10F846B540023F89A /* transforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 531891A00F846B540023F89A /* transforms.cpp */; };
 		5339D3C80F7F334D00169F6F /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5339D3C70F7F334D00169F6F /* Fleet.cpp */; };
 		5339D4320F7F368300169F6F /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5339D4310F7F368300169F6F /* game.cpp */; };
+		533DF9450F8EF1C200B24321 /* sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 533DF9440F8EF1C200B24321 /* sprites.png */; };
 		534D25860F8707CA00F0F2F5 /* region.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 534D25850F8707CA00F0F2F5 /* region.cpp */; };
 		534D272E0F87D40D00F0F2F5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 534D272D0F87D40D00F0F2F5 /* icon.png */; };
 		53C163E80F23DE0A00519B4A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C163E70F23DE0A00519B4A /* map.png */; };
@@ -48,6 +49,7 @@
 		5339D3C70F7F334D00169F6F /* Fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fleet.cpp; sourceTree = "<group>"; };
 		5339D4300F7F368300169F6F /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		5339D4310F7F368300169F6F /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		533DF9440F8EF1C200B24321 /* sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprites.png; sourceTree = "<group>"; };
 		534D25840F8707CA00F0F2F5 /* region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = region.h; sourceTree = "<group>"; };
 		534D25850F8707CA00F0F2F5 /* region.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = region.cpp; sourceTree = "<group>"; };
 		534D272D0F87D40D00F0F2F5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				533DF9440F8EF1C200B24321 /* sprites.png */,
 				534D272D0F87D40D00F0F2F5 /* icon.png */,
 				53C163E70F23DE0A00519B4A /* map.png */,
 				53C706980F21B87200B61DA7 /* font-8bit.png */,
@@ -207,6 +210,7 @@
 				53C706990F21B87200B61DA7 /* font-8bit.png in Resources */,
 				53C163E80F23DE0A00519B4A /* map.png in Resources */,
 				534D272E0F87D40D00F0F2F5 /* icon.png in Resources */,
+				533DF9450F8EF1C200B24321 /* sprites.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

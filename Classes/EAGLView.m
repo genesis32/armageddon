@@ -83,6 +83,7 @@
 		NSMutableArray  *textures = [[NSMutableArray alloc] init];
 		[textures addObject: @"font-8bit.png"];
 		[textures addObject: @"map.png"];
+		[textures addObject: @"sprites.png"];
 		for(int i=0; i < [textures count]; i++)
 		{
 			Texture2D *text = [[Texture2D alloc] initWithImage: [UIImage imageNamed:[textures objectAtIndex: i]]];

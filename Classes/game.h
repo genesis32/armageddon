@@ -12,6 +12,7 @@
 
 #define FONT_TEXTURE_ID 0
 #define MAP_TEXTURE_ID  1
+#define SPRITES_TEXTURE_ID 2
 
 #ifdef __cplusplus
 extern "C" {
