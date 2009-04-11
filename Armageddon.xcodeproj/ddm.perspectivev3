@@ -280,7 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
+									<integer>11</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -321,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>53F54B340F1950AC007116D3</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>game.cpp</string>
+								<string>npc.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>53F54B350F1950AC007116D3</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>game.cpp</string>
+										<string>npc.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>533DFAB00F8F01FE00B24321</string>
+										<string>533DFAF00F903E2E00B24321</string>
 										<key>history</key>
 										<array>
 											<string>53C7081E0F22EAE500B61DA7</string>
@@ -347,23 +347,23 @@
 											<string>531890280F81CED70023F89A</string>
 											<string>531891950F846B1A0023F89A</string>
 											<string>531893750F85C4E30023F89A</string>
-											<string>53D5E2A70F8C64B000C3CAE4</string>
 											<string>53D5E2A90F8C64B000C3CAE4</string>
 											<string>533DF90F0F8DA94C00B24321</string>
 											<string>533DF9200F8DAA7E00B24321</string>
 											<string>533DF9220F8DAA7E00B24321</string>
-											<string>533DF9230F8DAA7E00B24321</string>
 											<string>533DF9250F8DAA7E00B24321</string>
-											<string>533DF9320F8DAB2E00B24321</string>
 											<string>533DF9540F8EF3C100B24321</string>
 											<string>533DF9550F8EF3C100B24321</string>
 											<string>533DF9560F8EF3C100B24321</string>
 											<string>533DF96F0F8EF49D00B24321</string>
-											<string>533DFA6C0F8EFE9C00B24321</string>
 											<string>533DFA6F0F8EFE9C00B24321</string>
-											<string>533DFA7A0F8EFF0E00B24321</string>
 											<string>533DFA810F8EFF2700B24321</string>
-											<string>533DFA820F8EFF2700B24321</string>
+											<string>533DFACD0F903D6A00B24321</string>
+											<string>533DFAD40F903D9700B24321</string>
+											<string>533DFAD50F903D9700B24321</string>
+											<string>533DFAE60F903DDB00B24321</string>
+											<string>533DFAED0F903E1900B24321</string>
+											<string>533DFABA0F903C2900B24321</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -442,6 +442,25 @@
 											<string>533DFA7E0F8EFF0E00B24321</string>
 											<string>533DFA830F8EFF2700B24321</string>
 											<string>533DFA840F8EFF2700B24321</string>
+											<string>533DFABC0F903C2900B24321</string>
+											<string>533DFABD0F903C2900B24321</string>
+											<string>533DFABE0F903C2900B24321</string>
+											<string>533DFABF0F903C2900B24321</string>
+											<string>533DFAC00F903C2900B24321</string>
+											<string>533DFAC10F903C2900B24321</string>
+											<string>533DFAC20F903C2900B24321</string>
+											<string>533DFAC30F903C2900B24321</string>
+											<string>533DFAC40F903C2900B24321</string>
+											<string>533DFAC50F903C2900B24321</string>
+											<string>533DFAC60F903C2900B24321</string>
+											<string>533DFAC70F903C2900B24321</string>
+											<string>533DFAD00F903D6A00B24321</string>
+											<string>533DFAD10F903D6A00B24321</string>
+											<string>533DFAD20F903D6A00B24321</string>
+											<string>533DFAD70F903D9700B24321</string>
+											<string>533DFAD80F903D9700B24321</string>
+											<string>533DFAE80F903DDB00B24321</string>
+											<string>533DFAEE0F903E1900B24321</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

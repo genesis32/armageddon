@@ -54,6 +54,8 @@ public:
 	int  GetCurrentRegionIndex() { return m_currRegionIndex; }
 	void SetCurrentRegionIndex(int regionIndex) { m_currRegionIndex = regionIndex; }
 	
+	float GetCurrRotationAngle();
+	
 private:
 	uint32_t  m_status;
 	Point2D   m_pos;
@@ -62,6 +64,7 @@ private:
 	std::list<Point2D> m_waypoints;
 	Point2D   *m_currWaypoint;
 	int       m_currRegionIndex;
+	float     m_currRotationAngle;
 };
 
 #endif

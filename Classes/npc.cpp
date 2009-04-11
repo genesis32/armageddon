@@ -23,12 +23,18 @@ void NPC::ClearWaypoints()
 {
 	m_waypoints.clear();
 	m_currWaypoint = NULL;
+	m_currRotationAngle = 0.0f;
 }
 
 void NPC::SetDirection(const Vector2D &direction)
 {
 	m_currentDirection.SetXMagnitude(direction.GetXMagnitude());
 	m_currentDirection.SetYMagnitude(direction.GetYMagnitude());
+}
+
+float NPC::GetCurrRotationAngle()
+{
+	return m_currRotationAngle;
 }
 
 void NPC::Tick()
@@ -46,6 +52,8 @@ void NPC::Tick()
 			newDirVector.Normalize();
 			
 			SetDirection(newDirVector);			
+			
+			m_currRotationAngle = atan2(newDirVector.GetYMagnitude(), newDirVector.GetXMagnitude()) * (180.0 / 3.14);
 		}
 			
 		offset = m_currentDirection.GetXMagnitude() * m_speed;

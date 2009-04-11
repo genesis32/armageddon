@@ -266,12 +266,22 @@ static void RenderEntity(NPC &entity)
 	float x = ptToRender.GetX();
 	float y = ptToRender.GetY();
 	
+/*	
 	GLfloat verts[] = {
 		x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
 		x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,  -0.5,
 		x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,  -0.5,
 		x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS, -0.5
 	};
+ */
+
+	GLfloat verts[] = {
+		-ENTITY_WIDTH_RADIUS, -ENTITY_HEIGHT_RADIUS,   -0.5,
+		 ENTITY_WIDTH_RADIUS,  -ENTITY_HEIGHT_RADIUS,  -0.5,
+		-ENTITY_WIDTH_RADIUS, ENTITY_HEIGHT_RADIUS,  -0.5,
+		 ENTITY_WIDTH_RADIUS,  ENTITY_HEIGHT_RADIUS, -0.5
+	};
+	
 	
 	GLfloat min, max;
 	if(entity.GetStatus() & NPC_BOMBER)
@@ -306,7 +316,13 @@ static void RenderEntity(NPC &entity)
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glTexCoordPointer(2, GL_FLOAT, 0, textcoords);
 	
+	glPushMatrix();
+	glTranslatef(x, y, 0);
+	glRotatef(entity.GetCurrRotationAngle(), 0.0, 0.0, 1.0);
+	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);	
+
+	glPopMatrix();
 	
 	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
