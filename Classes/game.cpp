@@ -37,7 +37,72 @@ NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
 
 GLuint  textures[MAX_TEXTURES];
 
+float   p2pDistance[MAX_CHARACTERS_PER_FLEET][MAX_CHARACTERS_PER_FLEET];
+
 static void RenderEntity(NPC &entity);
+
+enum DecisionType 
+{
+	HelpWingMan,
+	AttackOpponent,
+	CapRegion,
+	CapBase,
+	DestroyRegionBase
+};
+
+typedef struct decision_s {
+	DecisionType type;
+	Point2D      dstLocation;
+} decision_t;
+
+static void EntityMakeDecision(int enemyIndex)
+{
+	NPC *entity = &enemyFleet[enemyIndex];
+	decision_t decision;
+	if(entity->GetStatus() & NPC_BOMBER)
+	{
+		decision.type = DestroyRegionBase;
+		for(int i=0; i < NUM_REGION_CELLS; i++)
+		{
+			if(region[i].GetStatus() & NPC_AFFILIATION_FRIENDLY)
+			{
+				decision.dstLocation = region[i].GetMainBaseLocation();			
+				break;
+			}
+		}
+
+	} 
+	else
+	{
+		decision.type = AttackOpponent;
+		friendlyFleet[3].GetPosition(decision.dstLocation);
+	}
+
+	entity->MoveTowardsPoint(decision.dstLocation);
+}
+
+static void Think()
+{
+	// calculate distances to each other player.
+	for(int enemyIndex = 0; enemyIndex < MAX_CHARACTERS_PER_FLEET; enemyIndex++)
+	{
+		if(enemyFleet[enemyIndex].GetStatus() & NPC_ALIVE)
+		{
+			Point2D enemyPos;
+			enemyFleet[enemyIndex].GetPosition(enemyPos);
+			for(int friendlyIndex = 0; friendlyIndex < MAX_CHARACTERS_PER_FLEET; friendlyIndex++)
+			{
+				if(friendlyFleet[friendlyIndex].GetStatus() & NPC_ALIVE)
+				{
+					Point2D friendPos;
+					friendlyFleet[friendlyIndex].GetPosition(friendPos);
+					p2pDistance[enemyIndex][friendlyIndex] = enemyPos.Distance(friendPos);
+				}
+			}
+			EntityMakeDecision(enemyIndex);
+		}
+	}
+}
 
 int GetRegionForPosition(const Point2D &pos)
 {
@@ -167,11 +232,11 @@ static void ProcessInputWaypoints()
 {
 	if(selectedEntityIndex != -1)
 	{
-	for(int i=0; i < numInputWaypoints; i++)
-	{
-		friendlyFleet[selectedEntityIndex].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
-	}
-	numInputWaypoints = 0;
+		for(int i=0; i < numInputWaypoints; i++)
+		{
+			friendlyFleet[selectedEntityIndex].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
+		}
+		numInputWaypoints = 0;
 	}
 }
 
@@ -344,13 +409,13 @@ static void RenderFriendlyCharacters()
 			float y = ptToRender.GetY();
 			
 			// render his waypoints...
-			std::list<Point2D> waypoints;
+			std::deque<Point2D> waypoints;
 			friendlyFleet[i].GetWaypoints(waypoints);
 			if(!waypoints.empty())
 			{
 				GLfloat *arrToRender = new GLfloat[(waypoints.size() + 1) * 2];
 				int curr = 1;
-				std::list<Point2D>::iterator itr = waypoints.begin();
+				std::deque<Point2D>::iterator itr = waypoints.begin();
 				arrToRender[0] = x;
 				arrToRender[1] = y;
 				while(itr != waypoints.end())
@@ -457,9 +522,10 @@ void GameTick()
 	ProcessInputWaypoints();
 	ProcessClearSelectedEntity();
 	   
+	Think();
+	
 	ProcessRegionStatus(friendlyFleet);
 	ProcessRegionStatus(enemyFleet);
-
 	
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{

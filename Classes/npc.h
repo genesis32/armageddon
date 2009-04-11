@@ -12,7 +12,7 @@
 
 
 #include "Vector2D.h"
-#include <list>
+#include <deque>
 
 #define ENTITY_WIDTH  24.0
 #define ENTITY_HEIGHT 20.0
@@ -25,6 +25,8 @@
 #define NPC_DAMAGED  8
 #define NPC_SELECTED 16
 #define NPC_BOMBER   32 // on for bomber, off for fighter
+
+#define MAX_NUM_WAYPOINTS 256
 
 class NPC
 {
@@ -48,7 +50,7 @@ public:
 	
 	void AddWayPoint(float lat, float lon);
 	
-	void GetWaypoints(std::list<Point2D> &outPts) {  outPts = m_waypoints; }
+	void GetWaypoints(std::deque<Point2D> &outPts) {  outPts = m_waypoints; }
 	void ClearWaypoints();
 	
 	int  GetCurrentRegionIndex() { return m_currRegionIndex; }
@@ -56,12 +58,14 @@ public:
 	
 	float GetCurrRotationAngle();
 	
+	void MoveTowardsPoint(const Point2D &pt);
+	
 private:
 	uint32_t  m_status;
 	Point2D   m_pos;
 	Vector2D  m_currentDirection;
 	float     m_speed;
-	std::list<Point2D> m_waypoints;
+	std::deque<Point2D> m_waypoints;
 	Point2D   *m_currWaypoint;
 	int       m_currRegionIndex;
 	float     m_currRotationAngle;

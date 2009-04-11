@@ -7,9 +7,8 @@
  *
  */
 
-#include <math.h>
-#include <float.h>
 #include "npc.h"
+#include "util.h"
 
 NPC::NPC()
 {
@@ -30,11 +29,23 @@ void NPC::SetDirection(const Vector2D &direction)
 {
 	m_currentDirection.SetXMagnitude(direction.GetXMagnitude());
 	m_currentDirection.SetYMagnitude(direction.GetYMagnitude());
+	
+	m_currRotationAngle = fast_atan2(direction.GetYMagnitude(), direction.GetXMagnitude()) * (180.0 / PI_FLOAT);
 }
 
 float NPC::GetCurrRotationAngle()
 {
 	return m_currRotationAngle;
+}
+
+void NPC::MoveTowardsPoint(const Point2D &dstPoint)
+{
+	Vector2D newDirVector;
+	newDirVector.SetXMagnitude(dstPoint.GetX() - m_pos.GetX());
+	newDirVector.SetYMagnitude(dstPoint.GetY() - m_pos.GetY());
+	newDirVector.Normalize();
+	
+	SetDirection(newDirVector);
 }
 
 void NPC::Tick()
@@ -52,8 +63,6 @@ void NPC::Tick()
 			newDirVector.Normalize();
 			
 			SetDirection(newDirVector);			
-			
-			m_currRotationAngle = atan2(newDirVector.GetYMagnitude(), newDirVector.GetXMagnitude()) * (180.0 / 3.14);
 		}
 			
 		offset = m_currentDirection.GetXMagnitude() * m_speed;
@@ -76,11 +85,11 @@ void NPC::Tick()
 		   m_currWaypoint->GetX() <= m_pos.GetX()+1.0 &&
 		   m_currWaypoint->GetX() >= m_pos.GetX()-1.0 &&
 		   m_currWaypoint->GetY() <= m_pos.GetY()+1.0 &&
-		   m_currWaypoint->GetY() >= m_pos.GetY()-1.0 &&
-		   !m_waypoints.empty())
+		   m_currWaypoint->GetY() >= m_pos.GetY()-1.0)
 		{
 			m_currWaypoint = NULL;
-			m_waypoints.pop_front();
+			if(!m_waypoints.empty())
+				m_waypoints.pop_front();
 		}	
 	}
 }

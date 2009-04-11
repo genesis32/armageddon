@@ -7,7 +7,7 @@
  *
  */
 
-#include <math.h>
+#include "util.h"
 #include "Vector2D.h"
 
 Point2D::Point2D(const Point2D &other)
@@ -48,7 +48,7 @@ float Point2D::Distance(const Point2D &otherPoint)
 	float xd = otherPoint.m_pos[0] - m_pos[0];
 	float yd = otherPoint.m_pos[1] - m_pos[1];
 	
-	double distance = sqrt(xd*xd + yd*yd);
+	double distance = fast_sqrt(xd*xd + yd*yd);
 	
 	return distance;	
 }
@@ -61,7 +61,7 @@ Vector2D::Vector2D(double x, double y)
 
 void Vector2D::Normalize()
 {
-	float len = sqrt(m_vec[0] * m_vec[0] + m_vec[1] * m_vec[1]);
+	float len = fast_sqrt(m_vec[0] * m_vec[0] + m_vec[1] * m_vec[1]);
 	m_vec[0] /= len;
 	m_vec[1] /= len;
 }
