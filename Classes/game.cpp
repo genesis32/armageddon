@@ -18,8 +18,8 @@
 #include "npc.h"
 #include "game.h"
 #include "transforms.h"
+#include "ai.h"
 
-#define MAX_CHARACTERS_PER_FLEET 6
 #define MAX_TEXTURES 16
 #define NUM_INPUT_WAYPOINTS 128
 
@@ -37,72 +37,8 @@ NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
 
 GLuint  textures[MAX_TEXTURES];
 
-float   p2pDistance[MAX_CHARACTERS_PER_FLEET][MAX_CHARACTERS_PER_FLEET];
 
 static void RenderEntity(NPC &entity);
-
-enum DecisionType 
-{
-	HelpWingMan,
-	AttackOpponent,
-	CapRegion,
-	CapBase,
-	DestroyRegionBase
-};
-
-typedef struct decision_s {
-	DecisionType type;
-	Point2D      dstLocation;
-} decision_t;
-
-static void EntityMakeDecision(int enemyIndex)
-{
-	NPC *entity = &enemyFleet[enemyIndex];
-	decision_t decision;
-	if(entity->GetStatus() & NPC_BOMBER)
-	{
-		decision.type = DestroyRegionBase;
-		for(int i=0; i < NUM_REGION_CELLS; i++)
-		{
-			if(region[i].GetStatus() & NPC_AFFILIATION_FRIENDLY)
-			{
-				decision.dstLocation = region[i].GetMainBaseLocation();			
-				break;
-			}
-		}
-
-	} 
-	else
-	{
-		decision.type = AttackOpponent;
-		friendlyFleet[3].GetPosition(decision.dstLocation);
-	}
-
-	entity->MoveTowardsPoint(decision.dstLocation);
-}
-
-static void Think()
-{
-	// calculate distances to each other player.
-	for(int enemyIndex = 0; enemyIndex < MAX_CHARACTERS_PER_FLEET; enemyIndex++)
-	{
-		if(enemyFleet[enemyIndex].GetStatus() & NPC_ALIVE)
-		{
-			Point2D enemyPos;
-			enemyFleet[enemyIndex].GetPosition(enemyPos);
-			for(int friendlyIndex = 0; friendlyIndex < MAX_CHARACTERS_PER_FLEET; friendlyIndex++)
-			{
-				if(friendlyFleet[friendlyIndex].GetStatus() & NPC_ALIVE)
-				{
-					Point2D friendPos;
-					friendlyFleet[friendlyIndex].GetPosition(friendPos);
-					p2pDistance[enemyIndex][friendlyIndex] = enemyPos.Distance(friendPos);
-				}
-			}
-			EntityMakeDecision(enemyIndex);
-		}
-	}
-}
 
 int GetRegionForPosition(const Point2D &pos)
 {
@@ -151,6 +87,11 @@ void InitFleets()
 				Vector2D vec(-1.0, 0.0);
 				inputFleet[i][j].SetDirection(vec);
 			}
+			else
+			{
+				Vector2D vec(1.0, 0.0);
+				inputFleet[i][j].SetDirection(vec);				
+			}
 			
 			
 			inputFleet[i][j].SetStatus(NPC_ALIVE | affiliationCode);
@@ -168,8 +109,7 @@ void Init()
 	}
 	
 	InitFleets();
-	InitFleets();
-	
+
 	Point2D calcUrPoint, calcLlPoint;
 	float width  = 360.0 / (float)NUM_REGION_COLS;
 	float height = 180.0 / (float)NUM_REGION_ROWS;
@@ -188,7 +128,7 @@ void Init()
 			region[i * NUM_REGION_ROWS + j].Initialize();
 		}
 	}
-	
+
 	selectedLat = selectedLon = FLT_MIN;
 }
 

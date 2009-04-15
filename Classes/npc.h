@@ -14,6 +14,7 @@
 #include "Vector2D.h"
 #include <deque>
 
+#define MAX_CHARACTERS_PER_FLEET 4
 #define ENTITY_WIDTH  24.0
 #define ENTITY_HEIGHT 20.0
 #define ENTITY_WIDTH_RADIUS  (ENTITY_WIDTH/2.0)
@@ -35,6 +36,7 @@ public:
 	
 	void     Tick();
 
+	Vector2D GetDirection() const { return m_currentDirection; }
 	void     SetDirection(const Vector2D &direction);
 	
 	void     SetSpeed(float speed);

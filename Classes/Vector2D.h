@@ -10,6 +10,25 @@
 #ifndef VECTOR2D_H
 #define VECTOR2D_H
 
+class Vector2D 
+	{
+	public:
+		Vector2D() { m_vec[0] = m_vec[1] = 0.0f; }
+		Vector2D(const Vector2D &other);
+		Vector2D(double x, double y);
+		
+		void SetXMagnitude(float x);
+		void SetYMagnitude(float y); 
+		
+		float GetXMagnitude() const { return m_vec[0]; }
+		float GetYMagnitude() const { return m_vec[1]; }
+		
+		void  Normalize();
+		float DotProduct(const Vector2D &other);
+	private:
+		float m_vec[2];
+	};
+
 class Point2D
 	{
 	public:
@@ -29,26 +48,11 @@ class Point2D
 		
 		bool  Equals(const Point2D &other);
 		
+		Vector2D GetHeadingTo(const Point2D &offsetPoint);
+
 	private:
 		float m_pos[2];
 	};
 
-class Vector2D 
-	{
-	public:
-		Vector2D() { m_vec[0] = m_vec[1] = 0.0f; }
-		Vector2D(double x, double y);
-		
-		void SetXMagnitude(float x);
-		void SetYMagnitude(float y); 
-		
-		float GetXMagnitude() const { return m_vec[0]; }
-		float GetYMagnitude() const { return m_vec[1]; }
-		
-		void  Normalize();
-		
-	private:
-		float m_vec[2];
-	};
 
 #endif

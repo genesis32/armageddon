@@ -53,10 +53,29 @@ float Point2D::Distance(const Point2D &otherPoint)
 	return distance;	
 }
 
+Vector2D Point2D::GetHeadingTo(const Point2D &offsetPoint)
+{
+	Vector2D out;
+	
+	out.SetXMagnitude(offsetPoint.GetX() - m_pos[0]);
+	out.SetYMagnitude(offsetPoint.GetY() - m_pos[1]);
+
+	out.Normalize();
+	
+	return out;
+}
+
+
 Vector2D::Vector2D(double x, double y)
 {
 	m_vec[0] = x;
 	m_vec[1] = y;
+}
+
+Vector2D::Vector2D(const Vector2D &other)
+{
+	m_vec[0] = other.m_vec[0];
+	m_vec[1] = other.m_vec[1];
 }
 
 void Vector2D::Normalize()
@@ -75,4 +94,10 @@ void Vector2D::SetYMagnitude(float y)
 {
 	m_vec[1] = y;
 }
+
+float Vector2D::DotProduct(const Vector2D &other)
+{
+	return (m_vec[0] * other.m_vec[0] + m_vec[1] * other.m_vec[1]);
+}
+
 
