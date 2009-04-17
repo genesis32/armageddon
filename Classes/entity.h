@@ -49,11 +49,18 @@ typedef struct entity_s
 extern entity_t enemies[MAX_CHARACTERS_PER_FLEET];
 extern int num_enemies;
 
+extern entity_t friendlies[MAX_CHARACTERS_PER_FLEET];
+extern int num_friendlies;
+
 entity_t *Foe_New();
 void   Foe_Remove(entity_t *);
 void   Foe_Reset();
-void   Foe_Tick(entity_t *);
 
+entity_t *Fri_New();
+void   Fri_Remove(entity_t *);
+void   Fri_Reset();
+
+void   Ent_Tick(entity_t *);
 void   Ent_MoveTowardsPoint(entity_t *, const pt2d_t pt);
 void   Ent_AddWayPoint(entity_t *, float lat, float lon);
 void   Ent_ClearWayPoints(entity_t *);

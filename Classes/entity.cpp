@@ -13,6 +13,9 @@
 entity_t enemies[MAX_CHARACTERS_PER_FLEET];
 int num_enemies = 0;
 
+entity_t friendlies[MAX_CHARACTERS_PER_FLEET];
+int num_friendlies;
+
 entity_t *Foe_New()
 {
 	if(num_enemies >= MAX_CHARACTERS_PER_FLEET)
@@ -33,8 +36,27 @@ void Foe_Reset()
 	memset(enemies, 0, sizeof(MAX_CHARACTERS_PER_FLEET));
 }
 
+entity_t *Fri_New()
+{
+	if(num_friendlies >= MAX_CHARACTERS_PER_FLEET)
+		return NULL;
+	
+	memset( &friendlies[ num_friendlies ], 0, sizeof( friendlies[0] ) );
+	return &friendlies[num_friendlies++];
+}
 
-void Foe_Tick(entity_t *npc)
+void Fri_Remove(entity_t *npc)
+{
+	memmove( npc, npc+1, (int)(&friendlies[num_friendlies]) - (int)(npc+1) );
+	num_friendlies--;
+}
+
+void Fri_Reset()
+{
+	memset(friendlies, 0, sizeof(MAX_CHARACTERS_PER_FLEET));
+}
+
+void Ent_Tick(entity_t *npc)
 {
 	npc->pos[0] += npc->direction[0] * npc->speed;
 	npc->pos[1] += npc->direction[1] * npc->speed;
@@ -45,8 +67,7 @@ void Foe_Tick(entity_t *npc)
 	npc->pos[1] > 90.0  ? -90.0 : npc->pos[1];
 	npc->pos[1] < -90.0 ?  90.0 : npc->pos[1];
 
-	npc->rot_angle = fast_atan2(npc->direction[1], npc->direction[0]) * (180.0f / PI_FLOAT);
-	
+	npc->rot_angle = fast_atan2(npc->direction[1], npc->direction[0]) * (180.0f / PI_FLOAT);	
 }
 
 void Ent_MoveTowardsPoint(entity_t *npc, const Point2D pt)

@@ -46,6 +46,38 @@ int GetRegionForPosition(const Point2D &pos)
 	return regionIdx;
 }
 
+void InitFriendlies()
+{
+	Fri_Reset();
+	
+	float initial_lon = -155.0;
+	float start_lat   = -80.0;
+	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+	{
+		entity_t *foe = Fri_New();
+		assert(foe != NULL);
+		
+		foe->affiliation = NPC_AFFILIATION_FOE;
+		if(i == 0)
+		{
+			foe->type = NPC_TYPE_BOMBER;
+			foe->speed = 0.40; 
+		}
+		else
+		{
+			foe->type  = NPC_TYPE_FIGHTER;
+			foe->speed = 0.50; 
+		}
+		
+		foe->direction[0] = 1.0;
+		
+		foe->pos[0] = initial_lon;
+		foe->pos[1] = start_lat;
+		start_lat += (180.0 / 4.0);
+	}
+	
+}
+
 void InitFoes()
 {
 	Foe_Reset();
@@ -69,14 +101,11 @@ void InitFoes()
 			foe->speed = 0.50; 
 		}
 		
-		foe->direction[0] = -0.5;
+		foe->direction[0] = -1.0;
 		
 		foe->pos[0] = initial_lon;
 		foe->pos[1] = start_lat;
 		start_lat += (180.0 / 4.0);
-		
-		foe->direction[0] = -1.0;
-
 	}
 }
 
@@ -88,6 +117,7 @@ void Init()
 		textures[i] = -1;
 	}
 	
+	InitFriendlies();
 	InitFoes();
 
 	Point2D calcUrPoint, calcLlPoint;
@@ -300,6 +330,11 @@ static void RenderEntity(entity_t *entity)
 
 static void RenderFriendlyCharacters()
 {
+	for(int i=0; i < num_friendlies; i++)
+	{
+		RenderEntity(&friendlies[i]);
+	}
+	
 	/* Point2D ptToRender;
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
@@ -427,7 +462,12 @@ void GameTick()
 	
 	for(int i=0; i < num_enemies; i++)
 	{
-		Foe_Tick(&enemies[i]);
+		Ent_Tick(&enemies[i]);
+	}
+	
+	for(int i=0; i < num_friendlies; i++)
+	{
+		Ent_Tick(&friendlies[i]);
 	}
 	
 	RenderWorld();

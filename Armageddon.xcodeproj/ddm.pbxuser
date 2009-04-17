@@ -49,7 +49,7 @@
 		breakpoints = (
 			5339D2B80F7F266600169F6F /* ArmageddonAppDelegate.m:39 */,
 			5339D40F0F7F364100169F6F /* EAGLView.m:14 */,
-			535D5B100F98493500CDF6D9 /* entity.cpp:39 */,
+			535D5B100F98493500CDF6D9 /* entity.cpp:61 */,
 		);
 		codeSenseManager = 53F54B410F1950AC007116D3 /* Code sense */;
 		executables = (
@@ -672,6 +672,44 @@
 			535D5B4D0F984B2D00CDF6D9 /* PBXTextBookmark */ = 535D5B4D0F984B2D00CDF6D9 /* PBXTextBookmark */;
 			535D5B4E0F984B2D00CDF6D9 /* PBXTextBookmark */ = 535D5B4E0F984B2D00CDF6D9 /* PBXTextBookmark */;
 			535D5B4F0F984B2D00CDF6D9 /* PBXTextBookmark */ = 535D5B4F0F984B2D00CDF6D9 /* PBXTextBookmark */;
+			535D5B540F984C4300CDF6D9 /* PBXTextBookmark */ = 535D5B540F984C4300CDF6D9 /* PBXTextBookmark */;
+			535D5B570F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B570F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B580F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B580F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B590F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B590F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B5A0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B5A0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B5B0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B5B0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B5C0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B5C0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B5D0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B5D0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B5E0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B5E0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B5F0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B5F0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B600F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B600F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B610F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B610F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B620F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B620F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B630F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B630F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B640F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B640F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B650F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B650F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B660F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B660F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B670F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B670F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B680F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B680F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B690F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B690F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B6A0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B6A0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B6D0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B6D0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B6E0F984C5F00CDF6D9 /* PBXTextBookmark */ = 535D5B6E0F984C5F00CDF6D9 /* PBXTextBookmark */;
+			535D5B710F984CAF00CDF6D9 /* PBXTextBookmark */ = 535D5B710F984CAF00CDF6D9 /* PBXTextBookmark */;
+			535D5B720F984CAF00CDF6D9 /* PBXTextBookmark */ = 535D5B720F984CAF00CDF6D9 /* PBXTextBookmark */;
+			535D5B730F984CAF00CDF6D9 /* PBXTextBookmark */ = 535D5B730F984CAF00CDF6D9 /* PBXTextBookmark */;
+			535D5B750F984CF300CDF6D9 /* PBXTextBookmark */ = 535D5B750F984CF300CDF6D9 /* PBXTextBookmark */;
+			535D5B760F984CF300CDF6D9 /* PBXTextBookmark */ = 535D5B760F984CF300CDF6D9 /* PBXTextBookmark */;
+			535D5B770F984CF300CDF6D9 /* PBXTextBookmark */ = 535D5B770F984CF300CDF6D9 /* PBXTextBookmark */;
+			535D5B780F984CF300CDF6D9 /* PBXTextBookmark */ = 535D5B780F984CF300CDF6D9 /* PBXTextBookmark */;
+			535D5B7A0F984D3F00CDF6D9 /* PBXTextBookmark */ = 535D5B7A0F984D3F00CDF6D9 /* PBXTextBookmark */;
+			535D5B7D0F984D3F00CDF6D9 /* PBXTextBookmark */ = 535D5B7D0F984D3F00CDF6D9 /* PBXTextBookmark */;
+			535D5B7E0F984D3F00CDF6D9 /* PBXTextBookmark */ = 535D5B7E0F984D3F00CDF6D9 /* PBXTextBookmark */;
+			535D5B7F0F984D3F00CDF6D9 /* PBXTextBookmark */ = 535D5B7F0F984D3F00CDF6D9 /* PBXTextBookmark */;
+			535D5B800F984D3F00CDF6D9 /* PBXTextBookmark */ = 535D5B800F984D3F00CDF6D9 /* PBXTextBookmark */;
+			535D5B820F984D7300CDF6D9 /* PBXTextBookmark */ = 535D5B820F984D7300CDF6D9 /* PBXTextBookmark */;
+			535D5B830F984D7300CDF6D9 /* PBXTextBookmark */ = 535D5B830F984D7300CDF6D9 /* PBXTextBookmark */;
+			535D5B840F984D7300CDF6D9 /* PBXTextBookmark */ = 535D5B840F984D7300CDF6D9 /* PBXTextBookmark */;
 			53C164AC0F243CDF00519B4A = 53C164AC0F243CDF00519B4A /* PBXTextBookmark */;
 			53C1652E0F243F7F00519B4A = 53C1652E0F243F7F00519B4A /* PBXTextBookmark */;
 			53C1657A0F2444F800519B4A = 53C1657A0F2444F800519B4A /* PBXTextBookmark */;
@@ -854,9 +892,9 @@
 	};
 	5339D4310F7F368300169F6F /* game.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {869, 6300}}";
-			sepNavSelRange = "{300, 0}";
-			sepNavVisRange = "{0, 923}";
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 6762}}";
+			sepNavSelRange = "{2225, 0}";
+			sepNavVisRange = "{1657, 889}";
 			sepNavWindowFrame = "{{91, 64}, {1085, 788}}";
 		};
 	};
@@ -955,8 +993,8 @@
 	533DFB500F91083E00B24321 /* util.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {869, 784}}";
-			sepNavSelRange = "{679, 0}";
-			sepNavVisRange = "{127, 708}";
+			sepNavSelRange = "{188, 37}";
+			sepNavVisRange = "{150, 829}";
 			sepNavWindowFrame = "{{91, 64}, {1085, 788}}";
 		};
 	};
@@ -1118,7 +1156,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 2184;
@@ -1208,7 +1246,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 2184;
@@ -1218,7 +1256,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 62";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1019;
 		vrLoc = 581;
@@ -1304,7 +1342,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 2184;
@@ -1314,7 +1352,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 62";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1019;
 		vrLoc = 581;
@@ -1644,7 +1682,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 461";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 9855;
@@ -1674,7 +1712,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 108";
 		rLen = 0;
-		rLoc = 1731;
+		rLoc = 2239;
 		rType = 0;
 		vrLen = 955;
 		vrLoc = 1836;
@@ -1694,7 +1732,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1091;
 		vrLoc = 615;
@@ -1734,7 +1772,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1122;
 		vrLoc = 1025;
@@ -1744,7 +1782,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 93";
 		rLen = 0;
-		rLoc = 1616;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 975;
 		vrLoc = 1232;
@@ -1764,7 +1802,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 93";
 		rLen = 0;
-		rLoc = 1616;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 975;
 		vrLoc = 1232;
@@ -1814,7 +1852,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1120;
 		vrLoc = 1027;
@@ -1824,7 +1862,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -1844,7 +1882,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1120;
 		vrLoc = 1027;
@@ -1854,7 +1892,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1065;
 		vrLoc = 615;
@@ -2034,7 +2072,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 115";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1120;
 		vrLoc = 1027;
@@ -2044,7 +2082,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -2131,7 +2169,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 113";
 		rLen = 0;
-		rLoc = 1733;
+		rLoc = 2241;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 1998;
@@ -2181,7 +2219,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 93";
 		rLen = 0;
-		rLoc = 1616;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 974;
 		vrLoc = 1233;
@@ -2241,7 +2279,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 111";
 		rLen = 0;
-		rLoc = 1730;
+		rLoc = 2238;
 		rType = 0;
 		vrLen = 893;
 		vrLoc = 1998;
@@ -2271,7 +2309,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 113";
 		rLen = 0;
-		rLoc = 1733;
+		rLoc = 2241;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 1998;
@@ -2291,7 +2329,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -2321,7 +2359,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -2498,7 +2536,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 41";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 995;
 		vrLoc = 281;
@@ -2525,7 +2563,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 41";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 995;
 		vrLoc = 281;
@@ -2575,7 +2613,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 44";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 995;
 		vrLoc = 281;
@@ -2622,7 +2660,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 44";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 995;
 		vrLoc = 281;
@@ -2809,7 +2847,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 465";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 9928;
@@ -2836,7 +2874,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 465";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 9928;
@@ -3217,7 +3255,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 465";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 9871;
@@ -3237,7 +3275,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 44";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 886;
@@ -3257,7 +3295,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -3277,7 +3315,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 465";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 9871;
@@ -3287,7 +3325,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 44";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 886;
@@ -3297,7 +3335,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -3317,7 +3355,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 465";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 9871;
@@ -3397,7 +3435,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 44";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 886;
@@ -3407,7 +3445,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 615;
@@ -3427,7 +3465,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 465";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 9871;
@@ -3447,7 +3485,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 44";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 886;
@@ -3497,7 +3535,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 54";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 845;
 		vrLoc = 1059;
@@ -3507,7 +3545,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 45";
 		rLen = 0;
-		rLoc = 971;
+		rLoc = 1053;
 		rType = 0;
 		vrLen = 951;
 		vrLoc = 526;
@@ -3537,7 +3575,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 54";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 1059;
@@ -3547,7 +3585,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 45";
 		rLen = 0;
-		rLoc = 971;
+		rLoc = 1053;
 		rType = 0;
 		vrLen = 951;
 		vrLoc = 526;
@@ -3567,7 +3605,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 54";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 845;
 		vrLoc = 1059;
@@ -3587,7 +3625,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 54";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 845;
 		vrLoc = 1059;
@@ -3597,7 +3635,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 48";
 		rLen = 0;
-		rLoc = 1021;
+		rLoc = 1103;
 		rType = 0;
 		vrLen = 960;
 		vrLoc = 526;
@@ -3607,7 +3645,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 54";
 		rLen = 0;
-		rLoc = 1190;
+		rLoc = 1345;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 749;
@@ -3617,7 +3655,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 3;
@@ -3647,7 +3685,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 53";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 790;
@@ -3657,7 +3695,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 16";
 		rLen = 0;
-		rLoc = 1472;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 807;
 		vrLoc = 3;
@@ -3667,7 +3705,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 64";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 749;
@@ -3677,7 +3715,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 16";
 		rLen = 0;
-		rLoc = 1472;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 807;
 		vrLoc = 3;
@@ -3686,8 +3724,8 @@
 		isa = PBXTextBookmark;
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 51";
-		rLen = 184;
-		rLoc = 1044;
+		rLen = 257;
+		rLoc = 1126;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 749;
@@ -3697,7 +3735,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 16";
 		rLen = 0;
-		rLoc = 642;
+		rLoc = 1118;
 		rType = 0;
 		vrLen = 574;
 		vrLoc = 0;
@@ -3707,7 +3745,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 55";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 749;
@@ -3717,7 +3755,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 28";
 		rLen = 0;
-		rLoc = 1349;
+		rLoc = 1824;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 3;
@@ -3727,7 +3765,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 54";
 		rLen = 0;
-		rLoc = 1190;
+		rLoc = 1345;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 749;
@@ -3737,7 +3775,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 28";
 		rLen = 0;
-		rLoc = 1201;
+		rLoc = 1676;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 3;
@@ -3747,7 +3785,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 54";
 		rLen = 0;
-		rLoc = 1190;
+		rLoc = 1345;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 749;
@@ -3757,7 +3795,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 3;
@@ -3767,7 +3805,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 54";
 		rLen = 0;
-		rLoc = 1190;
+		rLoc = 1345;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 749;
@@ -3777,7 +3815,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 3;
@@ -3867,7 +3905,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 53";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 857;
 		vrLoc = 710;
@@ -3887,7 +3925,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -3947,7 +3985,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 57";
 		rLen = 0;
-		rLoc = 1107;
+		rLoc = 1628;
 		rType = 0;
 		vrLen = 776;
 		vrLoc = 1059;
@@ -3967,7 +4005,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -4027,7 +4065,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 52";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 910;
@@ -4037,7 +4075,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -4057,7 +4095,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 53";
 		rLen = 0;
-		rLoc = 1092;
+		rLoc = 1613;
 		rType = 0;
 		vrLen = 857;
 		vrLoc = 710;
@@ -4067,7 +4105,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -4087,7 +4125,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -4097,7 +4135,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 52";
 		rLen = 0;
-		rLoc = 1043;
+		rLoc = 1125;
 		rType = 0;
 		vrLen = 1004;
 		vrLoc = 288;
@@ -4107,7 +4145,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -4117,7 +4155,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 31";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1723;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 3;
@@ -4127,7 +4165,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 52";
 		rLen = 0;
-		rLoc = 1043;
+		rLoc = 1125;
 		rType = 0;
 		vrLen = 1004;
 		vrLoc = 288;
@@ -4137,7 +4175,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 28";
 		rLen = 0;
-		rLoc = 1085;
+		rLoc = 1560;
 		rType = 0;
 		vrLen = 543;
 		vrLoc = 3;
@@ -4157,7 +4195,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 77";
 		rLen = 0;
-		rLoc = 1616;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 831;
 		vrLoc = 1214;
@@ -4167,7 +4205,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 53";
 		rLen = 72;
-		rLoc = 972;
+		rLoc = 1054;
 		rType = 0;
 		vrLen = 1053;
 		vrLoc = 925;
@@ -4177,7 +4215,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 39";
 		rLen = 0;
-		rLoc = 1247;
+		rLoc = 1722;
 		rType = 0;
 		vrLen = 545;
 		vrLoc = 330;
@@ -4187,7 +4225,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 29";
 		rLen = 0;
-		rLoc = 1085;
+		rLoc = 1560;
 		rType = 0;
 		vrLen = 642;
 		vrLoc = 3;
@@ -4207,7 +4245,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 81";
 		rLen = 0;
-		rLoc = 1616;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 802;
 		vrLoc = 1157;
@@ -4217,7 +4255,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 52";
 		rLen = 0;
-		rLoc = 1043;
+		rLoc = 1125;
 		rType = 0;
 		vrLen = 956;
 		vrLoc = 336;
@@ -4227,7 +4265,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 77";
 		rLen = 0;
-		rLoc = 1616;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 831;
 		vrLoc = 1214;
@@ -4237,7 +4275,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 29";
 		rLen = 0;
-		rLoc = 1085;
+		rLoc = 1560;
 		rType = 0;
 		vrLen = 642;
 		vrLoc = 3;
@@ -4247,7 +4285,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 65";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 1053;
 		vrLoc = 925;
@@ -4257,7 +4295,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 39";
 		rLen = 0;
-		rLoc = 1247;
+		rLoc = 1722;
 		rType = 0;
 		vrLen = 545;
 		vrLoc = 330;
@@ -4267,7 +4305,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 53";
 		rLen = 72;
-		rLoc = 972;
+		rLoc = 1054;
 		rType = 0;
 		vrLen = 1053;
 		vrLoc = 925;
@@ -4277,7 +4315,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 22";
 		rLen = 0;
-		rLoc = 445;
+		rLoc = 513;
 		rType = 0;
 		vrLen = 561;
 		vrLoc = 30;
@@ -4287,7 +4325,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 14";
 		rLen = 0;
-		rLoc = 235;
+		rLoc = 303;
 		rType = 0;
 		vrLen = 702;
 		vrLoc = 30;
@@ -4297,7 +4335,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 54";
 		rLen = 0;
-		rLoc = 1263;
+		rLoc = 1738;
 		rType = 0;
 		vrLen = 602;
 		vrLoc = 587;
@@ -4307,7 +4345,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 128";
 		rLen = 0;
-		rLoc = 2621;
+		rLoc = 3129;
 		rType = 0;
 		vrLen = 845;
 		vrLoc = 1408;
@@ -4327,7 +4365,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 54";
 		rLen = 0;
-		rLoc = 1263;
+		rLoc = 1738;
 		rType = 0;
 		vrLen = 602;
 		vrLoc = 587;
@@ -4337,7 +4375,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 73";
 		rLen = 0;
-		rLoc = 1600;
+		rLoc = 2102;
 		rType = 0;
 		vrLen = 672;
 		vrLoc = 1093;
@@ -4357,7 +4395,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 128";
 		rLen = 0;
-		rLoc = 2621;
+		rLoc = 3129;
 		rType = 0;
 		vrLen = 845;
 		vrLoc = 1408;
@@ -4367,7 +4405,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 52";
 		rLen = 0;
-		rLoc = 985;
+		rLoc = 1067;
 		rType = 0;
 		vrLen = 935;
 		vrLoc = 539;
@@ -4384,8 +4422,8 @@
 		isa = PBXTextBookmark;
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 52";
-		rLen = 256;
-		rLoc = 972;
+		rLen = 329;
+		rLoc = 1054;
 		rType = 0;
 		vrLen = 952;
 		vrLoc = 539;
@@ -4395,7 +4433,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 60";
 		rLen = 0;
-		rLoc = 1384;
+		rLoc = 1859;
 		rType = 0;
 		vrLen = 604;
 		vrLoc = 576;
@@ -4412,8 +4450,8 @@
 		isa = PBXTextBookmark;
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 52";
-		rLen = 256;
-		rLoc = 972;
+		rLen = 329;
+		rLoc = 1054;
 		rType = 0;
 		vrLen = 952;
 		vrLoc = 539;
@@ -4423,7 +4461,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 60";
 		rLen = 0;
-		rLoc = 1384;
+		rLoc = 1859;
 		rType = 0;
 		vrLen = 604;
 		vrLoc = 576;
@@ -4553,7 +4591,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 423";
 		rLen = 0;
-		rLoc = 9494;
+		rLoc = 10081;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 0;
@@ -4601,7 +4639,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 240";
 		rLen = 0;
-		rLoc = 5259;
+		rLoc = 5767;
 		rType = 0;
 		vrLen = 926;
 		vrLoc = 6311;
@@ -4631,7 +4669,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 240";
 		rLen = 0;
-		rLoc = 5259;
+		rLoc = 5767;
 		rType = 0;
 		vrLen = 1027;
 		vrLoc = 6763;
@@ -4640,7 +4678,7 @@
 		isa = PBXTextBookmark;
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 14";
-		rLen = 21;
+		rLen = 89;
 		rLoc = 214;
 		rType = 0;
 		vrLen = 743;
@@ -4671,7 +4709,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 357";
 		rLen = 0;
-		rLoc = 7590;
+		rLoc = 8177;
 		rType = 0;
 		vrLen = 983;
 		vrLoc = 7323;
@@ -4691,7 +4729,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 63";
 		rLen = 0;
-		rLoc = 1469;
+		rLoc = 1944;
 		rType = 0;
 		vrLen = 635;
 		vrLoc = 608;
@@ -4701,7 +4739,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 444";
 		rLen = 21;
-		rLoc = 9477;
+		rLoc = 10064;
 		rType = 0;
 		vrLen = 825;
 		vrLoc = 9093;
@@ -4721,7 +4759,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 362";
 		rLen = 0;
-		rLoc = 7603;
+		rLoc = 8190;
 		rType = 0;
 		vrLen = 788;
 		vrLoc = 7796;
@@ -4731,7 +4769,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 60";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 897;
 		vrLoc = 386;
@@ -4741,7 +4779,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 68";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 804;
 		vrLoc = 956;
@@ -4751,7 +4789,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 61";
 		rLen = 0;
-		rLoc = 1229;
+		rLoc = 1384;
 		rType = 0;
 		vrLen = 967;
 		vrLoc = 385;
@@ -4761,7 +4799,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 68";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 802;
 		vrLoc = 958;
@@ -4771,7 +4809,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 61";
 		rLen = 0;
-		rLoc = 1229;
+		rLoc = 1384;
 		rType = 0;
 		vrLen = 918;
 		vrLoc = 385;
@@ -4781,7 +4819,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 68";
 		rLen = 0;
-		rLoc = 1475;
+		rLoc = 1950;
 		rType = 0;
 		vrLen = 802;
 		vrLoc = 958;
@@ -4791,7 +4829,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 61";
 		rLen = 0;
-		rLoc = 1229;
+		rLoc = 1384;
 		rType = 0;
 		vrLen = 925;
 		vrLoc = 385;
@@ -4801,7 +4839,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 43";
 		rLen = 0;
-		rLoc = 1081;
+		rLoc = 1556;
 		rType = 0;
 		vrLen = 906;
 		vrLoc = 976;
@@ -4861,7 +4899,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 43";
 		rLen = 0;
-		rLoc = 1081;
+		rLoc = 1556;
 		rType = 0;
 		vrLen = 904;
 		vrLoc = 978;
@@ -4871,7 +4909,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 438";
 		rLen = 0;
-		rLoc = 9403;
+		rLoc = 9990;
 		rType = 0;
 		vrLen = 909;
 		vrLoc = 9033;
@@ -4881,7 +4919,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 61";
 		rLen = 0;
-		rLoc = 1229;
+		rLoc = 1384;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 385;
@@ -4891,7 +4929,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 43";
 		rLen = 0;
-		rLoc = 1081;
+		rLoc = 1556;
 		rType = 0;
 		vrLen = 344;
 		vrLoc = 979;
@@ -4901,7 +4939,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 61";
 		rLen = 0;
-		rLoc = 1229;
+		rLoc = 1384;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 336;
@@ -4911,7 +4949,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 63";
 		rLen = 0;
-		rLoc = 1469;
+		rLoc = 1944;
 		rType = 0;
 		vrLen = 733;
 		vrLoc = 707;
@@ -4961,7 +4999,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 228";
 		rLen = 0;
-		rLoc = 5223;
+		rLoc = 5731;
 		rType = 0;
 		vrLen = 850;
 		vrLoc = 4747;
@@ -5011,7 +5049,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 281";
 		rLen = 0;
-		rLoc = 6289;
+		rLoc = 6797;
 		rType = 0;
 		vrLen = 924;
 		vrLoc = 5759;
@@ -5031,7 +5069,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 423";
 		rLen = 0;
-		rLoc = 9494;
+		rLoc = 10081;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 0;
@@ -5085,7 +5123,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 67";
 		rLen = 0;
-		rLoc = 1550;
+		rLoc = 2071;
 		rType = 0;
 		vrLen = 948;
 		vrLoc = 677;
@@ -5115,7 +5153,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 68";
 		rLen = 0;
-		rLoc = 1576;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 948;
 		vrLoc = 677;
@@ -5165,7 +5203,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 47";
 		rLen = 0;
-		rLoc = 1018;
+		rLoc = 1493;
 		rType = 0;
 		vrLen = 815;
 		vrLoc = 533;
@@ -5185,7 +5223,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 40";
 		rLen = 0;
-		rLoc = 703;
+		rLoc = 1179;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 533;
@@ -5195,7 +5233,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 430";
 		rLen = 8;
-		rLoc = 9477;
+		rLoc = 10064;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 8732;
@@ -5205,7 +5243,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 46";
 		rLen = 0;
-		rLoc = 889;
+		rLoc = 1365;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 533;
@@ -5215,7 +5253,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 430";
 		rLen = 8;
-		rLoc = 9477;
+		rLoc = 10064;
 		rType = 0;
 		vrLen = 901;
 		vrLoc = 8734;
@@ -5225,7 +5263,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 40";
 		rLen = 0;
-		rLoc = 703;
+		rLoc = 1179;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 533;
@@ -5235,7 +5273,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 71";
 		rLen = 0;
-		rLoc = 1494;
+		rLoc = 2015;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 1000;
@@ -5250,7 +5288,7 @@
 		vrLen = 1559;
 		vrLoc = 1082;
 	};
-	535D5B100F98493500CDF6D9 /* entity.cpp:39 */ = {
+	535D5B100F98493500CDF6D9 /* entity.cpp:61 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -5262,7 +5300,7 @@
 		functionName = "Foe_Tick(entity_t *npc)";
 		hitCount = 1;
 		ignoreCount = 0;
-		lineNumber = 39;
+		lineNumber = 61;
 		location = Armageddon;
 		modificationTime = 261638463.447624;
 		state = 1;
@@ -5272,7 +5310,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 73";
 		rLen = 0;
-		rLoc = 1494;
+		rLoc = 2015;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 1000;
@@ -5282,7 +5320,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 40";
 		rLen = 0;
-		rLoc = 703;
+		rLoc = 1179;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 533;
@@ -5292,7 +5330,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 73";
 		rLen = 0;
-		rLoc = 1494;
+		rLoc = 2015;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 1000;
@@ -5302,7 +5340,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 39";
 		rLen = 0;
-		rLoc = 646;
+		rLoc = 1122;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 533;
@@ -5312,7 +5350,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 39";
 		rLen = 0;
-		rLoc = 646;
+		rLoc = 1122;
 		rType = 0;
 		vrLen = 851;
 		vrLoc = 255;
@@ -5332,7 +5370,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 39";
 		rLen = 0;
-		rLoc = 646;
+		rLoc = 1122;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 255;
@@ -5371,7 +5409,7 @@
 		isa = PBXTextBookmark;
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		rLen = 0;
-		rLoc = 38;
+		rLoc = 60;
 		rType = 1;
 	};
 	535D5B200F98498500CDF6D9 /* PBXTextBookmark */ = {
@@ -5379,7 +5417,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 39";
 		rLen = 0;
-		rLoc = 646;
+		rLoc = 1122;
 		rType = 0;
 		vrLen = 387;
 		vrLoc = 533;
@@ -5399,7 +5437,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 40";
 		rLen = 0;
-		rLoc = 708;
+		rLoc = 1184;
 		rType = 0;
 		vrLen = 390;
 		vrLoc = 534;
@@ -5409,7 +5447,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 236";
 		rLen = 0;
-		rLoc = 5225;
+		rLoc = 5733;
 		rType = 0;
 		vrLen = 955;
 		vrLoc = 4715;
@@ -5419,7 +5457,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 33";
 		rLen = 0;
-		rLoc = 572;
+		rLoc = 640;
 		rType = 0;
 		vrLen = 894;
 		vrLoc = 255;
@@ -5439,7 +5477,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 33";
 		rLen = 0;
-		rLoc = 572;
+		rLoc = 640;
 		rType = 0;
 		vrLen = 896;
 		vrLoc = 255;
@@ -5449,7 +5487,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 236";
 		rLen = 0;
-		rLoc = 5225;
+		rLoc = 5733;
 		rType = 0;
 		vrLen = 955;
 		vrLoc = 4715;
@@ -5459,7 +5497,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 33";
 		rLen = 0;
-		rLoc = 572;
+		rLoc = 640;
 		rType = 0;
 		vrLen = 894;
 		vrLoc = 255;
@@ -5489,7 +5527,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 59";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 336;
@@ -5509,7 +5547,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 49";
 		rLen = 0;
-		rLoc = 1016;
+		rLoc = 1491;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 446;
@@ -5519,7 +5557,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 236";
 		rLen = 0;
-		rLoc = 5225;
+		rLoc = 5733;
 		rType = 0;
 		vrLen = 955;
 		vrLoc = 4715;
@@ -5529,7 +5567,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 59";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 336;
@@ -5539,7 +5577,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 53";
 		rLen = 0;
-		rLoc = 1018;
+		rLoc = 1493;
 		rType = 0;
 		vrLen = 947;
 		vrLoc = 551;
@@ -5559,7 +5597,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 49";
 		rLen = 0;
-		rLoc = 1016;
+		rLoc = 1491;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 446;
@@ -5569,7 +5607,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 288";
 		rLen = 5;
-		rLoc = 6293;
+		rLoc = 6801;
 		rType = 0;
 		vrLen = 941;
 		vrLoc = 5822;
@@ -5589,7 +5627,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 288";
 		rLen = 0;
-		rLoc = 6278;
+		rLoc = 6786;
 		rType = 0;
 		vrLen = 1005;
 		vrLoc = 5822;
@@ -5599,7 +5637,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 72";
 		rLen = 0;
-		rLoc = 1490;
+		rLoc = 2011;
 		rType = 0;
 		vrLen = 639;
 		vrLoc = 1071;
@@ -5619,7 +5657,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 73";
 		rLen = 0;
-		rLoc = 1492;
+		rLoc = 2013;
 		rType = 0;
 		vrLen = 647;
 		vrLoc = 1071;
@@ -5649,7 +5687,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "entity.h: 59";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 949;
 		vrLoc = 288;
@@ -5667,7 +5705,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 97";
 		rLen = 0;
-		rLoc = 1904;
+		rLoc = 2412;
 		rType = 0;
 		vrLen = 992;
 		vrLoc = 2746;
@@ -5677,7 +5715,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "entity.cpp: 49";
 		rLen = 0;
-		rLoc = 1016;
+		rLoc = 1491;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 446;
@@ -5687,7 +5725,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "entity.h: 59";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 949;
 		vrLoc = 288;
@@ -5707,7 +5745,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "entity.h: 59";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 949;
 		vrLoc = 288;
@@ -5723,6 +5761,378 @@
 		vrLoc = 0;
 	};
 	535D5B4F0F984B2D00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 104";
+		rLen = 0;
+		rLoc = 2918;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 1082;
+	};
+	535D5B540F984C4300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'Foe_Tick' was not declared in this scope";
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		rLen = 1;
+		rLoc = 464;
+		rType = 1;
+	};
+	535D5B570F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 28";
+		rLen = 0;
+		rLoc = 481;
+		rType = 0;
+		vrLen = 650;
+		vrLoc = 1003;
+	};
+	535D5B580F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 533DFB500F91083E00B24321 /* util.cpp */;
+		name = "util.cpp: 14";
+		rLen = 37;
+		rLoc = 188;
+		rType = 0;
+		vrLen = 829;
+		vrLoc = 150;
+	};
+	535D5B590F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58040F9432A800CDF6D9 /* ai.h */;
+		name = "ai.h: 10";
+		rLen = 0;
+		rLoc = 130;
+		rType = 0;
+		vrLen = 144;
+		vrLoc = 0;
+	};
+	535D5B5A0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 8";
+		rLen = 0;
+		rLoc = 138;
+		rType = 0;
+		vrLen = 1082;
+		vrLoc = 0;
+	};
+	535D5B5B0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD610F7EE0B800D7C135 /* Vector2D.cpp */;
+		name = "Vector2D.cpp: 49";
+		rLen = 0;
+		rLoc = 868;
+		rType = 0;
+		vrLen = 552;
+		vrLoc = 768;
+	};
+	535D5B5C0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
+		name = "entity.h: 59";
+		rLen = 72;
+		rLoc = 1127;
+		rType = 0;
+		vrLen = 881;
+		vrLoc = 512;
+	};
+	535D5B5D0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 1099;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 326;
+	};
+	535D5B5E0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 28";
+		rLen = 0;
+		rLoc = 481;
+		rType = 0;
+		vrLen = 650;
+		vrLoc = 1003;
+	};
+	535D5B5F0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 47";
+		rLen = 10;
+		rLoc = 1420;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 131;
+	};
+	535D5B600F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 533DFB500F91083E00B24321 /* util.cpp */;
+		name = "util.cpp: 14";
+		rLen = 37;
+		rLoc = 188;
+		rType = 0;
+		vrLen = 829;
+		vrLoc = 150;
+	};
+	535D5B610F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58040F9432A800CDF6D9 /* ai.h */;
+		name = "ai.h: 10";
+		rLen = 0;
+		rLoc = 130;
+		rType = 0;
+		vrLen = 144;
+		vrLoc = 0;
+	};
+	535D5B620F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 8";
+		rLen = 0;
+		rLoc = 138;
+		rType = 0;
+		vrLen = 1082;
+		vrLoc = 0;
+	};
+	535D5B630F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD610F7EE0B800D7C135 /* Vector2D.cpp */;
+		name = "Vector2D.cpp: 49";
+		rLen = 0;
+		rLoc = 868;
+		rType = 0;
+		vrLen = 552;
+		vrLoc = 768;
+	};
+	535D5B640F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 14";
+		rLen = 0;
+		rLoc = 214;
+		rType = 0;
+		vrLen = 809;
+		vrLoc = 0;
+	};
+	535D5B650F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
+		name = "entity.h: 60";
+		rLen = 0;
+		rLoc = 1127;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 456;
+	};
+	535D5B660F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 19";
+		rLen = 786;
+		rLoc = 304;
+		rType = 0;
+		vrLen = 809;
+		vrLoc = 0;
+	};
+	535D5B670F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
+		name = "entity.h: 62";
+		rLen = 0;
+		rLoc = 1179;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 456;
+	};
+	535D5B680F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 1099;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 326;
+	};
+	535D5B690F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
+		name = "entity.h: 59";
+		rLen = 72;
+		rLoc = 1127;
+		rType = 0;
+		vrLen = 881;
+		vrLoc = 512;
+	};
+	535D5B6A0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 695;
+		rType = 0;
+		vrLen = 758;
+		vrLoc = 303;
+	};
+	535D5B6D0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 435";
+		rLen = 0;
+		rLoc = 10161;
+		rType = 0;
+		vrLen = 1021;
+		vrLoc = 8594;
+	};
+	535D5B6E0F984C5F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 104";
+		rLen = 0;
+		rLoc = 2918;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 1082;
+	};
+	535D5B710F984CAF00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 695;
+		rType = 0;
+		vrLen = 758;
+		vrLoc = 303;
+	};
+	535D5B720F984CAF00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 109";
+		rLen = 0;
+		rLoc = 2102;
+		rType = 0;
+		vrLen = 826;
+		vrLoc = 1612;
+	};
+	535D5B730F984CAF00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 104";
+		rLen = 0;
+		rLoc = 2918;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 1082;
+	};
+	535D5B750F984CF300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 695;
+		rType = 0;
+		vrLen = 758;
+		vrLoc = 303;
+	};
+	535D5B760F984CF300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		rLen = 1;
+		rLoc = 260;
+		rType = 1;
+	};
+	535D5B770F984CF300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 334";
+		rLen = 0;
+		rLoc = 7103;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 6865;
+	};
+	535D5B780F984CF300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 104";
+		rLen = 0;
+		rLoc = 2918;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 1082;
+	};
+	535D5B7A0F984D3F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 695;
+		rType = 0;
+		vrLen = 788;
+		vrLoc = 303;
+	};
+	535D5B7D0F984D3F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		rLen = 1;
+		rLoc = 38;
+		rType = 1;
+	};
+	535D5B7E0F984D3F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 51";
+		rLen = 0;
+		rLoc = 1004;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 214;
+	};
+	535D5B7F0F984D3F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 57";
+		rLen = 7;
+		rLoc = 1242;
+		rType = 0;
+		vrLen = 734;
+		vrLoc = 1003;
+	};
+	535D5B800F984D3F00CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
+		name = "ai.cpp: 104";
+		rLen = 0;
+		rLoc = 2918;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 1082;
+	};
+	535D5B820F984D7300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
+		name = "entity.cpp: 39";
+		rLen = 0;
+		rLoc = 695;
+		rType = 0;
+		vrLen = 788;
+		vrLoc = 303;
+	};
+	535D5B830F984D7300CDF6D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
+		name = "game.cpp: 120";
+		rLen = 0;
+		rLoc = 2225;
+		rType = 0;
+		vrLen = 889;
+		vrLoc = 1657;
+	};
+	535D5B840F984D7300CDF6D9 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 535D58050F9432A800CDF6D9 /* ai.cpp */;
 		name = "ai.cpp: 104";
@@ -5897,7 +6307,7 @@
 		fRef = 5339D4310F7F368300169F6F /* game.cpp */;
 		name = "game.cpp: 143";
 		rLen = 0;
-		rLoc = 1731;
+		rLoc = 2239;
 		rType = 0;
 		vrLen = 1009;
 		vrLoc = 802;
@@ -5907,7 +6317,7 @@
 		fRef = 53FBDD570F7EDC1B00D7C135 /* entity.h */;
 		name = "npc.h: 39";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 849;
 		vrLoc = 157;
@@ -6031,17 +6441,17 @@
 	};
 	53FBDD570F7EDC1B00D7C135 /* entity.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {869, 882}}";
-			sepNavSelRange = "{1228, 0}";
-			sepNavVisRange = "{288, 949}";
+			sepNavIntBoundsRect = "{{0, 0}, {869, 980}}";
+			sepNavSelRange = "{1127, 72}";
+			sepNavVisRange = "{512, 881}";
 			sepNavWindowFrame = "{{68, 85}, {1085, 788}}";
 		};
 	};
 	53FBDD580F7EDC1B00D7C135 /* entity.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {869, 2940}}";
-			sepNavSelRange = "{147, 0}";
-			sepNavVisRange = "{0, 790}";
+			sepNavIntBoundsRect = "{{0, 0}, {869, 3206}}";
+			sepNavSelRange = "{695, 0}";
+			sepNavVisRange = "{303, 788}";
 			sepNavWindowFrame = "{{68, 85}, {1085, 788}}";
 		};
 	};
@@ -6055,9 +6465,9 @@
 	};
 	53FBDD610F7EE0B800D7C135 /* Vector2D.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {869, 1988}}";
+			sepNavIntBoundsRect = "{{0, 0}, {869, 2002}}";
 			sepNavSelRange = "{868, 0}";
-			sepNavVisRange = "{768, 603}";
+			sepNavVisRange = "{768, 552}";
 			sepNavWindowFrame = "{{137, 22}, {1085, 788}}";
 		};
 	};
@@ -6083,7 +6493,7 @@
 		fRef = 53FBDD580F7EDC1B00D7C135 /* entity.cpp */;
 		name = "npc.cpp: 12";
 		rLen = 0;
-		rLoc = 4113;
+		rLoc = 4588;
 		rType = 0;
 		vrLen = 149;
 		vrLoc = 0;
