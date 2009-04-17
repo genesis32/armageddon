@@ -7,4 +7,4 @@
  *
  */
 
-void Think();
+//void Think();

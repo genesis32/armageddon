@@ -7,10 +7,75 @@
  *
  */
 
-#include "npc.h"
+#include "entity.h"
 #include "util.h"
 
-NPC::NPC()
+entity_t enemies[MAX_CHARACTERS_PER_FLEET];
+int num_enemies = 0;
+
+entity_t *Foe_New()
+{
+	if(num_enemies >= MAX_CHARACTERS_PER_FLEET)
+		return NULL;
+
+	memset( &enemies[ num_enemies ], 0, sizeof( enemies[0] ) );
+	return &enemies[num_enemies++];
+}
+
+void Foe_Remove(entity_t *npc)
+{
+	memmove( npc, npc+1, (int)(&enemies[num_enemies]) - (int)(npc+1) );
+	num_enemies--;
+}
+
+void Foe_Reset()
+{
+	memset(enemies, 0, sizeof(MAX_CHARACTERS_PER_FLEET));
+}
+
+
+void Foe_Tick(entity_t *npc)
+{
+	npc->pos[0] += npc->direction[0] * npc->speed;
+	npc->pos[1] += npc->direction[1] * npc->speed;
+	
+	npc->pos[0] > 180.0  ? -180.0 : npc->pos[0];
+	npc->pos[0] < -180.0 ?  180.0 : npc->pos[0];
+
+	npc->pos[1] > 90.0  ? -90.0 : npc->pos[1];
+	npc->pos[1] < -90.0 ?  90.0 : npc->pos[1];
+
+	npc->rot_angle = fast_atan2(npc->direction[1], npc->direction[0]) * (180.0f / PI_FLOAT);
+	
+}
+
+void Ent_MoveTowardsPoint(entity_t *npc, const Point2D pt)
+{
+	
+}
+
+void Ent_AddWayPoint(entity_t *npc, float lat, float lon)
+{
+	if(npc->num_waypoints >= MAX_NUM_WAYPOINTS)
+		return;
+	
+	int num_waypoints = npc->num_waypoints;
+	
+	npc->waypoints[num_waypoints][0] = lon;
+	npc->waypoints[num_waypoints][1] = lat;
+	
+	num_waypoints++;
+}
+
+void Ent_ClearWayPoints(entity_t *npc)
+{
+	memset(npc->waypoints, 0, sizeof(npc->waypoints));
+	npc->num_waypoints = 0;
+}
+
+
+
+/* NPC::NPC()
 {
 	m_currWaypoint = NULL;
 	m_currRegionIndex = -1;
@@ -139,5 +204,5 @@ void NPC::AddWayPoint(float lat, float lon)
 
 	m_waypoints.push_back(newWaypoint);
 }
-
+ */
 

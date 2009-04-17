@@ -15,7 +15,7 @@
 #include <float.h>
 #include "font.h"
 #include "region.h"
-#include "npc.h"
+#include "entity.h"
 #include "game.h"
 #include "transforms.h"
 #include "ai.h"
@@ -27,18 +27,14 @@ static int frameCount = 0;
 float   selectedLat, selectedLon;
 
 // regions will be ROW major...
-Region  region[NUM_REGION_ROWS * NUM_REGION_COLS];
-Point2D inputWaypoints[NUM_INPUT_WAYPOINTS];
-int     numInputWaypoints = 0;
-int     selectedEntityIndex = -1;
-bool    clearSelectedEntity = false;
-NPC     friendlyFleet[MAX_CHARACTERS_PER_FLEET];
-NPC     enemyFleet[MAX_CHARACTERS_PER_FLEET];
-
+Region    region[NUM_REGION_ROWS * NUM_REGION_COLS];
+Point2D   inputWaypoints[NUM_INPUT_WAYPOINTS];
+int       numInputWaypoints = 0;
+entity_t *selectedEntity = NULL;
+bool      clearSelectedEntity = false;
 GLuint  textures[MAX_TEXTURES];
 
-
-static void RenderEntity(NPC &entity);
+static void RenderEntity(entity_t *entity);
 
 int GetRegionForPosition(const Point2D &pos)
 {
@@ -50,53 +46,37 @@ int GetRegionForPosition(const Point2D &pos)
 	return regionIdx;
 }
 
-void InitFleets()
+void InitFoes()
 {
+	Foe_Reset();
 
-	NPC *inputFleet[2] = { friendlyFleet, enemyFleet }; 
-
-	uint32_t affiliationCode = 0;
-	for(int i=0; i < 2; i++)
+	float initial_lon = 155.0;
+	float start_lat   = -80.0;
+	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
-		float initialLon;
-		if(inputFleet[i] == enemyFleet)
+		entity_t *foe = Foe_New();
+		assert(foe != NULL);
+		
+		foe->affiliation = NPC_AFFILIATION_FOE;
+		if(i == 0)
 		{
-			initialLon = 155.0;
-			affiliationCode = NPC_AFFILIATION_FOE;
+			foe->type = NPC_TYPE_BOMBER;
+			foe->speed = 0.40; 
 		}
 		else
 		{
-			initialLon = -175.0;
-			affiliationCode = NPC_AFFILIATION_FRIENDLY;
+			foe->type  = NPC_TYPE_FIGHTER;
+			foe->speed = 0.50; 
 		}
 		
-		float startLat = -80.0; // evenly space for testing...
-		Point2D  initialPoint;	
-		for(int j=0; j < MAX_CHARACTERS_PER_FLEET; j++)
-		{
-			if(j == 0)
-				inputFleet[i][j].SetStatus(NPC_BOMBER);
-			
-			initialPoint.SetX(initialLon);
-			initialPoint.SetY(startLat);
-			startLat += (180.0 / (float)MAX_CHARACTERS_PER_FLEET);
-			
-			// temp code here to init enemy movement....
-			if(inputFleet[i] == enemyFleet)
-			{
-				Vector2D vec(-1.0, 0.0);
-				inputFleet[i][j].SetDirection(vec);
-			}
-			else
-			{
-				Vector2D vec(1.0, 0.0);
-				inputFleet[i][j].SetDirection(vec);				
-			}
-			
-			
-			inputFleet[i][j].SetStatus(NPC_ALIVE | affiliationCode);
-			inputFleet[i][j].SetPosition(initialPoint);
-		}
+		foe->direction[0] = -0.5;
+		
+		foe->pos[0] = initial_lon;
+		foe->pos[1] = start_lat;
+		start_lat += (180.0 / 4.0);
+		
+		foe->direction[0] = -1.0;
+
 	}
 }
 
@@ -108,7 +88,7 @@ void Init()
 		textures[i] = -1;
 	}
 	
-	InitFleets();
+	InitFoes();
 
 	Point2D calcUrPoint, calcLlPoint;
 	float width  = 360.0 / (float)NUM_REGION_COLS;
@@ -152,8 +132,7 @@ static void ProcessClearSelectedEntity()
 {
 	if(clearSelectedEntity)
 	{
-		friendlyFleet[selectedEntityIndex].UnsetStatus(NPC_SELECTED);
-		selectedEntityIndex = -1;
+		selectedEntity = NULL;
 		clearSelectedEntity = false;
 		numInputWaypoints = 0; // reset the number of pending waypoints
 	}
@@ -170,11 +149,11 @@ void SetInputWayPoint(float lat, float lon)
 
 static void ProcessInputWaypoints()
 {
-	if(selectedEntityIndex != -1)
+	if(selectedEntity != NULL)
 	{
 		for(int i=0; i < numInputWaypoints; i++)
 		{
-			friendlyFleet[selectedEntityIndex].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
+//			friendlyFleet[selectedEntityIndex].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
 		}
 		numInputWaypoints = 0;
 	}
@@ -184,9 +163,7 @@ static void ProcessEntitySelection()
 {
 	if(selectedLat != FLT_MIN && selectedLon != FLT_MIN)
 	{
-		Point2D loc;
-		
-		for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+		/* for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 		{
 			friendlyFleet[i].GetPosition(loc);
 
@@ -202,7 +179,7 @@ static void ProcessEntitySelection()
 			}
 			
 		}
-		// we have a valid lat lon from a selection, see if we're over an entity and tag him as selected
+		 */		// we have a valid lat lon from a selection, see if we're over an entity and tag him as selected
 		selectedLat = selectedLon = FLT_MIN;
 	}
 }
@@ -254,32 +231,17 @@ static void RenderRegions()
 static void RenderEnemyCharacters()
 {
 	Point2D ptToRender;
-	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+	for(int i=0; i < num_enemies; i++)
 	{
-		if(enemyFleet[i].GetStatus() & NPC_ALIVE)
-		{
-			RenderEntity(enemyFleet[i]);
-		}			
+		RenderEntity(&enemies[i]);
 	}
 }
 
-static void RenderEntity(NPC &entity)
+static void RenderEntity(entity_t *entity)
 {
-	Point2D ptToRender;
-	entity.GetPosition(ptToRender);
+	float x = entity->pos[0];
+	float y = entity->pos[1];
 	
-	float x = ptToRender.GetX();
-	float y = ptToRender.GetY();
-	
-/*	
-	GLfloat verts[] = {
-		x-ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,   -0.5,
-		x+ENTITY_WIDTH_RADIUS, y-ENTITY_HEIGHT_RADIUS,  -0.5,
-		x-ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS,  -0.5,
-		x+ENTITY_WIDTH_RADIUS, y+ENTITY_HEIGHT_RADIUS, -0.5
-	};
- */
-
 	GLfloat verts[] = {
 		-ENTITY_WIDTH_RADIUS, -ENTITY_HEIGHT_RADIUS,   -0.5,
 		 ENTITY_WIDTH_RADIUS,  -ENTITY_HEIGHT_RADIUS,  -0.5,
@@ -289,7 +251,7 @@ static void RenderEntity(NPC &entity)
 	
 	
 	GLfloat min, max;
-	if(entity.GetStatus() & NPC_BOMBER)
+	if(entity->type & NPC_TYPE_BOMBER)
 	{
 		min = 0;
 		max = 64.0/256*2.0;
@@ -323,7 +285,7 @@ static void RenderEntity(NPC &entity)
 	
 	glPushMatrix();
 	glTranslatef(x, y, 0);
-	glRotatef(entity.GetCurrRotationAngle(), 0.0, 0.0, 1.0);
+	glRotatef(entity->rot_angle, 0.0, 0.0, 1.0);
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);	
 
@@ -338,7 +300,7 @@ static void RenderEntity(NPC &entity)
 
 static void RenderFriendlyCharacters()
 {
-	Point2D ptToRender;
+	/* Point2D ptToRender;
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		if(friendlyFleet[i].GetStatus() & NPC_ALIVE)
@@ -375,31 +337,30 @@ static void RenderFriendlyCharacters()
 					
 		}
 	}
-}
+	 */}
 
-static void ProcessRegionStatus(NPC *fleet)
+static void ProcessRegionStatus(entity_t *enemy_fleet)
 {
 	Point2D currShipPoint;	
-	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+	for(int i=0; i < num_enemies; i++)
 	{
-		fleet[i].GetPosition(currShipPoint);
-		int regionIndex = GetRegionForPosition(currShipPoint);
-		if(fleet[i].GetStatus() & NPC_BOMBER)
+			/* int regionIndex = GetRegionForPosition(currShipPoint);
+	if(fleet[i].GetStatus() & NPC_BOMBER)
+	{
+		int lastIndex = fleet[i].GetCurrentRegionIndex();
+		
+		if(lastIndex > -1)
 		{
-			int lastIndex = fleet[i].GetCurrentRegionIndex();
-			
-			if(lastIndex > -1)
-			{
-				region[lastIndex].UnsetStatus(REGION_WARNING_INCOMING);
-			}
-			
-			if(lastIndex != regionIndex)
-			{
-				fleet[i].SetCurrentRegionIndex(regionIndex);
-			}
-			
-			region[regionIndex].CalculateStrike(fleet[i]);
+			region[lastIndex].UnsetStatus(REGION_WARNING_INCOMING);
 		}
+		
+		if(lastIndex != regionIndex)
+		{
+			fleet[i].SetCurrentRegionIndex(regionIndex);
+		}
+		
+		region[regionIndex].CalculateStrike(fleet[i]);
+	} */
 	}
 }
 
@@ -462,15 +423,11 @@ void GameTick()
 	ProcessInputWaypoints();
 	ProcessClearSelectedEntity();
 	   
-	Think();
+	ProcessRegionStatus(enemies);
 	
-	ProcessRegionStatus(friendlyFleet);
-	ProcessRegionStatus(enemyFleet);
-	
-	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
+	for(int i=0; i < num_enemies; i++)
 	{
-		friendlyFleet[i].Tick();
-		enemyFleet[i].Tick();
+		Foe_Tick(&enemies[i]);
 	}
 	
 	RenderWorld();

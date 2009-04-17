@@ -36,27 +36,27 @@ void Region::Initialize()
 
 void Region::CalculateStrike(NPC &npc)
 {
-	Point2D npcPos;
-	npc.GetPosition(npcPos);
-	
-	if(npc.GetStatus() & NPC_AFFILIATION_FOE && m_status & REGION_AFFILIATION_FOE)
-		return;
-	
-	if(npc.GetStatus() & NPC_AFFILIATION_FRIENDLY && m_status & REGION_AFFILIATION_FRIENDLY)
-		return;
-	
-	if(m_mainBase.GetX() >= npcPos.GetX()-ENTITY_WIDTH_RADIUS  &&
-	   m_mainBase.GetX() <= npcPos.GetX()+ENTITY_WIDTH_RADIUS  &&
-	   m_mainBase.GetY() >= npcPos.GetY()-ENTITY_HEIGHT_RADIUS &&
-	   m_mainBase.GetY() <= npcPos.GetY()+ENTITY_HEIGHT_RADIUS)
-	{
-		ToggleStatus(REGION_AFFILIATION_FRIENDLY | REGION_AFFILIATION_FOE);
-	}
-	else
-	{
-		SetStatus(REGION_WARNING_INCOMING);
-	}
-}
+	/* Point2D npcPos;
+		npc.GetPosition(npcPos);
+		
+		if(npc.GetStatus() & NPC_AFFILIATION_FOE && m_status & REGION_AFFILIATION_FOE)
+			return;
+		
+		if(npc.GetStatus() & NPC_AFFILIATION_FRIENDLY && m_status & REGION_AFFILIATION_FRIENDLY)
+			return;
+		
+		if(m_mainBase.GetX() >= npcPos.GetX()-ENTITY_WIDTH_RADIUS  &&
+		   m_mainBase.GetX() <= npcPos.GetX()+ENTITY_WIDTH_RADIUS  &&
+		   m_mainBase.GetY() >= npcPos.GetY()-ENTITY_HEIGHT_RADIUS &&
+		   m_mainBase.GetY() <= npcPos.GetY()+ENTITY_HEIGHT_RADIUS)
+		{
+			ToggleStatus(REGION_AFFILIATION_FRIENDLY | REGION_AFFILIATION_FOE);
+		}
+		else
+		{
+			SetStatus(REGION_WARNING_INCOMING);
+		}
+	 */}
 
 void Region::ToggleStatus(uint32_t status)
 {
