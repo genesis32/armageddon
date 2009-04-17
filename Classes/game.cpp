@@ -28,7 +28,7 @@ float   selectedLat, selectedLon;
 
 // regions will be ROW major...
 Region    region[NUM_REGION_ROWS * NUM_REGION_COLS];
-Point2D   inputWaypoints[NUM_INPUT_WAYPOINTS];
+pt2d_t    inputWaypoints[NUM_INPUT_WAYPOINTS];
 int       numInputWaypoints = 0;
 entity_t *selectedEntity = NULL;
 bool      clearSelectedEntity = false;
@@ -173,7 +173,9 @@ void SetInputWayPoint(float lat, float lon)
 	if(numInputWaypoints >= NUM_INPUT_WAYPOINTS)
 		return;
 
-	inputWaypoints[numInputWaypoints].Set(lon, lat);
+	inputWaypoints[numInputWaypoints][0] = lon;
+	inputWaypoints[numInputWaypoints][1] = lat;
+	
 	numInputWaypoints++;
 }
 
@@ -183,7 +185,7 @@ static void ProcessInputWaypoints()
 	{
 		for(int i=0; i < numInputWaypoints; i++)
 		{
-//			friendlyFleet[selectedEntityIndex].AddWayPoint(inputWaypoints[i].GetY(), inputWaypoints[i].GetX());
+			Ent_AddWayPoint(selectedEntity, inputWaypoints[i][1], inputWaypoints[i][0]);
 		}
 		numInputWaypoints = 0;
 	}
@@ -193,6 +195,20 @@ static void ProcessEntitySelection()
 {
 	if(selectedLat != FLT_MIN && selectedLon != FLT_MIN)
 	{
+		for(int i=0; i < num_friendlies; i++)
+		{
+			if(selectedLon <= friendlies[i].pos[0]+ENTITY_WIDTH_RADIUS &&
+			   selectedLon >= friendlies[i].pos[0]-ENTITY_WIDTH_RADIUS &&
+			   selectedLat <= friendlies[i].pos[1]+ENTITY_HEIGHT_RADIUS &&
+			   selectedLat >= friendlies[i].pos[1]-ENTITY_HEIGHT_RADIUS) 
+			{
+				friendlies[i].flags = ENT_FLG_SELECTED;
+				selectedEntity = &friendlies[i];
+				break;
+			}
+		}
+		selectedLat = selectedLon = FLT_MIN;
+
 		/* for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 		{
 			friendlyFleet[i].GetPosition(loc);
@@ -210,7 +226,6 @@ static void ProcessEntitySelection()
 			
 		}
 		 */		// we have a valid lat lon from a selection, see if we're over an entity and tag him as selected
-		selectedLat = selectedLon = FLT_MIN;
 	}
 }
 

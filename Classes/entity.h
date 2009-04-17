@@ -25,6 +25,7 @@
 
 #define NPC_FLG_DAMAGED  1
 #define NPC_FLG_DYING    2
+#define ENT_FLG_SELECTED 4
 
 #define NPC_TYPE_FIGHTER  1 
 #define NPC_TYPE_BOMBER   2 
