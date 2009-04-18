@@ -57,15 +57,15 @@ void InitFriendlies()
 		entity_t *foe = Fri_New();
 		assert(foe != NULL);
 		
-		foe->affiliation = NPC_AFFILIATION_FOE;
+		foe->affiliation = ENT_AFFILIATION_FRIENDLY;
 		if(i == 0)
 		{
-			foe->type = NPC_TYPE_BOMBER;
+			foe->type = ENT_TYPE_BOMBER;
 			foe->speed = 0.40; 
 		}
 		else
 		{
-			foe->type  = NPC_TYPE_FIGHTER;
+			foe->type  = ENT_TYPE_FIGHTER;
 			foe->speed = 0.50; 
 		}
 		
@@ -89,15 +89,15 @@ void InitFoes()
 		entity_t *foe = Foe_New();
 		assert(foe != NULL);
 		
-		foe->affiliation = NPC_AFFILIATION_FOE;
+		foe->affiliation = ENT_AFFILIATION_FOE;
 		if(i == 0)
 		{
-			foe->type = NPC_TYPE_BOMBER;
+			foe->type = ENT_TYPE_BOMBER;
 			foe->speed = 0.40; 
 		}
 		else
 		{
-			foe->type  = NPC_TYPE_FIGHTER;
+			foe->type  = ENT_TYPE_FIGHTER;
 			foe->speed = 0.50; 
 		}
 		
@@ -202,8 +202,8 @@ static void ProcessEntitySelection()
 			   selectedLat <= friendlies[i].pos[1]+ENTITY_HEIGHT_RADIUS &&
 			   selectedLat >= friendlies[i].pos[1]-ENTITY_HEIGHT_RADIUS) 
 			{
-				friendlies[i].flags = ENT_FLG_SELECTED;
 				selectedEntity = &friendlies[i];
+		 		Ent_ClearWayPoints(selectedEntity);
 				break;
 			}
 		}
@@ -296,7 +296,7 @@ static void RenderEntity(entity_t *entity)
 	
 	
 	GLfloat min, max;
-	if(entity->type & NPC_TYPE_BOMBER)
+	if(entity->type & ENT_TYPE_BOMBER)
 	{
 		min = 0;
 		max = 64.0/256*2.0;
@@ -347,6 +347,24 @@ static void RenderFriendlyCharacters()
 {
 	for(int i=0; i < num_friendlies; i++)
 	{
+		
+		GLfloat *arr = new GLfloat[(friendlies[i].numwaypoints + 1) * 2];
+		arr[0] = friendlies[i].pos[0];
+		arr[1] = friendlies[i].pos[1];		
+		int curr = 1;
+		for(int j=0; j < friendlies[i].numwaypoints; j++)
+		{
+			arr[2 * curr + 0] = friendlies[i].waypoints[j][0];
+			arr[2 * curr + 1] = friendlies[i].waypoints[j][1];
+			curr++;
+		}
+		
+		glColor4f(1.0, 1.0, 0.0, 0.0);
+		glVertexPointer(2, GL_FLOAT, 0, arr);
+		glDrawArrays(GL_LINE_STRIP, 0, curr);
+		
+		delete[] arr;
+		
 		RenderEntity(&friendlies[i]);
 	}
 	

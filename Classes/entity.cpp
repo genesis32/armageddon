@@ -58,40 +58,69 @@ void Fri_Reset()
 
 void Ent_Tick(entity_t *npc)
 {
-	npc->pos[0] += npc->direction[0] * npc->speed;
-	npc->pos[1] += npc->direction[1] * npc->speed;
+	if(npc->flags & ENT_FLG_STARTROUTE)
+	{
+		Ent_MoveTowardsPoint(npc, npc->waypoints[0]);
+		
+		npc->flags &= ~ENT_FLG_STARTROUTE;
+		npc->flags |= ENT_FLG_ENROUTE;
+	} 
+	// if we are enroute and we have reached a waypoint go to the next waypoint
+	else if(npc->flags & ENT_FLG_ENROUTE &&
+			npc->waypoints[npc->currwaypointidx][0] <= npc->pos[0]+1.0f &&
+			npc->waypoints[npc->currwaypointidx][0] >= npc->pos[0]-1.0f &&
+			npc->waypoints[npc->currwaypointidx][1] <= npc->pos[1]+1.0f &&
+			npc->waypoints[npc->currwaypointidx][1] >= npc->pos[1]-1.0f)
+	{
+		npc->currwaypointidx++;
+		if(npc->currwaypointidx == npc->numwaypoints)
+		{
+			npc->flags &= ~ENT_FLG_ENROUTE;
+			Ent_ClearWayPoints(npc);
+		}
+		else
+		{
+			Ent_MoveTowardsPoint(npc, npc->waypoints[npc->currwaypointidx]);
+		}
+	}
 	
-	npc->pos[0] > 180.0  ? -180.0 : npc->pos[0];
-	npc->pos[0] < -180.0 ?  180.0 : npc->pos[0];
+	npc->pos[0] += (npc->direction[0] * npc->speed);
+	npc->pos[1] += (npc->direction[1] * npc->speed);
+		
+	npc->pos[0] = npc->pos[0] > 180.0  ? -180.0 : npc->pos[0];
+	npc->pos[0] = npc->pos[0] < -180.0 ?  180.0 : npc->pos[0];
 
-	npc->pos[1] > 90.0  ? -90.0 : npc->pos[1];
-	npc->pos[1] < -90.0 ?  90.0 : npc->pos[1];
-
-	npc->rot_angle = fast_atan2(npc->direction[1], npc->direction[0]) * (180.0f / PI_FLOAT);	
+	npc->pos[1] = npc->pos[1] > 90.0  ? -90.0 : npc->pos[1];
+	npc->pos[1] = npc->pos[1] < -90.0 ?  90.0 : npc->pos[1];
 }
 
-void Ent_MoveTowardsPoint(entity_t *npc, const Point2D pt)
+void Ent_MoveTowardsPoint(entity_t *npc, const pt2d_t pt)
 {
+	npc->direction[0] = pt[0] - npc->pos[0];
+	npc->direction[1] = pt[1] - npc->pos[1];
 	
+	Vec2_Normalize(npc->direction);
+	npc->rot_angle = fast_atan2(npc->direction[1], npc->direction[0]) * (180.0f / PI_FLOAT);		
 }
 
 void Ent_AddWayPoint(entity_t *npc, float lat, float lon)
 {
-	if(npc->num_waypoints >= MAX_NUM_WAYPOINTS)
+	if(npc->numwaypoints >= MAX_NUM_WAYPOINTS)
 		return;
 	
-	int num_waypoints = npc->num_waypoints;
+	if(npc->numwaypoints == 0)
+		npc->flags |= ENT_FLG_STARTROUTE;
 	
-	npc->waypoints[num_waypoints][0] = lon;
-	npc->waypoints[num_waypoints][1] = lat;
+	npc->waypoints[npc->numwaypoints][0] = lon;
+	npc->waypoints[npc->numwaypoints][1] = lat;
 	
-	num_waypoints++;
+	npc->numwaypoints++;
 }
 
 void Ent_ClearWayPoints(entity_t *npc)
 {
 	memset(npc->waypoints, 0, sizeof(npc->waypoints));
-	npc->num_waypoints = 0;
+	npc->numwaypoints = npc->currwaypointidx = 0;
 }
 
 
