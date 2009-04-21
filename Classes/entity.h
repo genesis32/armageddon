@@ -47,6 +47,7 @@ typedef struct entity_s
 	pt2d_t    pos;
 	vec2d_t   direction;
 	pt2d_t    waypoints[MAX_NUM_WAYPOINTS];
+	int       groupidx;
 } entity_t;
 
 extern entity_t enemies[MAX_CHARACTERS_PER_FLEET];

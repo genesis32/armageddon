@@ -20,29 +20,14 @@
 
 class NPC;
 
-class Region
+typedef struct region_s
 {
-public:
-	Region();
-	
-	void Initialize();
-	
-	void UnsetStatus(uint32_t status);
-	void SetStatus(uint32_t status);
-	void ToggleStatus(uint32_t status);
-	uint32_t GetStatus() { return m_status; }
-	
-	void SetExtents(Point2D upperRight, Point2D lowerLeft);
-	void GetExtents(Point2D &upperRight, Point2D &lowerLeft);
-	
-	Point2D GetMainBaseLocation() { return m_mainBase; }
-	
-	void CalculateStrike(NPC &npc);
-	
-private:
-	uint32_t m_status;
-	Point2D  m_mainBase;
-	Point2D  m_upperRight;
-	Point2D  m_lowerLeft;
-};
+	uint32_t flags;
+	pt2d_t   baseloc;
+	pt2d_t   ll;
+	pt2d_t   ur;
+} region_t;
 
+
+extern region_t regions[NUM_REGION_CELLS];
+void   InitRegions();

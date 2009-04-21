@@ -8,82 +8,29 @@
  */
 #include <stdlib.h>
 #include "region.h"
-#include "npc.h"
 
-Region::Region()
-{
-	
-}
+region_t regions[NUM_REGION_CELLS];
 
-void Region::Initialize()
+void InitRegions()
 {
-	int tmpVal = rand() % 256;
-	if(tmpVal < 128)
-		SetStatus(REGION_AFFILIATION_FRIENDLY);
-	else
-		SetStatus(REGION_AFFILIATION_FOE);	
-	
-	int range = (int)m_upperRight.GetX() - (int)m_lowerLeft.GetX();
-	int offset = rand() % range;
-	
-	m_mainBase.SetX(m_lowerLeft.GetX() + offset);
-	
-	range = (int)m_upperRight.GetY() - (int)m_lowerLeft.GetY();
-	offset = rand() % range;
-	
-	m_mainBase.SetY(m_lowerLeft.GetY() + offset);
-}
-
-void Region::CalculateStrike(NPC &npc)
-{
-	/* Point2D npcPos;
-		npc.GetPosition(npcPos);
-		
-		if(npc.GetStatus() & NPC_AFFILIATION_FOE && m_status & REGION_AFFILIATION_FOE)
-			return;
-		
-		if(npc.GetStatus() & NPC_AFFILIATION_FRIENDLY && m_status & REGION_AFFILIATION_FRIENDLY)
-			return;
-		
-		if(m_mainBase.GetX() >= npcPos.GetX()-ENTITY_WIDTH_RADIUS  &&
-		   m_mainBase.GetX() <= npcPos.GetX()+ENTITY_WIDTH_RADIUS  &&
-		   m_mainBase.GetY() >= npcPos.GetY()-ENTITY_HEIGHT_RADIUS &&
-		   m_mainBase.GetY() <= npcPos.GetY()+ENTITY_HEIGHT_RADIUS)
+	for(int i=0; i < NUM_REGION_ROWS; i++)
+	{
+		for(int j=0; j < NUM_REGION_COLS; j++)
 		{
-			ToggleStatus(REGION_AFFILIATION_FRIENDLY | REGION_AFFILIATION_FOE);
+			int idx = (NUM_REGION_COLS * i) + j;
+			int tmp = rand() % 256;
+			if(tmp < 128)
+				regions[idx].flags |= REGION_AFFILIATION_FRIENDLY;
+			else
+				regions[idx].flags |= REGION_AFFILIATION_FOE;
+			
+			const float width  = 360.0 / (float)NUM_REGION_COLS;
+			const float height = 180.0 / (float)NUM_REGION_ROWS;
+			
+			regions[idx].ll[0] = (j * width) - 180.0;
+			regions[idx].ll[1] = (i * height) - 90.0;
+			regions[idx].ur[0] = (j * width - 180.0) + width;
+			regions[idx].ur[1] = (i * height - 90.0) + height;
 		}
-		else
-		{
-			SetStatus(REGION_WARNING_INCOMING);
-		}
-	 */}
-
-void Region::ToggleStatus(uint32_t status)
-{
-	m_status ^= status;
+	}
 }
-
-
-void Region::UnsetStatus(uint32_t status)
-{
-	m_status &= ~status;
-}
-
-void Region::SetStatus(uint32_t status)
-{
-	m_status |= status;
-}
-
-void Region::SetExtents(Point2D ll, Point2D ur)
-{
-	m_lowerLeft = ll;
-	m_upperRight = ur;
-}
-
-void Region::GetExtents(Point2D &ll, Point2D &ur)
-{
-	ll = m_lowerLeft;
-	ur = m_upperRight;
-}
-
-

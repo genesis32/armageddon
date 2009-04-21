@@ -7,4 +7,5 @@
  *
  */
 
-//void Think();
+
+void MCP_Think(int frame);

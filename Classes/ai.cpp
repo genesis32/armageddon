@@ -1,3 +1,56 @@
+#include <float.h>
+#include "Vector2D.h"
+#include "ai.h"
+#include "entity.h"
+
+// entity of interest
+typedef struct eofi_s
+{
+	entity_t *ent;
+	float    dist;
+} eofi_t;
+
+typedef struct aigroup_s
+{
+	eofi_t eofi;
+} aigroup_t;
+
+static aigroup_t aigroup[MAX_CHARACTERS_PER_FLEET] = 
+{ 
+	{ NULL, FLT_MAX },
+	{ NULL, FLT_MAX },
+	{ NULL, FLT_MAX },
+	{ NULL, FLT_MAX }
+};
+
+static void ComputeClosestEntites() 
+{
+	for(int i=0; i < num_enemies; i++)
+	{
+		int cegrpidx = enemies[i].groupidx;		
+		for(int j=0; j < num_friendlies; j++)
+		{
+			float dist = Pt2_Distance(enemies[i].pos, friendlies[j].pos);
+			if(dist < aigroup[cegrpidx].eofi.dist)
+			{
+				aigroup[cegrpidx].eofi.dist = dist;
+				aigroup[cegrpidx].eofi.ent = &friendlies[j];
+			}
+		}
+	}
+	
+	for(int i=0; i < num_enemies; i++)
+	{
+		aigroup_t *mygroup = &aigroup[enemies[i].groupidx];		
+		Ent_MoveTowardsPoint(&enemies[i], mygroup->eofi.ent->pos);
+	}
+}
+
+void MCP_Think(int frame)
+{
+	ComputeClosestEntites();
+}
+
 /* 
 		 *  ai.cpp
 		 *  Armageddon
