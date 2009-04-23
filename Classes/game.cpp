@@ -99,9 +99,11 @@ void InitFoes()
 			foe->type  = ENT_TYPE_FIGHTER;
 			foe->speed = 0.50; 
 		}
-		
-		foe->direction[0] = -1.0;
-		
+
+		foe->rdrstatus |= (ENT_RDR_ON | ENT_RDR_SEARCH);
+		vec2d_t vec = { -1.0, 0.0 };
+		Ent_SetHeading(foe, vec);
+
 		foe->pos[0] = initial_lon;
 		foe->pos[1] = start_lat;
 		start_lat += (180.0 / 4.0);
@@ -266,7 +268,6 @@ static void RenderEntity(entity_t *entity)
 		min = 0.0;
 		max = (64.0/256.0);
 	}
-	
 
 	GLfloat textcoords[] = {
 		min, max,
@@ -279,9 +280,14 @@ static void RenderEntity(entity_t *entity)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	glEnable(GL_TEXTURE_2D);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glBindTexture(GL_TEXTURE_2D, textures[SPRITES_TEXTURE_ID]);
 
+	if(entity->flags & ENT_FLG_DYING)
+	   glColor4f(1.0, 1.0, 1.0, 0.2);
+   else
+	   glColor4f(1.0, 1.0, 1.0, 1.0);
+	
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 0, verts);
 	
@@ -293,14 +299,12 @@ static void RenderEntity(entity_t *entity)
 	glRotatef(entity->rot_angle, 0.0, 0.0, 1.0);
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);	
-
-	glPopMatrix();
 	
-	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 	
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	
+	glDisable(GL_BLEND);
+	glPopMatrix();
 }
 
 static void RenderFriendlyCharacters()

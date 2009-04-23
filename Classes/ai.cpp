@@ -1,7 +1,13 @@
 #include <float.h>
+#include <stdlib.h>
 #include "Vector2D.h"
 #include "ai.h"
 #include "entity.h"
+
+
+#define GROUP_PATROL   1
+#define GROUP_ENGAGING 2
+#define GROUP_CAP      4
 
 // entity of interest
 typedef struct eofi_s
@@ -12,44 +18,75 @@ typedef struct eofi_s
 
 typedef struct aigroup_s
 {
+	uint8_t flags;
 	eofi_t eofi;
 } aigroup_t;
 
 static aigroup_t aigroup[MAX_CHARACTERS_PER_FLEET] = 
 { 
-	{ NULL, FLT_MAX },
-	{ NULL, FLT_MAX },
-	{ NULL, FLT_MAX },
-	{ NULL, FLT_MAX }
+	{ NULL, 0, FLT_MAX },
+	{ NULL, 0, FLT_MAX },
+	{ NULL, 0, FLT_MAX },
+	{ NULL, 0, FLT_MAX }
 };
 
 static void ComputeClosestEntites() 
 {
 	for(int i=0; i < num_enemies; i++)
 	{
-		int cegrpidx = enemies[i].groupidx;		
+		int cegrpidx = enemies[i].groupidx;
+		bool found_ent = false;
 		for(int j=0; j < num_friendlies; j++)
 		{
 			float dist = Pt2_Distance(enemies[i].pos, friendlies[j].pos);
-			if(dist < aigroup[cegrpidx].eofi.dist)
+			if(dist <= RDR_SCHB_DIST && dist < aigroup[cegrpidx].eofi.dist)
 			{
 				aigroup[cegrpidx].eofi.dist = dist;
 				aigroup[cegrpidx].eofi.ent = &friendlies[j];
+				found_ent = true;
 			}
 		}
-	}
-	
-	for(int i=0; i < num_enemies; i++)
-	{
-		aigroup_t *mygroup = &aigroup[enemies[i].groupidx];		
-		Ent_MoveTowardsPoint(&enemies[i], mygroup->eofi.ent->pos);
+		
+		if(!found_ent)
+		{
+		   aigroup[cegrpidx].eofi.dist = FLT_MAX;
+		   aigroup[cegrpidx].eofi.ent  = NULL;
+		}
 	}
 }
 
 void MCP_Think(int frame)
 {
 	ComputeClosestEntites();
+	
+	for(int i=0; i < num_enemies; i++)
+	{
+		aigroup_t *mygroup = &aigroup[enemies[i].groupidx];
+		
+		entity_t *ent = mygroup->eofi.ent;
+		// we have an entity in radar range that we are interested in..
+		if(ent)
+		{
+			mygroup->flags |= GROUP_ENGAGING;
+			if(mygroup->eofi.dist <= RDR_TRKB_DIST && !(mygroup->eofi.ent->flags & ENT_FLG_DYING))
+			{
+				if(Ent_Attack(&enemies[i], ent))
+				{
+					ent->flags |= ENT_FLG_DYING;
+				}
+			}
+			else
+			{
+				Ent_MoveTowardsPoint(&enemies[i], mygroup->eofi.ent->pos);	
+			}
+		}
+	}
 }
+
+
+
+
+
 
 /* 
 		 *  ai.cpp

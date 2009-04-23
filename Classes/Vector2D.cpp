@@ -27,7 +27,7 @@ void Pt2_GetHeadingTo(vec2d_t outv, const pt2d_t frm, const pt2d_t to)
 
 bool Pt2_Equals(const pt2d_t pt1, const pt2d_t pt2)
 {
-	return pt2[0] == pt1[0] && pt2[1] == pt1[0]; 
+	return pt2[0] == pt1[0] && pt2[1] == pt1[1]; 
 }
 
 float Vec2_DotProduct(const vec2d_t vec1, const vec2d_t vec2)

@@ -7,6 +7,8 @@
  *
  */
 
+#include <stdlib.h>
+#include <string.h>
 #include "entity.h"
 #include "util.h"
 
@@ -93,6 +95,13 @@ void Ent_Tick(entity_t *npc)
 	npc->pos[1] += (npc->direction[1] * npc->speed);
 }
 
+void Ent_SetHeading(entity_t *ent, vec2d_t dir)
+{
+	ent->direction[0] = dir[0];
+	ent->direction[1] = dir[1];
+	ent->rot_angle = fast_atan2(ent->direction[1], ent->direction[0]) * (180.0f / PI_FLOAT);		
+}
+
 void Ent_MoveTowardsPoint(entity_t *npc, const pt2d_t pt)
 {
 	npc->direction[0] = pt[0] - npc->pos[0];
@@ -122,3 +131,15 @@ void Ent_ClearWayPoints(entity_t *npc)
 	npc->numwaypoints = npc->currwaypointidx = 0;
 	npc->flags &= ~(ENT_FLG_ENROUTE | ENT_FLG_STARTROUTE);
 }
+
+bool Ent_Attack(entity_t *p1, entity_t *p2)
+{
+	float dp = Vec2_DotProduct(p1->direction, p2->direction);
+	// if it's head on the player automatally dies..
+	if(dp <= -0.90 && dp >= -1.0)
+	{
+		return true;
+	}
+	return false;
+}
+
