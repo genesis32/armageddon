@@ -22,21 +22,27 @@
 #define ENT_AFFILIATION_FRIENDLY 1
 #define ENT_AFFILIATION_FOE      2
 
+#define ENT_TYPE_FIGHTER  1 
+#define ENT_TYPE_BOMBER   2 
+
+#define ENT_RDR_OFF         1
+#define ENT_RDR_ON          2
+#define ENT_RDR_AIR         4
+#define ENT_RDR_GRND        8
+
 #define ENT_FLG_DAMAGED    1
 #define ENT_FLG_DYING      2
 #define ENT_FLG_SELECTED   4
 #define ENT_FLG_ENROUTE    8
 #define ENT_FLG_STARTROUTE 16
 
-#define ENT_TYPE_FIGHTER  1 
-#define ENT_TYPE_BOMBER   2 
+#define ENT_FLG_ENGAGE   32
+#define ENT_FLG_CAP      64
 
-#define ENT_RDR_ON     1
-#define ENT_RDR_SEARCH 2
-#define ENT_RDR_TRACK  4
+#define RDR_AIR_DIST   60.0
+#define RDR_AIR_ATTK_DIST 20.0
 
-#define RDR_SCHB_DIST  60.0
-#define RDR_TRKB_DIST  30.0
+#define RDR_GRND_DIST 180.0
 
 #define MAX_NUM_WAYPOINTS 256
 
@@ -51,7 +57,7 @@ typedef struct entity_s
 	float     speed;
 	float     rot_angle;
 	int       curregionidx;
-	int       groupidx;
+	void      *eofi;
 	pt2d_t    pos;
 	vec2d_t   direction;
 	pt2d_t    waypoints[MAX_NUM_WAYPOINTS];
@@ -78,6 +84,7 @@ void   Ent_AddWayPoint(entity_t *, float lat, float lon);
 void   Ent_ClearWayPoints(entity_t *);
 
 bool   Ent_Attack(entity_t *, entity_t *);
+void   Ent_SetRadarMode(entity_t *ent, uint8_t rdrmode);
 
 #endif
 

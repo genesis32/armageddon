@@ -4,53 +4,31 @@
 #include "ai.h"
 #include "entity.h"
 
-
-#define GROUP_PATROL   1
-#define GROUP_ENGAGING 2
-#define GROUP_CAP      4
-
-// entity of interest
-typedef struct eofi_s
-{
-	entity_t *ent;
-	float    dist;
-} eofi_t;
-
-typedef struct aigroup_s
-{
-	uint8_t flags;
-	eofi_t eofi;
-} aigroup_t;
-
-static aigroup_t aigroup[MAX_CHARACTERS_PER_FLEET] = 
-{ 
-	{ NULL, 0, FLT_MAX },
-	{ NULL, 0, FLT_MAX },
-	{ NULL, 0, FLT_MAX },
-	{ NULL, 0, FLT_MAX }
-};
+static float p2p_dist[MAX_CHARACTERS_PER_FLEET][MAX_CHARACTERS_PER_FLEET];
 
 static void ComputeClosestEntites() 
 {
 	for(int i=0; i < num_enemies; i++)
 	{
-		int cegrpidx = enemies[i].groupidx;
-		bool found_ent = false;
-		for(int j=0; j < num_friendlies; j++)
+		if(enemies[i].rdrstatus & ENT_RDR_AIR)
 		{
-			float dist = Pt2_Distance(enemies[i].pos, friendlies[j].pos);
-			if(dist <= RDR_SCHB_DIST && dist < aigroup[cegrpidx].eofi.dist)
+			float cdist = FLT_MAX;
+			void *cent = NULL;
+			
+			for(int j=0; j < num_friendlies; j++)
 			{
-				aigroup[cegrpidx].eofi.dist = dist;
-				aigroup[cegrpidx].eofi.ent = &friendlies[j];
-				found_ent = true;
+				if(friendlies[j].flags & ENT_FLG_DYING)
+					continue;
+				
+				float dist = Pt2_Distance(enemies[i].pos, friendlies[j].pos);
+				p2p_dist[i][j] = dist;
+				if(dist <= RDR_AIR_DIST && dist < cdist)
+				{
+					cent = &friendlies[j];
+					cdist = dist;				
+				}
 			}
-		}
-		
-		if(!found_ent)
-		{
-		   aigroup[cegrpidx].eofi.dist = FLT_MAX;
-		   aigroup[cegrpidx].eofi.ent  = NULL;
+			enemies[i].eofi = cent;
 		}
 	}
 }
@@ -61,23 +39,28 @@ void MCP_Think(int frame)
 	
 	for(int i=0; i < num_enemies; i++)
 	{
-		aigroup_t *mygroup = &aigroup[enemies[i].groupidx];
-		
-		entity_t *ent = mygroup->eofi.ent;
-		// we have an entity in radar range that we are interested in..
-		if(ent)
+		if(enemies[i].eofi)
 		{
-			mygroup->flags |= GROUP_ENGAGING;
-			if(mygroup->eofi.dist <= RDR_TRKB_DIST && !(mygroup->eofi.ent->flags & ENT_FLG_DYING))
+			entity_t *fri = (entity_t *)enemies[i].eofi;
+			// the eofi must be another plane...
+			if(enemies[i].rdrstatus & ENT_RDR_AIR)
 			{
-				if(Ent_Attack(&enemies[i], ent))
+				if(p2p_dist[i][fri-friendlies] <= RDR_AIR_ATTK_DIST)
 				{
-					ent->flags |= ENT_FLG_DYING;
+					if(Ent_Attack(&enemies[i], fri))
+					{
+						fri->flags |= ENT_FLG_DYING;
+					}
+				}
+				else
+				{
+					Ent_MoveTowardsPoint(&enemies[i], fri->pos);	
 				}
 			}
-			else
+			
+			if(enemies[i].rdrstatus & ENT_RDR_GRND)
 			{
-				Ent_MoveTowardsPoint(&enemies[i], mygroup->eofi.ent->pos);	
+				
 			}
 		}
 	}

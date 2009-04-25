@@ -136,10 +136,20 @@ bool Ent_Attack(entity_t *p1, entity_t *p2)
 {
 	float dp = Vec2_DotProduct(p1->direction, p2->direction);
 	// if it's head on the player automatally dies..
-	if(dp <= -0.90 && dp >= -1.0)
+	if(dp <= -0.77 && dp >= -1.0)
 	{
 		return true;
 	}
 	return false;
 }
+
+void Ent_SetRadarMode(entity_t *ent, uint8_t rdrmode)
+{
+	if(rdrmode & ENT_RDR_OFF)
+		ent->rdrstatus = ENT_RDR_OFF;
+	else
+		ent->rdrstatus = (ENT_RDR_ON | rdrmode);
+
+}
+
 

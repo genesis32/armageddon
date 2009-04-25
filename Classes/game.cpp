@@ -82,7 +82,7 @@ void InitFoes()
 	Foe_Reset();
 
 	float initial_lon = 155.0;
-	float start_lat   = -80.0;
+	float start_lat   = -50.0;
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		entity_t *foe = Foe_New();
@@ -93,22 +93,21 @@ void InitFoes()
 		{
 			foe->type = ENT_TYPE_BOMBER;
 			foe->speed = 0.40; 
+			Ent_SetRadarMode(foe, ENT_RDR_GRND);
 		}
 		else
 		{
 			foe->type  = ENT_TYPE_FIGHTER;
 			foe->speed = 0.50; 
+			Ent_SetRadarMode(foe, ENT_RDR_AIR);
 		}
 
-		foe->rdrstatus |= (ENT_RDR_ON | ENT_RDR_SEARCH);
 		vec2d_t vec = { -1.0, 0.0 };
 		Ent_SetHeading(foe, vec);
 
 		foe->pos[0] = initial_lon;
 		foe->pos[1] = start_lat;
-		start_lat += (180.0 / 4.0);
-		
-		foe->groupidx = i; // we all start out in our own group...
+		start_lat += (180.0 / 4.0);		
 	}
 }
 
