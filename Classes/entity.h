@@ -10,7 +10,7 @@
 #ifndef NPC_H
 #define NPC_H
 
-
+#include "sprite.h"
 #include "Vector2D.h"
 
 #define MAX_CHARACTERS_PER_FLEET 4
@@ -57,6 +57,7 @@ typedef struct entity_s
 	float     speed;
 	float     rot_angle;
 	int       curregionidx;
+//	sprite_t  sprite;
 	void      *eofi;
 	pt2d_t    pos;
 	vec2d_t   direction;

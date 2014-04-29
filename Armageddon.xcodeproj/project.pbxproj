@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		534D25860F8707CA00F0F2F5 /* region.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 534D25850F8707CA00F0F2F5 /* region.cpp */; };
 		534D272E0F87D40D00F0F2F5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 534D272D0F87D40D00F0F2F5 /* icon.png */; };
 		535D58060F9432A800CDF6D9 /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 535D58050F9432A800CDF6D9 /* ai.cpp */; };
+		536164950FA4D5E400CD8780 /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 536164940FA4D5E400CD8780 /* sprite.cpp */; };
 		53C163E80F23DE0A00519B4A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C163E70F23DE0A00519B4A /* map.png */; };
 		53C705B60F21B3AB00B61DA7 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C705B50F21B3AB00B61DA7 /* Texture2D.m */; };
 		53C706090F21B4C300B61DA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C706080F21B4C300B61DA7 /* CoreGraphics.framework */; };
@@ -56,6 +57,8 @@
 		534D272D0F87D40D00F0F2F5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		535D58040F9432A800CDF6D9 /* ai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ai.h; sourceTree = "<group>"; };
 		535D58050F9432A800CDF6D9 /* ai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ai.cpp; sourceTree = "<group>"; };
+		536164930FA4D5E400CD8780 /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sprite.h; path = ../sprite.h; sourceTree = "<group>"; };
+		536164940FA4D5E400CD8780 /* sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sprite.cpp; path = ../sprite.cpp; sourceTree = "<group>"; };
 		53C163E70F23DE0A00519B4A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		53C705B40F21B3AB00B61DA7 /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
 		53C705B50F21B3AB00B61DA7 /* Texture2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture2D.m; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 			children = (
 				53C707080F22531D00B61DA7 /* Font.c */,
 				53C707090F22531D00B61DA7 /* Font.h */,
+				536164930FA4D5E400CD8780 /* sprite.h */,
+				536164940FA4D5E400CD8780 /* sprite.cpp */,
 				53C705B40F21B3AB00B61DA7 /* Texture2D.h */,
 				53C705B50F21B3AB00B61DA7 /* Texture2D.m */,
 				28FD14FC0DC6FC130079059D /* EAGLView.h */,
@@ -194,9 +199,19 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Armageddon" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,6 +253,7 @@
 				534D25860F8707CA00F0F2F5 /* region.cpp in Sources */,
 				533DFB510F91083E00B24321 /* util.cpp in Sources */,
 				535D58060F9432A800CDF6D9 /* ai.cpp in Sources */,
+				536164950FA4D5E400CD8780 /* sprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Massey";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -255,6 +272,8 @@
 				GCC_PREFIX_HEADER = Armageddon_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Armageddon;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -262,38 +281,42 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Massey";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Armageddon_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Armageddon;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

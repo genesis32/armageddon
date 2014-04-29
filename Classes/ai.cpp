@@ -57,8 +57,7 @@ void MCP_Think(int frame)
 					Ent_MoveTowardsPoint(&enemies[i], fri->pos);	
 				}
 			}
-			
-			if(enemies[i].rdrstatus & ENT_RDR_GRND)
+			else if(enemies[i].rdrstatus & ENT_RDR_GRND)
 			{
 				
 			}

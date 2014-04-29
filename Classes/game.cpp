@@ -13,14 +13,21 @@
 #include <list>
 #include <math.h>
 #include <float.h>
+#include <stdlib.h>
 #include "font.h"
 #include "region.h"
 #include "entity.h"
 #include "game.h"
 #include "transforms.h"
 #include "ai.h"
+#include "sprite.h"
 
 #define MAX_TEXTURES 16
+
+#define FONT_TEXTURE_ID 0
+#define MAP_TEXTURE_ID  1
+#define SPRITES_TEXTURE_ID 2
+
 #define NUM_INPUT_WAYPOINTS 128
 
 static int frameCount = 0;
@@ -34,6 +41,12 @@ bool      clearSelectedEntity = false;
 GLuint    textures[MAX_TEXTURES];
 
 static void RenderEntity(entity_t *entity);
+
+
+void AddTexture(int textureId, GLuint glId)
+{
+	textures[textureId] = glId;
+}
 
 int GetRegionForPosition(const pt2d_t pos)
 {
@@ -54,7 +67,6 @@ void InitFriendlies()
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		entity_t *foe = Fri_New();
-		assert(foe != NULL);
 		
 		foe->affiliation = ENT_AFFILIATION_FRIENDLY;
 		if(i == 0)
@@ -86,8 +98,7 @@ void InitFoes()
 	for(int i=0; i < MAX_CHARACTERS_PER_FLEET; i++)
 	{
 		entity_t *foe = Foe_New();
-		assert(foe != NULL);
-		
+
 		foe->affiliation = ENT_AFFILIATION_FOE;
 		if(i == 0)
 		{
@@ -124,11 +135,6 @@ void Init()
 	InitRegions();
 
 	selectedLat = selectedLon = FLT_MIN;
-}
-
-void AddTexture(int textureId, GLuint glId)
-{
-	textures[textureId] = glId;
 }
 
 void SetEntitySelection(float lat, float lon)
